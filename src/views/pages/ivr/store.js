@@ -46,8 +46,8 @@ export default {
     routingDropDowns: [],
     tags: [],
     tagsFilters: [],
-    states:[],
-    filterRecord:[]
+    states: [],
+    filterRecord: [],
   },
   getters: {
     audioPath: (state) => {
@@ -316,11 +316,25 @@ export default {
     },
   },
   actions: {
+    reorderRouterFilters(ctx, params) {
+      return new Promise((resolve, reject) => {
+        toastAlert.methods.showLoader();
+        axios
+          .post("reorder-router-filters", params)
+          .then((response) => {
+            resolve(response);
+          })
+          .catch((error) => reject(error))
+          .finally(() => {
+            toastAlert.methods.hideLoader();
+          });
+      });
+    },
     storeIvrFilterRecord(ctx, params) {
       return new Promise((resolve, reject) => {
         toastAlert.methods.showLoader();
         axios
-          .post('store-tag-filter-conditions', params)
+          .post("store-tag-filter-conditions", params)
           .then((response) => {
             resolve(response);
           })
@@ -335,7 +349,6 @@ export default {
         axios
           .get(`/state-list`)
           .then((response) => {
-
             const {
               data: { states },
             } = response;
@@ -415,40 +428,35 @@ export default {
     getTags({ commit, state }) {
       return new Promise((resolve, reject) => {
         axios
-          .get('get-tags')
+          .get("get-tags")
           .then((response) => {
             const {
-              data: {tags}
+              data: { tags },
             } = response;
-            commit('UPDATE_TAGS',tags);
+            commit("UPDATE_TAGS", tags);
 
             resolve(response);
           })
           .catch((error) => reject(error))
-          .finally(() => {
-
-          });
+          .finally(() => {});
       });
     },
     getFilterRecord({ commit, state }, ivr_builder_id) {
-
-       return new Promise((resolve, reject) => {
+      return new Promise((resolve, reject) => {
         axios
           .get(`get-ivr-filter-record?ivr_builder_id=${ivr_builder_id}`)
           .then((response) => {
             const {
-              data:{
-                data:{filters},
+              data: {
+                data: { filters },
               },
             } = response;
 
-          commit('UPDATE_FILTER_RECORD',filters);
+            commit("UPDATE_FILTER_RECORD", filters);
             resolve(response);
           })
           .catch((error) => reject(error))
-          .finally(() => {
-
-          });
+          .finally(() => {});
       });
     },
     updateNode(ctx, params) {
@@ -580,7 +588,7 @@ export default {
     },
     getIvr({ commit }, params) {
       return new Promise((resolve, reject) => {
-        toastAlert.methods.showLoader();
+        // toastAlert.methods.showLoader();
         axios
           .get(`get-ivr?uuid=${params.uuid}`)
           .then((response) => {
@@ -608,9 +616,9 @@ export default {
           .get(`get-tag-operators?tag_uuid=${tagId}`)
           .then((response) => {
             const {
-              data: {operators}
+              data: { operators },
             } = response;
-            commit('UPDATE_TAG_FILTERS',operators)
+            commit("UPDATE_TAG_FILTERS", operators);
 
             resolve(response);
           })

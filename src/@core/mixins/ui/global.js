@@ -4,7 +4,6 @@ import { isUserLoggedIn } from "@/auth/utils";
 import { getHomeRouteForLoggedInUser } from "@/auth/utils";
 import { toastAlert } from "@core/mixins/ui/toast";
 import store from "@/store";
-
 export const globalHelper = {
   mixins: [toastAlert],
   data() {
@@ -89,19 +88,19 @@ export const globalHelper = {
       }
     },
     filterChildRemoveMessage(node) {
+      var msg = "";
+
       return (msg = `Please confirm that you want to delete Route ${node.priority} filters and their child nodes`);
     },
     remove(node) {
       console.log(node);
       let msg = "";
-      node.node_type == "filter"
-        ? this.filterChildRemoveMessage(node)
-        : this.nodeRemoveCommonMessage(node);
-      // if (node.node_type == "filter") {
-      //   msg = this.filterChildRemoveMessage(node);
-      // } else {
-      //   msg = this.nodeRemoveCommonMessage(node);
-      // }
+      if (node.node_type == "filter") {
+        msg = this.filterChildRemoveMessage(node);
+      } else {
+        msg = this.nodeRemoveCommonMessage(node);
+      }
+
       this.$bvModal
         .msgBoxConfirm(`${msg}.`, {
           title: "Please Confirm",
@@ -115,28 +114,42 @@ export const globalHelper = {
         })
         .then((value) => {
           if (value) {
+            // if (node.node_type == "filter") {
+            // } else {
+            // get all child node
             const ids = this.generateChild(node.id);
-            // console.log()
             ids.push(node.id);
-            this.$store
-              .dispatch("ivrBuilder/removeNodes", {
-                uuids: ids,
-                parentId: node.parentId,
-                ivrUuid: this.$store.state.ivrBuilder.ivrUuid,
-              })
-              .then((res) => {
-                this.$store.commit("ivrBuilder/CHECK_NODES_ERRORS");
-                this.$store.commit("ivrBuilder/REMOVE_NODE", ids);
-                // remove connection of parent node id
-                this.$store.commit(
-                  "ivrBuilder/UPDATE_NODE_MISSING_CONNECTION_ERROR",
-                  { nodeId: node.parentId }
-                );
-              });
+            this.getRouterFilterNode(ids);
+
+            this.removeApiCall(node, ids);
+            // }
+            // return true;
           }
         });
     },
-
+    getRouterFilterNode(ids) {
+      // ids.filger(el => {
+      // })
+    },
+    removeApiCall(node, ids) {
+      this.$store
+        .dispatch("ivrBuilder/removeNodes", {
+          uuids: ids,
+          parentId: node.parentId,
+          ivrUuid: this.$store.state.ivrBuilder.ivrUuid,
+        })
+        .then(() => {
+          this.$store.commit("ivrBuilder/CHECK_NODES_ERRORS");
+          this.$store.commit("ivrBuilder/REMOVE_NODE", ids);
+          // remove connection of parent node id
+          this.$store.commit(
+            "ivrBuilder/UPDATE_NODE_MISSING_CONNECTION_ERROR",
+            {
+              nodeId: node.parentId,
+            }
+          );
+        });
+    },
     generateChild(id) {
       const arr = this.$store.state.ivrBuilder.nodes;
       const nodes = arr.reduce((acc, val, ind, array) => {

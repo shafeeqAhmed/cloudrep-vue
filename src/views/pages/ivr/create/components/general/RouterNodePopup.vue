@@ -48,7 +48,9 @@
               <div class="left_state_box">
                 <b-list-group>
                   <b-list-group-item v-for="(state, stateIndex) in condition.states" :ref="`state-${stateIndex}${key}`"
-                    @click="selectOperatorValue(stateIndex, key, state.name)">{{ state.name }}</b-list-group-item>
+                    :key="stateIndex" @click="selectOperatorValue(stateIndex, key, state.name)">{{
+                      state.name
+                    }}</b-list-group-item>
                 </b-list-group>
               </div>
               <div class="center_state_box">

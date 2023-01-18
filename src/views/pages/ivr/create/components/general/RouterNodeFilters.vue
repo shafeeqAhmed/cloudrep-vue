@@ -3,13 +3,13 @@
     <Container @drop="onDrop">
       <Draggable class="router_tab mb-1" v-for="(filter, key) in node.filters" :key="key">
         <div class="d-flex align-items-center">
-          <span>{{ filter.priority }} </span>
+          <span>{{ indexIncreament(key) }} </span>
           <span class="mr-1 ml-1">|</span>
           <div class="route_name">
             <div class="route_icon">
               <feather-icon icon="Volume2Icon" class="mr-1" size="21" />
             </div>
-            <div>Route {{ filter.priority }} :</div>
+            <div>Route {{ indexIncreament(key) }} :</div>
             &nbsp;
             <div>{{ filter.child_node_type }}</div>
           </div>
@@ -38,6 +38,7 @@
 <script>
 import RouterNodePopup from "../general/RouterNodePopup.vue";
 import { Container, Draggable } from "vue-dndrop";
+import index from "vue-prism-component";
 export default {
   props: ["node", "remove"],
   components: {
@@ -51,8 +52,24 @@ export default {
     }
   },
   methods: {
+    indexIncreament(key) {
+      return ++key
+    },
     onDrop(dropResult) {
-      this.node.filters = this.applyDrag(this.node.filters, dropResult);
+      const list = this.applyDrag(this.node.filters, dropResult);
+      const filterOrder = list.map((li, index) => {
+        return {
+          uuid: li.id,
+          child_node_type: li.child_node_type,
+          priority: this.indexIncreament(index)
+        }
+      })
+      this.$store.dispatch('ivrBuilder/reorderRouterFilters', { filters: filterOrder })
+        .then(() => {
+          const { ivrUuid } = this.$store.state.ivrBuilder
+          this.$store.dispatch('ivrBuilder/getIvr', { uuid: ivrUuid })
+        })
+      this.node.filters = list;
     },
     applyDrag(arr, dragResult) {
       const { removedIndex, addedIndex, payload } = dragResult;
