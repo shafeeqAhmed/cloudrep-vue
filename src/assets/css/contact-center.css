@@ -1,0 +1,61 @@
+/* .statistics-card {
+      border-radius: 20px;
+    }
+    button{
+      height: 3rem !important;
+    }
+    .table th,
+    .table td {
+      border-top: none !important;
+    }
+    .table thead th {
+      border-bottom: 0px solid #ebe9f1;
+      background-color: transparent !important;
+    }
+    .card-img {
+      width: 58px;
+      height: 40px;
+    }
+    .session-card {
+      background: #f4f7fe !important;
+    }
+    .bar-chart-img {
+      width: 70px;
+      height: 50px;
+    }
+    
+    .live-chat-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+    }
+    .description-content {
+      flex-grow: 1 !important;
+      background: #f4f7fe;
+      border-radius: 0px 20px 20px 20px;
+      padding: 8px;
+    }
+    .description-content-rtl {
+      flex-grow: 1 !important;
+      color: #fff;
+      background: #7a60e0;
+      border-radius: 20px 0px 20px 20px;
+      padding: 10px;
+    }
+    .task-list {
+      border-bottom: 1px solid#EAEEF4;
+      padding: 10px 0px 20px;
+    }
+    @media screen and (max-width:567px){
+      .b-media{
+        flex-direction: column;
+        align-items: center;
+      }
+      .b-media-aside{
+        align-self: center !important;
+        margin-bottom: 25px;
+      }
+      .b-media-body{
+        text-align: center;
+      }
+    } */
