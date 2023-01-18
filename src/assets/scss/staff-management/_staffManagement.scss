@@ -1,0 +1,118 @@
+.staff-management{
+    ul.nav{
+        padding-bottom: 30px;
+        border-bottom: 1px solid #9FAAB1;
+        border-radius: 0;
+    }
+    .add-u-btn{
+        width: 100%;
+        border-radius: 4px;
+        height: 4rem !important;
+    }
+    .card{
+        p{
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 28px;
+            letter-spacing: -0.02em;
+        }
+        h4{
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 32px;
+            letter-spacing: -0.02em;
+        }
+    }
+    .bounce-card{
+        background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%);
+        color: #FAFBFB;
+        p{
+            color: #E9EDF7;
+        }
+        h4{
+            color: #FFFFFF;
+        }
+    }
+    .card {
+        h2{
+            font-weight: 700;
+            font-size: 33px;
+            line-height: 40px;
+            letter-spacing: -0.02em;
+        }
+        h3{
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+        }
+    }
+    .apex-cr-bars svg path{
+        fill: #C330CB;
+    }
+    .filter-search{
+        width: 30%;
+    }
+    .page-count-cr{
+        background: #C5CCD0 !important;
+        border: none !important;
+        border-radius: 4px;
+        color: #000 !important;
+    }
+    .pagination{
+        li{
+            span{
+                background: #333651 !important;
+                border: 1px solid #333651 !important;
+                border-radius: 4px !important;
+                width: 40px;
+                height: 40px !important;
+            }
+        }
+        li.active{
+            button{
+                background: #7A60E0 !important;
+                border: 1px solid #7A60E0 !important;
+                border-radius: 4px !important;
+                width: 40px;
+                height: 40px !important;
+            }
+        }
+    }
+    
+    .input-group-text{
+        border: none !important;
+    }
+    input{
+        border-radius: 4px;
+        color: #000 !important;
+    }
+    .is-invalid{
+        .input-group-text{
+            border: 1px solid #ea5455 !important;
+        }
+        input{
+            border: 1px solid !important;
+        }
+    }
+}
+.dark-layout{
+    .staff-management{
+        .bounce-card{
+            background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%);
+            color: #FAFBFB;
+        }
+        .card {
+            h2{
+                color: #FAFBFB;
+            }
+            h3{
+                color: #E2E5E8;
+            }
+        }
+        svg text{
+            fill: #fff;
+        }
+    }
+}

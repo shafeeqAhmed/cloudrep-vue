@@ -1,0 +1,563 @@
+.wallet-header{
+    .wallet-heading{
+        h1{
+            font-style: normal;
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 34px;
+            letter-spacing: -0.02em;
+        }
+    }
+    .v-select{
+        width: 215px;
+        .vs__dropdown-toggle{
+            border: none;
+        }
+    }
+}
+.wallet-content{
+    .wallet-cards{
+        height: 100%;
+        .card{
+            border-radius: 12px;
+            height: 100%;
+            margin: 0px;
+        }
+        .wallet-balance{
+            h2{
+                font-weight: 700;
+                font-size: 33px;
+                line-height: 40px;
+                letter-spacing: -0.02em;
+                color: #000;
+                span{
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 17px;
+                }
+            }
+        }
+        .wallet-tag{
+            span{
+                padding: 5px 10px;
+                background: rgba(38, 171, 95, 0.2);
+                border-radius: 61.2328px;
+                font-style: normal;
+                font-weight: 700;
+                font-size: 12px;
+                line-height: 14px;
+                color: #10B981;
+            }
+        }
+        .wallet-date{
+            p{
+                margin: 0px;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 17px;
+            }
+        }
+        .quick-card{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 125px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            &:hover{
+                background: transparent;
+                box-shadow: #C5CCD0 0px 7px 29px 0px;
+            }
+            .quick-link-img{
+                background: #FAFBFB;
+                width: 55px;
+                height: 55px;
+                border-radius: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                img{
+                    width: 68%;
+                }
+            }
+            h3{
+                font-style: normal;
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 14px;
+                margin: 0px;
+                margin-top: 5px;
+            }
+        }
+        
+    }
+    .wallet-lists{
+        h2{
+            font-style: normal;
+            font-weight: 700;
+            font-size: 23px;
+            line-height: 28px;
+            span{
+                font-style: normal;
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 17px;
+            }
+        }
+        .v-select{
+            width: 250px;
+            .vs__dropdown-toggle{
+                border: none;
+                height: auto !important;
+                padding: 0px;
+                margin: 0px;
+                background: transparent !important;
+                align-items: center !important;
+                .vs__actions{
+                    width: 60px;
+                    align-items: center !important;
+                    button {
+                        height: auto !important;
+                        margin: 0px;
+                        width: 30px;
+                    }
+                    svg{
+                        color: #fff;
+                    }
+                }
+                .vs__selected{
+                    margin: 0px;
+                    height: auto !important;
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 19px ;
+                    line-height: 23px;
+                }
+                input{
+                    margin: 0px;
+                    height: auto !important;
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 19px ;
+                    line-height: 23px;
+                }
+            }
+        }
+        .list-wall{
+            padding: 0px 15px;
+            h4{
+                font-style: normal;
+                font-weight: 700;
+                font-size: 18px;
+                line-height: 19px;
+            }
+            span{
+                font-style: normal;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 17px;
+            }
+        }
+        svg{
+            width: 100%;
+        }
+        .master-card{
+            img{
+                width: 100%;
+            }
+            button{
+                width: 100%;
+                background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%);
+                border-radius: 8px;
+                border: none !important;
+                color: #F4F7FE;
+                height: 4rem !important;
+                transition: all 0.5s ease-in-out;
+                &:hover{
+                    background: #C5CCD0;
+                    border: 1px solid #C5CCD0 !important;
+                    color: #000;
+                }
+            }
+        }
+    }
+    .transaction-wallet{
+        .v-select{
+            width: 215px;
+            background: #E2E5E8;
+            border-radius: 50px;
+            padding: 10px;
+        }
+        svg{
+            width: auto;
+        }
+        .pending-transaction{
+            background: rgba(253, 230, 138, 0.1);
+            border-radius: 30px;
+            padding: 2px 10px;
+            color: #F59E0B;
+            display: inline-block;
+        }
+        .approved-transaction{
+            background: rgba(53, 220, 148, 0.1);
+            border-radius: 30px;
+            padding: 2px 10px;
+            color: #35DC94;
+            display: inline-block;
+        }
+        .pending-transaction-danger{
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 30px;
+            padding: 2px 10px;
+            color: #EF4444;
+            display: inline-block;
+        }
+    }
+}
+#deposit-modal,#recharge-modal,#transfer-modal,#request-modal,#withdraw-modal{
+    .modal-body{
+        background: #fff;
+        border-radius: 12px;
+    }
+    .modal-dialog {
+        max-width: 50.357rem;
+        width: 100%; 
+    }
+}
+.wallet-modals{
+    h2{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 23px;
+        line-height: 28px;
+    }
+    h3{
+        font-style: normal;
+        font-weight: 600;
+        font-size: 19px;
+        line-height: 23px;
+        text-align: left;
+        letter-spacing: -0.02em;
+    }
+    p{
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+    }
+    label{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+    }
+    button.upd{
+        background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%);
+        border-radius: 8px;
+        height: 4rem !important;
+        border: none !important;
+        width: 100%;
+        color: #F4F7FE;
+    }
+    button.add-cart{
+        background: transparent;
+        border-radius: 8px;
+        height: 4rem !important;
+        border: 1px solid #ccc !important;
+        width: 100%;
+        color: #000;
+        &:hover{
+            background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%);
+            color: #F4F7FE;
+            border:none !important;
+        }
+    }
+}
+.tr-met{
+    background: #ccc;
+    border-radius: 4px;
+    padding: 15px;
+    .pay-img{
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        width: 50px;
+        height: 50px;
+        border-radius: 40px;
+        margin-right: 10px;
+        svg{
+            color: #7A60E0;
+        }
+    }
+    h3{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        margin: 0px;
+        color: #333;
+    }
+}
+.addcard-details{
+    border-top: 1px solid #9FAAB1;
+}
+.payment-request{
+    .card{
+        padding: 0px;
+    }
+    .card-header{
+        background: #7A60E0;
+        border-radius: 4px 4px 0px 0px;
+    }
+    .card-body{
+        background: #fff;
+    }
+}
+.wallet-content{
+    h2{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        margin: 0px;
+    }
+}
+.pay-submitted{
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    ul{
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        li{
+            width: 50%;
+            margin: 7px 0px;
+            h4{
+                font-style: normal;
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 17px;
+                margin: 0px;
+            }
+            p{
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 17px;
+                margin: 0px;
+            }
+        }
+    }
+}
+.manage-card-img{
+    text-align:left;
+    img{
+        width: auto;
+    }
+}
+.connect-wallet-btn{
+    background: #10B981;
+    border: 1px solid #10B981;
+    border-radius: 5px;
+    padding: 11px 28px;
+    color: #fff;
+}
+.manage-wallet-btn{
+    padding: 11px 28px;
+    background: #7A60E0;
+    border: 1px solid #7A60E0;
+    border-radius: 5px;
+    color: #fff;
+}
+//================================================================================================//
+.dark-layout{
+    #deposit-modal,#recharge-modal,#transfer-modal,#request-modal,#withdraw-modal{
+        .modal-body{
+            background: #282528;
+        }
+    }
+    .wallet-header{
+        .wallet-heading{
+            h1{
+                color: #F4F7FE;
+            }
+        }
+    }
+    .wallet-content{
+        .wallet-cards{
+            .card{
+                background-color: #2C2F48 !important;
+                border: 1px solid #2C2F48;
+                border-radius: 12px;
+            }
+        }
+        .wallet-balance{
+            h2{
+                color: #FAFBFB;
+                span{
+                    color: #D4D9DC;
+                }
+            }
+        }
+        .wallet-date{
+            p{
+                color: #D4D9DC;
+            }
+        }
+    }
+    .quick-card{
+        background: transparent !important;
+        border: 1px solid #FAFBFB;
+        &:hover{
+            background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%) !important;
+            box-shadow: #933FFE 0px 7px 29px 0px !important;
+            border: none;
+        }
+        .quick-link-img{
+            background: #FAFBFB;
+        }
+        h3{
+            color: #FAFBFB;
+        }
+    }
+    .wallet-lists{
+        h2{
+            color: #FAFBFB;
+            span{
+                color: #D4D9DC;
+            }
+        }
+        .v-select{
+            .vs__dropdown-toggle{
+                .vs__selected{
+                    color: #FAFBFB !important;
+                }
+                input{
+                    color: #FAFBFB !important;
+                }
+            }
+        }
+        .list-wall{
+            h4{
+                color: #9FAAB1;
+            }
+            span{
+                color: #FAFBFB;
+            }
+        }
+        .master-card{
+            button{
+                color: #F4F7FE;
+                &:hover{
+                    background: transparent;
+                    border: 1px solid #933FFE !important;
+                    color: #F4F7FE;
+                }
+            }
+        }
+    }
+    .transaction-wallet{
+        .v-select{
+            background: #323050;
+        }
+        .vis-card-img{
+            img{
+                width: 35%;
+            }
+        }
+    }
+    .wallet-modals{
+        h2{
+            font-style: normal;
+            font-weight: 700;
+            font-size: 23px;
+            line-height: 28px;
+            color: #FAFBFB;
+        }
+        p{
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: #E2E5E8;
+        }
+        label{
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: #FAFBFB;
+        }
+        button.upd{
+            background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%);
+            border-radius: 8px;
+            height: 4rem !important;
+            border: none !important;
+            width: 100%;
+            color: #F4F7FE;
+        }
+        button.add-cart{
+            background: transparent;
+            color: #fff;
+            &:hover{
+                background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%);
+                color: #F4F7FE;
+                border:none !important;
+            }
+        }
+    }
+    .tr-met{
+        background: #1D203E;
+        .pay-img{
+            background: #fff;
+            svg{
+                color: #7A60E0;
+            }
+        }
+        h3{
+            color: #FAFBFB;
+        }
+    }
+    .payment-request{
+        .card-body{
+            background: #333651;
+        }
+    }
+    .wallet-content{
+        h2{
+            color: #FAFBFB;
+        }
+    }
+    .pay-submitted{
+        ul{
+            li{
+                h4{
+                    color: #FAFBFB;
+                }
+                p{
+                    color: #FAFBFB;
+                }
+            }
+        }
+    }
+}
+//================================================================================================//
+@media (max-width:767px) {
+    .pay-submitted{
+        flex-wrap: wrap;
+        ul{
+            width: 100%;
+        }
+    }
+}

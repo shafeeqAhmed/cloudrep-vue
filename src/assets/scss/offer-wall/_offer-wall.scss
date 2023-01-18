@@ -1,0 +1,263 @@
+.offer-wall-sc{
+    h1{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 34px;
+        letter-spacing: -0.02em;
+        text-transform: capitalize;
+    }
+    .filters-offerwall{
+        .vs__dropdown-toggle{
+            border: none;
+            background: #fff;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        }
+    }
+    .offerwall-cards{
+        button{
+            width: 150px !important;
+        }
+        
+        h2{
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 22px;
+            margin: 0px;
+            color: #000;
+        }
+        p{
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+        }
+        .hour-commision{
+            padding: 7px 12px;
+            background: #059669;
+            border-radius: 4px;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 16px;
+            color: #FAFBFB;
+        }
+        .cat-commision{
+            display: inline-block;
+            padding: 8px 12px;
+            background: #4D2AD6;
+            border-radius: 4px;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 16px;
+            color: #FAFBFB;
+            margin: 0px 10px 10px 0px;
+        }
+    }
+    .offerwallcard-btn{
+        button{
+            background: #7A60E0 !important;
+            border:1px solid #7A60E0 !important;
+            border-radius: 4px;
+            padding: 11px 10px;
+        }
+        .btn-transparent{
+            background: transparent !important;
+            color: #000 !important;
+        }
+    }
+}
+.off-img{
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 10px;
+    padding: 8px;
+    width: 110px;
+    height: 100px;
+    img{
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+    .img-fluid{
+        border-radius: 10px;
+    }
+}
+.offer-wall-view{
+    h1{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 34px;
+        letter-spacing: -0.02em;
+        text-transform: capitalize;
+    }
+    .register-btn{
+        background: #7A60E0;
+        border-radius: 4px;
+        padding: 11px 40px;
+        float: right;
+    }
+    .card{
+        border-radius: 20px;
+    }
+    .offerwall-tabs{
+        .img-fluid{
+            border-radius: 10px;
+            width: 100%;
+        }
+        h2{
+            font-style: normal;
+            font-weight: 700;
+            font-size: 33px;
+            line-height: 40px;
+        }
+        h3{
+            font-style: normal;
+            font-weight: 700;
+            font-size: 23px;
+            line-height: 28px;
+            letter-spacing: -0.02em;
+        }
+        p{
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+        }
+    }
+}
+.register-modal-offerwall{
+    img{
+        width: 30%;
+    }
+    h2{
+        font-weight: 700;
+        font-size: 23px;
+        line-height: 28px;
+        letter-spacing: -0.02em;
+    }
+    p{
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+    }
+    button{
+        width: 100%;
+        background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%);
+        border-radius: 8px;
+    }
+}
+.dark-layout{
+    .offer-wall-sc{
+        h1{
+            color: #FAFBFB;
+        }
+        .filters-offerwall{
+            .vs__dropdown-toggle{
+                background: #283046;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            }
+        }
+        .offerwall-cards{
+            
+            h2{
+                color: #FAFBFB;
+            }
+            p{
+                color: #FAFBFB;
+            }
+            .hour-commision{
+                background: #059669;
+                color: #FAFBFB;
+            }
+        }
+        .offerwallcard-btn{
+            button{
+                background: #7A60E0 !important;
+                border:1px solid #7A60E0 !important;
+            }
+            .btn-transparent{
+                background: transparent !important;
+                color: #fff !important;
+            }
+        }
+    } 
+    .offer-wall-view{
+        h1{
+            color: #FAFBFB;
+        }
+        .register-btn{
+            background: #7A60E0;
+        }
+        .offerwall-tabs{
+            h2{
+                color: #FAFBFB;
+            }
+            h3{
+                color: #FAFBFB;
+            }
+            p{
+                color: #FAFBFB;
+            }
+            hr{
+                border: 1px solid #4C5167;
+            }
+        }
+    }
+    .register-modal-offerwall{
+        h2{
+            color: #FAFBFB;
+        }
+        p{
+            color: #D4D9DC;
+        }
+        button{
+            background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%);
+        }
+    }
+    .off-img{
+        background: #393C56;
+        border-radius: 10px;
+        padding: 8px;
+        .img-fluid{
+            border-radius: 10px;
+        }
+    }
+}
+.offer-listing-img{
+    img{
+        width: 100%;
+        height: 200px;
+        object-fit: fill;
+    }
+}
+.off-br-1{
+    border-right: 1px solid #ccc;
+}
+@media (max-width:992px) {
+    .offerwallcard-btn{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .filters-offerwall{
+        .vs__dropdown-toggle{
+            margin: 10px 0px;
+        }
+    }
+}
+@media (max-width:767px) {
+    .offer-card{
+        padding: 15px !important;
+    }
+    .offerwallcard-cont{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        h2{
+            margin-bottom: 10px !important;
+        }
+    }
+}

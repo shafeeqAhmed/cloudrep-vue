@@ -1,0 +1,999 @@
+.flowy {
+  overflow: scroll !important;
+  height: 70vh;
+  padding-bottom: 10rem;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-corner {
+    opacity: 0;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #333;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: linear-gradient(138.29deg, #01b7c5 -6.3%, #782c96 103.83%);
+  }
+}
+.drag_icon_node {
+  cursor: grab;
+}
+.dropIconArea {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  user-select: none;
+  border: 1px solid #ccc;
+  background: #fbfbfb;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  height: 70vh;
+}
+.ivr-builder {
+  .ivr-build-left {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .ivrec-btn {
+      background-color: #7a60e0 !important;
+      background: #7a60e0;
+      border: 1px solid #7a60e0 !important;
+      float: right;
+      border-radius: 5px;
+      color: #333;
+      padding: 10px 20px;
+      margin: 0px 10px;
+      &:hover {
+        background: linear-gradient(138.29deg, #01b7c5 -6.3%, #782c96 103.83%);
+        border: 1px solid #0099ff;
+        color: #fff;
+        transition: 0.4s all ease-in-out;
+      }
+    }
+  }
+  .ivr-build-right {
+    user-select: none;
+    width: 100%;
+  }
+}
+.ivr-pill-btn {
+  .group-btn {
+    width: 100%;
+    button {
+      background: linear-gradient(138.29deg, #01b7c5 -6.3%, #782c96 103.83%);
+    }
+  }
+}
+.ivr-pill-btn button.active {
+  background: linear-gradient(138.29deg, #00575e -6.3%, #6e0099 103.83%);
+}
+.nodeContainer {
+  width: 450px;
+  background-color: #f4f7fe;
+}
+.edit-ivr-search {
+  svg path {
+    fill: #393939;
+  }
+}
+.dark-layout .edit-ivr-search {
+  svg path {
+    fill: #fff !important;
+  }
+}
+.ivr-note-box {
+  border-radius: 50px;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  margin-left: 15px;
+}
+.label-tooltip {
+  width: 50%;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 4px;
+  label {
+    margin-bottom: 0px;
+  }
+  .ivr-tooptip-quiz {
+    margin-left: 10px;
+    svg {
+      cursor: pointer;
+    }
+  }
+}
+.ivrec-btn-disab {
+  display: flex;
+  align-items: center;
+  &:hover {
+    background: #000f19 !important;
+    cursor: no-drop;
+  }
+}
+.ivrError {
+  position: relative;
+  span.error-count {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    color: #f35d5d;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  // span.error-count{
+  //   position: absolute;
+  //   right: -5px;
+  //   top: 0px;
+  //   width: 20px;
+  //   height: 20px;
+  //   border-radius: 50px;
+  //   background: transparent;
+  //   color: #fff;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   border: 1px solid #f35d5d ;
+  //   font-size: 10px;
+  // }
+}
+.border-error-ivr {
+  border: 1px solid #f52e2e !important;
+}
+.ivrErrorContainer {
+  position: absolute;
+  text-align: left;
+  left: -20px;
+  top: 0px;
+  background: #262a50;
+  // border: 1px solid #dc4c64;
+  box-shadow: 0 4px 25px -4px #f52e2e;
+  border-radius: 5px;
+  min-width: 330px;
+  padding: 0px;
+  .ivrError-heading {
+    background: #262a50;
+    padding: 10px 15px;
+    h2 {
+      margin: 0px;
+      color: #fff;
+      font-size: 14px;
+    }
+  }
+  .ivrError-content {
+    padding: 10px 10px;
+    p {
+      color: #fff;
+      font-size: 12px;
+      margin: 0px;
+    }
+    svg {
+      stroke: #fff;
+    }
+    span {
+      background-color: #dc4c64;
+      color: #fff;
+      box-shadow: 0 4px 9px -4px #dc4c64;
+      border-radius: 5px;
+      padding: 10px 7px;
+    }
+  }
+}
+.IVRAlertTriangleIcon {
+  stroke: #f35d5d !important;
+}
+.ivr-input.menu_node {
+  width: 50%;
+  textarea {
+    background: #161d31 !important;
+    height: 120px !important;
+  }
+}
+
+.ivr-nodes {
+  background: #fff;
+  position: fixed;
+  right: 0;
+  top: 0px;
+  width: 250px;
+  height: 100vh;
+  padding: 120px 0px 0px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .ivr-node-title {
+    padding-left: 20px;
+    h2 {
+      font-size: 20px;
+      line-height: 19px;
+    }
+  }
+}
+.dark-layout .ivr-nodes {
+  background: #2c2f48;
+  box-shadow: inset 1px 0px 0px rgba(255, 255, 255, 0.1);
+}
+.DraggableItemContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  .input-gradient {
+    padding: 1px;
+    width: 100%;
+  }
+  .draggableItem {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 0px 15px;
+    position: relative;
+    border-radius: 5px;
+    color: #000;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    background: #fbfbfb;
+    &:hover {
+      background: linear-gradient(
+        138.29deg,
+        #01b7c5 -6.3%,
+        #782c96 103.83%
+      ) !important;
+      cursor: pointer;
+      color: #fff;
+    }
+    .ivr-node-icon {
+      margin-right: 10px;
+    }
+    .ivr-node-dots {
+      position: absolute;
+      right: -3px;
+      bottom: -3px;
+      svg {
+        color: #000;
+        stroke: #000;
+      }
+    }
+    span {
+      text-transform: uppercase;
+    }
+  }
+}
+
+/*********************************** Step Two  *********************************************/
+.accordian-btn {
+  // margin-right: 10px;
+  svg {
+    cursor: pointer;
+  }
+}
+.router_tab {
+  background: #1f263d;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  span {
+    color: #ccc;
+    font-size: 18px;
+  }
+  .route_name {
+    font-size: 16px;
+    color: #fbfbfb;
+    display: flex;
+    align-items: center;
+  }
+  .route_filters {
+    display: flex;
+    align-items: center;
+    svg {
+      &:hover {
+        stroke: #0099ff;
+      }
+    }
+  }
+}
+.route_filter_modal {
+  .popover-body {
+    width: 500px;
+  }
+  .bottom_modal {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+.route_condition {
+  overflow-y: scroll;
+  height: 500px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.route_condition_card {
+  border: 2px solid rgb(119, 119, 119);
+  border-left: 10px solid #00575e;
+  padding: 15px;
+}
+.router_states {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  .left_state_box,
+  .right_state_box {
+    width: 40%;
+    border: 1px solid rgb(119, 119, 119);
+    height: 250px;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 7px;
+    }
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-image: linear-gradient(
+        138.29deg,
+        #01b7c5 -6.3%,
+        #782c96 103.83%
+      );
+    }
+  }
+  .center_state_box {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    svg {
+      &:hover {
+        stroke: #00575e;
+      }
+    }
+  }
+}
+
+////////////////////////////
+.singleIvrNode {
+  background-color: #eeedfd;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  padding: 10px;
+}
+.dark-layout .singleIvrNode {
+  background: rgba(44, 47, 72, 0.75);
+  border-radius: 30px;
+}
+.IvrNodeDeleteIconArea {
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+}
+.IvrNodeDeleteIcon {
+  width: 25px;
+}
+.ivrUploadFileContainer {
+  position: relative;
+}
+.ivrUploadFileContainer .removeIcon {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+.IvrUploadFile {
+  height: 170px;
+  border-radius: 20px;
+  text-align: center;
+  border: 1.5px dashed rgba(255, 255, 255, 0.15);
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.IvrUploadFile p {
+  font-size: 12px;
+  margin-top: 5px;
+}
+.IvrUploadFileBColor {
+  background-color: #514593;
+}
+.ivrNodeClose {
+  position: relative;
+  height: 48px;
+  border: 1px dashed #f52e2e !important;
+  border-radius: 4px;
+  text-align: center;
+  // padding: 15px;
+}
+.ivrnode-type {
+  background: #353c50;
+  color: #fff;
+  width: 100%;
+  height: 48px;
+  padding: 0px 15px;
+}
+.ivrnode-type-label {
+  width: 50%;
+}
+.ivrnode-type-node,
+.ivrnode-type-icon {
+  width: 25%;
+}
+.ivrnode-type-icon {
+  text-align: right;
+  svg {
+    stroke: #fff;
+    &:hover {
+      transform: translateY(-3px);
+      transition: 0.4s all ease-in-out;
+    }
+  }
+}
+.ivrnode-type-label {
+  &::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 42px;
+    background: #f4f7fe;
+    transform: rotate(45deg);
+    top: 15px;
+    left: 46%;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 42px;
+    background: #f4f7fe;
+    transform: rotate(135deg);
+    top: -10px;
+    left: 46%;
+  }
+}
+.ivrNodeClose p {
+  font-weight: 500;
+  font-size: 14px;
+  color: #f52e2e;
+}
+.ivrNodeOpen {
+  height: 48px;
+  border: 1px dashed #999;
+  border-radius: 4px;
+  text-align: center;
+}
+.ivrNodeOpen.success {
+  border: 1px dashed #00fdfa;
+  p {
+    color: #00fdfa;
+  }
+}
+.ivrNodeOpen p {
+  font-weight: 500;
+  font-size: 14px;
+  color: #393939;
+}
+.dark-layout .ivrNodeOpen p {
+  color: #fff;
+}
+.dark-layout .ivrNodeOpen {
+  border: 1px dashed #fff;
+}
+.dark-layout p {
+  color: #fff;
+}
+
+/*********************************** Step Three  *********************************************/
+
+.ivrNodeTextarea {
+  min-height: 140px !important;
+}
+
+.accordian-btn.collapsed {
+  svg {
+    transform: rotate(180deg);
+  }
+}
+.accordian-btn.not-collapsed {
+  svg {
+    transform: rotate(0deg);
+  }
+}
+.ivr-header-headings {
+  h2 {
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    margin: 0px;
+  }
+  h4 {
+    font-size: 18px;
+    line-height: 17px;
+    margin-bottom: 0px;
+  }
+  input {
+    padding: 3px 10px !important;
+    height: 2.5rem !important;
+    font-size: 18px;
+  }
+}
+/*********************************** Step Four  *********************************************/
+/*********************************** Step Five  *********************************************/
+.ivrNodeOpen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    margin: 0px;
+  }
+}
+.ivrNodeClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    margin: 0px;
+  }
+}
+
+.IvrNodeInputLabel {
+  font-size: 12px;
+  font-weight: 500;
+}
+.ivr-builder {
+  .singleIvrNode {
+    h4 {
+      font-size: 26px;
+      margin-bottom: 0px;
+    }
+    .IvrNodeInputLabel {
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .input-gradient {
+      border-radius: 0;
+    }
+  }
+}
+.popover-btn {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  &:hover {
+    box-shadow: none !important;
+  }
+}
+.popover-btn:focus {
+  background: none !important;
+  box-shadow: none !important;
+}
+.ivr-input {
+  .input-gradient {
+    border-radius: 0;
+    padding: 0px 0px 2px 0px;
+    input {
+      border-radius: 0px !important;
+      height: 2rem !important;
+      text-align: right;
+      font-size: 14px;
+      background: #f4f7fe !important;
+      color: #000 !important;
+    }
+    .v-select {
+      height: 2rem !important;
+      background: #fff;
+      width: 100%;
+      input {
+        margin-top: 0px !important;
+        background: #f4f7fe !important;
+        font-size: 12px;
+        border-radius: 0px !important;
+        height: 1.9rem !important;
+      }
+      .vs__dropdown-toggle {
+        border-radius: 0px;
+        border: none;
+        padding: 0px;
+        background: #f4f7fe !important;
+      }
+    }
+    .vs__dropdown-toggle {
+      height: 2rem !important;
+    }
+  }
+}
+.ivr-tooptip-quiz {
+  svg {
+    stroke: #000;
+  }
+}
+.ivrNodeClose {
+  button {
+    color: #f52e2e !important;
+  }
+}
+.ivrNodeOpen {
+  button {
+    color: #999 !important;
+  }
+}
+.collapse {
+  transition: 0.7s all ease-in-out;
+}
+#tooltip-id-1 {
+  .tooltip-inner {
+    padding: 0px;
+  }
+}
+.dark-layout {
+  .tooltip {
+    .tooltip-inner {
+      background-color: #161d31 !important;
+      color: #fff !important;
+    }
+    .arrow::before {
+      border-top-color: #fff !important;
+    }
+  }
+}
+.ivrcross-icon {
+  cursor: pointer;
+}
+.ivrcross-icon:hover {
+  color: #f35d5d;
+}
+.ivr-node-overlay-select {
+  display: block;
+  border-radius: 0.5em;
+  color: #fff;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #141722;
+  opacity: 0.8;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.ivr-node-overlay-select:hover {
+  opacity: 0.5;
+}
+.goto-input {
+  .input-gradient {
+    border-radius: 5px;
+    padding: 2px;
+    button {
+      background: #393d5d !important;
+      &:hover {
+        background: transparent !important;
+      }
+    }
+  }
+}
+.drag-node-btn {
+  width: 160px;
+}
+.ivr-nodedrag-btn {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.bg-direction {
+  background: linear-gradient(
+    138.29deg,
+    #01b7c5 -6.3%,
+    #782c96 103.83%
+  ) !important;
+}
+.head-node-ivr {
+  border-radius: 5px 5px 0px 0px;
+  border: 1px solid #ccc;
+  background: #ccc;
+  transition: all 0.4s ease-in-out;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  h2 {
+    margin: 0px;
+    font-size: 20px;
+  }
+}
+.arrow-direction {
+  cursor: pointer;
+}
+.popover-ivr-btn {
+  .input-gradient {
+    margin: 10px 0px;
+    padding: 1px;
+    button {
+      width: 100%;
+      background: #2c2f48 !important;
+      &:hover {
+        background: transparent !important;
+      }
+    }
+  }
+}
+.direction-btn-node {
+  svg {
+    margin-right: 5px;
+  }
+  button {
+    border: none !important;
+    background: transparent !important;
+    width: 100%;
+    padding: 0px !important;
+    margin: 0px !important;
+    &:hover {
+      background: rgba(44, 47, 72, 0.75) !important;
+    }
+  }
+}
+.failure-node {
+  .menuBackground {
+    background: #b43939;
+    .ivrnode-type {
+      background: #b43939;
+    }
+  }
+}
+.ivrnode-type {
+  background: linear-gradient(138.29deg, #01b7c5 -6.3%, #782c96 103.83%);
+}
+.goto-input {
+  .input-gradient {
+    button {
+      width: 100%;
+    }
+    .group-btn {
+      width: 100%;
+    }
+  }
+}
+.ivr-nodedrag-btn .flowy-block {
+  margin-right: 10px !important;
+}
+.header-search-ivr {
+  input {
+    border: none !important;
+    border-bottom: 1px solid #ccc !important;
+    border-radius: 0px !important;
+    background: transparent !important;
+  }
+}
+.success-node {
+  .ivrnode-type {
+    border-color: #00575e !important;
+    button {
+      color: #00575e !important;
+    }
+  }
+  .menuBackground {
+    background: radial-gradient(
+      759px at 14% 22.3%,
+      rgb(10, 64, 88) 0%,
+      rgb(15, 164, 102) 90%
+    ) !important;
+    .ivrnode-type {
+      background: radial-gradient(
+        759px at 14% 22.3%,
+        rgb(10, 64, 88) 0%,
+        rgb(15, 164, 102) 90%
+      ) !important;
+      width: 400px;
+    }
+  }
+}
+.ivrNodeOpen.menuBackground,
+.ivrNodeClose.menuBackground {
+  border: none !important;
+}
+//===============================================================================//
+//===============================================================================//
+@media (max-width: 1440px) {
+  // .ivr-builder .ivr-build-left {
+  //   padding-right: 210px;
+  // }
+  .ivr-builder {
+    .ivr-build-right {
+      .ivr-nodes {
+        width: 210px;
+      }
+      .draggableItem {
+        height: 40px;
+        font-size: 14px;
+      }
+    }
+    .singleIvrNode {
+      h4 {
+        font-size: 22px;
+        margin-bottom: 0px;
+      }
+      .IvrNodeInputLabel {
+        font-weight: 500;
+      }
+    }
+  }
+  .ivr-input {
+    .input-gradient {
+      border-radius: 0;
+      padding: 0px 0px 2px 0px;
+      input {
+        border-radius: 0px !important;
+        height: 2rem !important;
+        text-align: right;
+      }
+      .v-select {
+        height: 2rem !important;
+      }
+      .vs__dropdown-toggle {
+        height: 2rem !important;
+      }
+    }
+  }
+}
+.modern-nav-toggle {
+  svg {
+    stroke: #000f19;
+  }
+}
+.ivr-box-build {
+  padding: 0px 10px;
+  position: relative;
+  .dropIconArea {
+    padding: 20px 0px;
+  }
+}
+//===============================================================================//
+//===============================================================================//
+//===============================================================================//
+//===============================================================================//
+.dark-layout {
+  .modern-nav-toggle {
+    svg {
+      stroke: #fbfbfb;
+    }
+  }
+  .ivr-input {
+    .v-select {
+      background: transparent;
+    }
+  }
+  .ivr-tooptip-quiz {
+    svg {
+      stroke: none;
+    }
+  }
+  .ivrec-btn {
+    color: #fff !important;
+  }
+  .ivr-header-headings {
+    h2 {
+      color: #fafbfb;
+    }
+    h4 {
+      color: #fafbfb;
+    }
+  }
+  .dropIconArea {
+    p {
+      color: #fff;
+    }
+  }
+  .DraggableItemContainer {
+    .draggableItem {
+      color: #fbfbfb;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      background: #262a50;
+      &:hover {
+        background: linear-gradient(
+          138.29deg,
+          #01b7c5 -6.3%,
+          #782c96 103.83%
+        ) !important;
+      }
+    }
+  }
+  .dropIconArea {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: 1px solid #283046;
+    background: #283046;
+  }
+  .nodeContainer {
+    background-color: #161d31;
+  }
+  .head-node-ivr {
+    background: #323e61;
+    border: 1px solid #323e61;
+  }
+  .ivrec-btn {
+    background-color: #393839 !important;
+    background: #000f19;
+    border: 1px solid #000f19 !important;
+    float: right;
+    border-radius: 5px;
+    color: #333;
+    padding: 10px 20px;
+    margin: 0px 10px;
+    &:hover {
+      background: linear-gradient(138.29deg, #01b7c5 -6.3%, #782c96 103.83%);
+      border: 1px solid #0099ff;
+      color: #fff;
+      transition: 0.4s all ease-in-out;
+    }
+  }
+  .ivr-input {
+    .input-gradient {
+      input {
+        background: #161d31 !important;
+        color: #fbfbfb !important;
+      }
+      .v-select {
+        input {
+          background: #161d31 !important;
+        }
+        .vs__dropdown-toggle {
+          background: #161d31 !important;
+        }
+      }
+      .vs__dropdown-toggle {
+        height: 2rem !important;
+      }
+    }
+  }
+  .ivrnode-type-label {
+    &::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 42px;
+      background: #161d31;
+      transform: rotate(45deg);
+      top: 15px;
+      left: 46%;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 42px;
+      background: #161d31;
+      transform: rotate(135deg);
+      top: -10px;
+      left: 46%;
+    }
+  }
+}
+//===============================================================================//
+//===============================================================================//
+//===============================================================================//

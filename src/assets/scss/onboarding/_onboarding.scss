@@ -1,0 +1,302 @@
+.onboarding-page{
+    background: #E2E5E8;
+    .onboard-height{
+        height: 100vh;
+    }
+    .client-nav{
+        background: #E2E5E8;
+    }
+    .cient-content-wrap{
+        background: #ffff;
+        .backBtn{
+            svg{
+                color: #000;
+                margin-right: 10px;
+            }
+            a{
+                color: #000;
+            }
+        }
+    }
+    .publisher-nav{
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        background-size: cover !important;
+    }
+    .client-content{
+        width: 100%;
+        background-color: transparent !important;
+
+        .search-company{
+            svg{
+                stroke: #9FAAB1 !important;
+            }
+        }
+        h2{
+            font-style: normal;
+            font-weight: 700;
+            font-size: 33px;
+            line-height: 40px;
+            letter-spacing: -0.02em;
+        }
+        p{
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+        }
+        .services-req-box{
+            background: #E2E5E8;
+            border-radius: 8px;
+            .circle-white{
+                background: #c5c7c9;
+                svg{
+                    color: #7A60E0;
+                }
+            }
+            h4{
+                font-style: normal;
+                font-weight: 700;
+                font-size: 18px;
+                line-height: 22px;
+            }
+        }
+        .services-req-box.selected{
+            background: #4D2AD6;
+            .circle-white{
+                background: #5E3EDA;
+                svg{
+                    color: #FAFBFB;
+                    stroke: #FAFBFB;
+                }
+            }
+        }
+        button.submit-btn{
+            background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%);
+        }
+        label{
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+        }
+        input{
+            background: #E2E5E8;
+            border-radius: 5px;
+            border: none !important;
+        }
+        .v-select{
+            width: 100%;
+            .vs__dropdown-toggle{
+                background: #E2E5E8;
+                border-radius: 8px;
+                border: none;
+                color: #88959E;
+                input,.vs__selected{
+                    color: #88959E !important;
+                    &::placeholder{
+                        color: #88959E;
+                    }
+                }
+            }
+            ul{
+                background: #E2E5E8;
+                border-radius: 12px;
+                padding: 20px;
+                li{
+                    
+                    border-radius: 4px;
+                    padding: 15px;
+                    color: #000;
+                    &:hover{
+                        background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%);
+                        color: #FAFBFB !important;
+                    }
+                }
+                li.vs__fade-enter-active{
+                    background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%) !important;
+                    color: #FAFBFB !important;
+                }
+            }
+        }
+    }
+    .client-nav{
+        .link-title{
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+        }
+        .avatar-link{
+            border: 1px solid #9FAAB1;
+            border-radius: 8px;
+            background: transparent;
+            width: 50px;
+            height: 50px;
+        }
+        .active-item .avatar-link{
+            background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%);
+            border: none;
+        }
+        .list-group-item{
+            background-color: transparent !important;
+            border: none !important;
+        }
+    }
+
+}
+@media (max-width:992px) {
+    .onboarding-page .onboard-height {
+        height: auto;
+    }
+    .onboarding-page{
+        .client-nav{
+            padding: 50px 0px !important;
+        }
+        .client-content-wrap{
+            padding: 50px 0px !important;
+        }
+        .list-group{
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 0px 20px;
+            .list-group-item{
+                a{
+                    flex-direction: column;
+                    span{
+                        margin: 0px;
+                        margin-right: 0px !important;
+                        margin-top: 10px;
+                    }
+                }
+                &::after{
+                    display: none !important;
+                }
+            }
+        }
+    }
+}
+@media (max-width:767px) {
+    .onboarding-page{
+        .client-nav{
+            .company-logo {
+                width: 60%;
+            }
+            .link-title{
+                font-size: 14px !important;
+            }
+        }
+    }
+}
+
+
+
+
+.dark-layout{
+    .onboarding-page{
+        background: #1F1B1F;
+        .client-nav{
+            background: #1F1B1F;
+           
+        }
+        .cient-content-wrap{
+            background: #130F13;
+            .backBtn{
+                svg{
+                    color: #9FAAB1;
+                }
+                a{
+                    color: #9FAAB1;
+                }
+            }
+        }
+        .client-content{
+            background-color: transparent !important;
+            .search-company{
+                svg{
+                    stroke: #9FAAB1 !important;
+                }
+            }
+            h2{
+                color: #E2E5E8;
+            }
+            p{
+
+                color: #9FAAB1;
+            }
+            .services-req-box{
+                background: #1F1B1F;
+                .circle-white{
+                    background: #242024;
+                    svg{
+                        color: #7A60E0;
+                    }
+                }
+                h4{
+                    color: #FAFBFB;
+                }
+            }
+            .services-req-box.selected{
+                background: #4D2AD6;
+                .circle-white{
+                    background: #5E3EDA;
+                    svg{
+                        color: #FAFBFB;
+                        stroke: #FAFBFB;
+                    }
+                }
+            }
+            button.submit-btn{
+                background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%);
+            }
+            label{
+                color: #E2E5E8;
+            }
+            input{
+                background: #1F1B1F !important;
+                color: #FAFBFB;
+            }
+            .v-select{
+                .vs__dropdown-toggle{
+                    background: #1F1B1F !important;
+                    color: #88959E;
+                    input,.vs__selected{
+                        color: #88959E !important;
+                        &::placeholder{
+                            color: #88959E;
+                        }
+                    }
+                }
+                ul{
+                    background: #1F1B1F;
+                    li{
+                        color: #FAFBFB;
+                        &:hover{
+                            background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%);
+                            color: #FAFBFB !important;
+                        }
+                    }
+                    li.vs__fade-enter-active{
+                        background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%) !important;
+                        color: #FAFBFB !important;
+                    }
+                }
+            }
+        }
+        .client-nav{
+            .link-title{
+                color: #FAFBFB !important;
+            }
+            .avatar-link{
+                border: 1px solid #9FAAB1;
+                color: #9FAAB1;
+            }
+            .active-item .avatar-link{
+                background: linear-gradient(224.99deg, #933FFE 0%, #741189 100%);
+            }
+            .list-group-item{
+                background-color: transparent !important;
+            }
+        }
+    
+    }
+}

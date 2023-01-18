@@ -1,0 +1,34 @@
+.DS_Store
+node_modules
+package-lock.json
+/dist
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+Dockerfile
+default.conf
+
+# Editor directories and files
+.idea
+.vscode/*
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+package-lock.json
+!.vscode/*.code-snippets
+
+# script
+/vuexy-scripts
+
+# Docs
+/docs/.temp
+.htaccess
+src/libs/axios.js
+package.json

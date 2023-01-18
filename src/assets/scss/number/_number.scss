@@ -1,0 +1,153 @@
+.ManageNum-table{
+    .active-num{
+        svg{
+            fill:#34D399;
+            stroke: #34D399;
+            margin-right: 10px;
+        }
+    }
+    .inactive-num{
+        svg{
+            fill: #FBBF24;
+            stroke: #FBBF24;
+            margin-right: 10px;
+        }
+    }
+    .disable-num{
+        svg{
+            fill: #EF4444;
+            stroke: #EF4444;
+            margin-right: 10px;
+        }
+    }
+    .country-img{
+        img{
+            width: 100%;
+        }
+    }
+    .action-btn{
+        svg{
+            cursor: pointer;
+        }
+    }
+}
+.modal-number{
+    .modal-dialog{
+        max-width: 800px;
+    }
+    .modal-content{
+        padding: 30px;
+        background: #ccc !important;
+    }
+    .modal-body{
+        background: #ccc !important;
+    }
+    h2{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 23px;
+        line-height: 28px;
+        text-align: center;
+        letter-spacing: -0.02em;
+    }
+    p{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+    }
+    label{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
+.num-tab{
+    .nav-item{
+        a.active{
+            background: #7A60E0 !important;
+            color: #FAFBFB !important;
+            border-radius: 4px;
+            padding: 8px 16px;
+            gap: 4px;
+            &::after{
+                display: none;
+            }
+        }
+    }
+}
+.customize-pop{
+    width: 300px;
+    ul{
+        list-style: none;
+        margin: 0px;
+        padding:15px;
+        li{
+            margin: 10px 0px;
+        }
+    }
+}
+.tag_num{
+    background: #7A60E0;
+    padding: 5px 10px;
+    display: inline-block;
+    border-radius: 4px;
+    margin: 3px;
+}
+.dark-layout{
+    .modal-number{
+        .modal-content{
+            background: #1F1B1F !important;
+        }
+        .modal-body{
+            background: #1F1B1F !important;
+        }
+        h2{
+            color: #FAFBFB;
+        }
+        p{
+            color: #9FAAB1;
+        }
+        label{
+            color: #FAFBFB;
+        }
+    }
+
+}
+.fail-call{
+    background: #ea4335;
+    padding: 4px 8px;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+  }
+  .complete-call{
+    background: #4BB543;
+    padding: 4px 8px;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+  }
+  .no-ans-call{
+    background: #f29339;
+    padding: 4px 8px;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+  }
+  .initiated-call{
+    background: gray;
+    padding: 4px 8px;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+  }
+.action-btn{
+    svg{
+        &:hover{
+            stroke: #7A60E0;
+        }
+    }
+}

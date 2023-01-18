@@ -1,0 +1,42 @@
+.congratulation-medal{
+    width: 25%;
+    right: 0;
+}
+.dashboard_filters{
+    .vs__selected-options{
+        position: absolute;
+        width: 75%;
+        left: 0;
+        display: flex;
+        align-items: center;
+    }
+    .v-select .vs__dropdown-toggle .vs__actions{
+        position: absolute;
+        height: 100% !important;
+        right: 0;
+        z-index: 2;
+    }
+
+    .vs__selected{
+        padding-left: 10px !important;
+        margin: 0px !important;
+        overflow: hidden;
+        // display: inline-flex;
+        // text-overflow: ellipsis;
+        white-space: nowrap;
+        position: absolute;
+        z-index: 2;
+        height: 100%;
+        width: 100%;
+    }
+}
+@media (max-width:2000px) {
+    .congratulation-medal{
+        width: 35%;
+    }
+}
+@media (max-width:1600px) {
+    .congratulation-medal{
+        width: 40%;
+    }
+}

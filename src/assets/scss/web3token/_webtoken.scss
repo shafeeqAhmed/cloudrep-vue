@@ -1,0 +1,359 @@
+.web3-token-project{
+    position: relative;
+    height: 100%;
+}
+.web3-token-bg{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    background: #130F13;
+    z-index: -1;
+}
+.webtoken-project{
+    position: relative;
+    z-index: 1;
+    .container{
+        position: relative;
+    }
+}
+.web3-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    position: relative;
+    width: 100%;
+    padding: 15px 0px;
+    background: #130F13;
+}
+.web3-logo{
+    img{
+        width: 30%;
+    }
+}
+.web3-btn-connect{
+    button{
+        background: linear-gradient(180deg, #0099FF 0%, #007ACC 45.38%, #005C99 100%);
+        border-radius: 8px;
+        padding: 18px 34px;
+        height: auto !important;
+    }
+}
+.web3-tokens{
+    text-align: center;
+    h2{
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 56px;
+        letter-spacing: -0.04em;
+        color: #FFFFFF;
+    }
+    
+}
+.token-space-50{
+    height: 50px;
+}
+.web-tokens{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    .token-box{
+        margin: 15px;
+        background: #1F1B1F;
+        border-radius: 14px;
+        width: 300px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        cursor: pointer;
+        &:hover{
+            background: #0099FF;
+            box-shadow: #0099FF 0px 48px 100px 0px;
+        }
+        h3{
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 34px;
+            text-align: center;
+            letter-spacing: -0.02em;
+            color: #FAFBFB;
+        }
+    }
+}
+.deployed-contracts{
+    h2{
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 56px;
+        text-align: left;
+        letter-spacing: -0.04em;
+        color: #FFFFFF;
+    }
+    p{
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+        color: #FFFFFF;
+    }
+    label{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        color: #E2E5E8;
+    }
+    input{
+        background: #282528 !important;
+        border:1px solid #282528 !important;
+        border-radius: 8px !important;
+        padding: 21px 20px !important;
+        height: auto !important;
+        color: #FAFBFB !important;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        &::placeholder{
+            color: #FAFBFB !important;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+        }
+    }
+}
+.nft-token{
+    user-select: none;
+    h2{
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 56px;
+        text-align: left;
+        letter-spacing: -0.04em;
+        color: #FFFFFF;
+    }
+    h3{
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        color: #E2E5E8;
+        margin: 0px;
+    }
+    .hr{
+        width: 80%;
+    }
+    hr{
+        border: 0.071rem solid #282528 !important;
+    }
+    .token-btns{
+        background: #1F1B1F;
+        border-radius: 12px;
+        padding: 20px;
+        .drag-btn{
+            background: #282528;
+            border-radius: 8px;
+            width: 100%;
+            padding: 21px 20px;
+            height: auto !important;
+            position: relative;
+            cursor: pointer;
+            margin: 10px 0px;
+            &:hover{
+                background: #0099FF;
+                box-shadow: 0px 4px 14px rgba(3, 149, 245, 0.15);
+            }
+            span{
+                text-align: left;
+                color: #C5CCD0;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 17px;
+            }
+            .drag-svg{
+                position: absolute;
+                right: 0px;
+                bottom: 0px;
+            }
+        }
+        .drag-btn.disabled{
+            background: #53585E;
+            cursor: no-drop;
+            &:hover{
+                background: #53585E;
+                box-shadow: none;
+            }
+        }
+    }
+    .token-layout-dropzone{
+        overflow-y: scroll;
+        background: #1F1B1F;
+        border-radius: 12px;
+        height: 70vh;
+        padding: 20px;
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    }
+    .token-layout{
+        opacity: 1;
+        visibility: visible;
+        position: absolute;
+        left: 40%;
+        top: 40%;
+        transform: translate(-50px, -50px);
+    }
+    .token-dragable{
+        text-align: center;
+        p{
+            color: #FFFFFF;
+            margin: 0px;
+        }
+    }
+    .token-drop{
+        background: rgba(0, 153, 255, 0.1);
+        border: 1px dashed #0099FF;
+        border-radius: 8px;
+        height: 60px;
+        width: 100%;
+    }
+    .token-droped{
+        margin: 10px 0px;
+        h4{
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 17px;
+            color: #E2E5E8;
+        }
+        label{
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 17px;
+            color: #E2E5E8;
+        }
+        input{
+            background: #282528 !important;
+            border:1px solid #282528 !important;
+            border-radius: 8px !important;
+            padding: 21px 20px !important;
+            height: auto !important;
+            color: #FAFBFB !important;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            &::placeholder{
+                color: #FAFBFB !important;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 17px;
+            }
+        }
+    }
+    .drop-token-box{
+        background: rgba(0, 153, 255, 0.1);
+        border: 1px dashed #0099FF;
+        border-radius: 8px;
+        height: 60px;
+        width: 100%;
+        opacity: 0;
+    }
+    .draggable--is-dragging{
+        .drop-token-box{
+            opacity: 1;
+        }
+        .token-layout{
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+}
+
+.deployed-modal{
+    .modal-content{
+        background: #1F1B1F;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h2{
+            font-style: normal;
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 34px;
+            text-align: center;
+            letter-spacing: -0.02em;
+            color: #FAFBFB;
+        }
+        p{
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            text-align: center;
+            color: #9FAAB1;
+        }
+    }
+}
+.deployed-tokens{
+    .card{
+        border-radius: 8px;
+        margin: 15px 0px;
+        border: none !important;
+    }
+    .card-header{
+        background: #1F1B1F ;
+        border-radius: 8px;
+        border: none ;
+        padding: 20px 30px !important;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 23px;
+        line-height: 28px;
+        letter-spacing: -0.02em;
+        &:hover{
+            background: #0099FF;
+            color: #FAFBFB;
+        }
+    }
+    .card-body{
+        padding: 20px 30px !important;
+        background: #1F1B1F;
+    }
+}
+.dark-layout{
+    .deployed-contracts{
+        .table thead{
+            background: #0099FF;
+        }
+    }
+}
+@media (max-width:767px) {
+    .web3-logo{
+        width: 50%;
+        img{
+            width: 90%;
+        }
+    }
+    .web3-btn-connect{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        button{
+            padding: 14px;
+        }
+    }
+    .web3-tokens h2 {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 30px;
+    }
+}

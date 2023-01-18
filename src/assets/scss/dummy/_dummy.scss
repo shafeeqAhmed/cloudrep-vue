@@ -1,0 +1,111 @@
+.navItemAvatar {
+    width: 75px;
+    height: 40px;
+    background-color: #fff;
+    font-size: 15px;
+    color: #393939;
+    font-weight: 500;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    margin: 10px 0px;
+  }
+  .navItemContainer{
+    display:flex;
+    align-items:center;
+    width: 100%;
+    justify-content: center;
+  }
+  .navItemAvatar:hover {
+    cursor: pointer;
+  }
+  
+  .navItemSpacer {
+    width: 10%;
+    margin-right: 5px;
+  }
+  
+  .navItemSpacer hr {
+    width: 100%;
+    background-color: lightslategray;
+  }
+  
+  
+  .camp-steps {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .campaign-creation-nav{
+    position:fixed;
+    right:0px;
+    top: 0px;
+    padding-top: 120px;
+    width: 250px;
+    height: 100vh;
+    background: #fff;
+  }
+  .dark-layout .campaign-creation-nav{
+    background: #2C2F48;
+    box-shadow: inset 1px 0px 0px rgba(255, 255, 255, 0.1);
+  }
+  .dark-layout .navItemContainer p{
+    color: #fff;
+    margin-left: 15px;
+    margin-bottom: 0px;
+  }
+  .navItemContainer p{
+    width: 50%;
+    text-align: left;
+    font-size: 18px;
+    line-height: 17px;
+  }
+  .true-icon{
+    width:15%;
+    text-align: left;
+    .true-1{
+  
+    }
+    .true-2{
+      display: none;
+    }
+  }
+  .true-icon.active{
+    .true-1{
+      display:none;
+    }
+    .true-2{
+      display: block;
+    }
+  }
+  .campaign-creation-nav h2{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    text-align:left;
+    margin-left:15px;
+  }
+  .navItemContainer p{
+      width:65%;
+  }
+  @media (max-width:1400px) {
+    .campaign-creation-nav{
+      width: 230px;
+    }
+  }
+  @media (max-width:1200px) {
+    .campaign-creation-nav{
+      display: none;
+    }
+  }
+  @media (max-width: 420px) {
+    .navItemAvatar {
+      width: 40px;
+      height: 30px;
+      background-color: black;
+      font-size: 10px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      margin-right: 5px;
+    }
+  }
