@@ -1,0 +1,715 @@
+// ================================================================================================
+//     File Name: content.scss
+//     Description: Page content level SCSS for different screen size, layout and device.
+//     ----------------------------------------------------------------------------------------------
+//     Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+//     Author: PIXINVENT
+//     Authuseror URL: http://www.themeforest.net//pixinvent
+// ================================================================================================
+
+// Contest margin left for expanded & collapsed stats width & margin left
+// ================================================================================================
+
+@import '../mixins/main-menu-mixin';
+
+html {
+  font-size: $base-font-size;
+  height: 100%;
+  letter-spacing: 0.01rem;
+
+  body {
+    height: 100%;
+    background-color: $body-bg;
+    direction: $body-direction;
+
+    // paragraph line-height
+    p {
+      line-height: 1.5rem;
+    }
+  }
+
+  .text-dark-custom {
+    color: $dark;
+  }
+
+  .text-nero {
+    color: $secondary;
+  }
+
+  .text-raven {
+    color: $light-text;
+  }
+
+  .text-purple {
+    color: $purple;
+  }
+
+  .content {
+    padding: 0;
+    position: relative;
+    transition: 300ms ease all;
+    backface-visibility: hidden;
+    min-height: calc(100% - #{$footer-height});
+    margin-left: $menu-expanded-width;
+
+    &.app-content {
+      padding: calc(#{$content-padding} + #{$navbar-height} + #{$floating-nav-margin}) #{$content-padding} 0;
+
+      &.app-content-pad {
+        padding: calc(#{$content-padding} + 0.45rem) #{$content-padding} 0;
+      }
+
+      &.show-overlay {
+        .content-overlay {
+          z-index: 10;
+          opacity: 1;
+
+          ~.header-navbar-shadow {
+            display: none;
+          }
+        }
+      }
+
+      .content-overlay {
+        position: fixed;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba($black, 0.5);
+        cursor: pointer;
+        transition: all 0.7s, z-index 0s;
+        z-index: -1;
+      }
+
+      .content-area-wrapper {
+        display: flex;
+        position: relative;
+        overflow: hidden; // Required in apps
+
+        .content-wrapper,
+        .content-body {
+          height: 100%;
+        }
+      }
+    }
+
+    .body-content-overlay {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      display: block;
+      z-index: 4;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s ease;
+
+      &.show {
+        visibility: visible;
+        transition: all 0.3s ease;
+        opacity: 1;
+        background-color: rgba($black, 0.2);
+        border-radius: $border-radius/2;
+      }
+    }
+
+    .content-wrapper {
+      .content-header-title {
+        font-weight: 500;
+        color: $gray-400;
+        padding-right: $spacer;
+        border-right: 1px solid lighten($gray-600, 10%);
+      }
+
+      .content-header-right {
+        .dropdown-toggle {
+          &::after {
+            display: none;
+          }
+
+          i,
+          svg {
+            margin-right: 0;
+          }
+        }
+
+        .btn-icon {
+          padding: 0.8rem;
+
+          i,
+          svg {
+            height: $font-size-base;
+            width: $font-size-base;
+          }
+        }
+      }
+    }
+  }
+
+  // kanban app uses kanban-wrapper class as not having content-layout so added this class with all the options
+  // For floating navbar
+  .navbar-floating {
+    &.footer-static {
+      .app-content {
+
+        .content-area-wrapper,
+        .kanban-wrapper {
+          @include content-area-wrapper-height(#{$content-padding},
+            #{$navbar-height},
+            #{$footer-height},
+            #{$floating-nav-margin});
+        }
+      }
+    }
+
+    &.footer-hidden {
+      .app-content {
+
+        .content-area-wrapper,
+        .kanban-wrapper {
+          @include content-area-wrapper-height(#{$content-padding},
+            #{$navbar-height},
+            0rem,
+            #{$floating-nav-margin},
+            0rem,
+            2);
+        }
+      }
+    }
+
+    &.footer-fixed {
+      .app-content {
+
+        .content-area-wrapper,
+        .kanban-wrapper {
+          @include content-area-wrapper-height(#{$content-padding},
+            #{$navbar-height},
+            #{$footer-height},
+            #{$floating-nav-margin},
+            0rem,
+            2);
+        }
+      }
+    }
+  }
+
+  //for navbar hidden
+  .navbar-hidden {
+    .app-content {
+      padding: #{$content-padding} #{$content-padding} 0 #{$content-padding} !important;
+    }
+
+    &.footer-static {
+      .app-content {
+
+        .content-area-wrapper,
+        .kanban-wrapper {
+          @include content-area-wrapper-height(#{$content-padding}, 0rem, #{$footer-height});
+        }
+      }
+    }
+
+    &.footer-hidden {
+      .app-content {
+
+        .content-area-wrapper,
+        .kanban-wrapper {
+          @include content-area-wrapper-height(#{$content-padding}, 0rem, 0rem, 0rem, 0rem, 2);
+        }
+      }
+    }
+
+    &.footer-fixed {
+      .app-content {
+
+        .content-area-wrapper,
+        .kanban-wrapper {
+          @include content-area-wrapper-height(#{$content-padding}, 0rem, #{$footer-height}, 0rem, 0rem, 2);
+        }
+      }
+    }
+  }
+
+  // for static navbar
+  .navbar-static {
+    .main-menu {
+      top: 0;
+    }
+
+    .content {
+      min-height: calc(100% - calc(#{$navbar-height} + #{$footer-height}));
+    }
+
+    .app-content {
+      padding: #{$content-padding} #{$content-padding} 0 #{$content-padding};
+    }
+
+    &.footer-static {
+      .app-content {
+
+        .content-area-wrapper,
+        .kanban-wrapper {
+          @include content-area-wrapper-height(#{$content-padding}, #{$navbar-height}, #{$footer-height});
+        }
+      }
+    }
+
+    &.footer-hidden {
+      .app-content {
+
+        .content-area-wrapper,
+        .kanban-wrapper {
+          @include content-area-wrapper-height(#{$content-padding}, #{$navbar-height}, 0rem, 0rem, 0rem, 2);
+        }
+      }
+    }
+
+    &.footer-fixed {
+      .app-content {
+
+        .content-area-wrapper,
+        .kanban-wrapper {
+          @include content-area-wrapper-height(#{$content-padding},
+            #{$navbar-height},
+            #{$footer-height},
+            0rem,
+            0rem,
+            2);
+        }
+      }
+    }
+  }
+
+  // for sticky navbar
+  .navbar-sticky {
+    .app-content {
+      padding: calc(#{$content-padding} + #{$navbar-height}) #{$content-padding} 0 #{$content-padding};
+    }
+
+    &.footer-static {
+      .app-content {
+
+        .content-area-wrapper,
+        .kanban-wrapper {
+          @include content-area-wrapper-height(#{$content-padding}, #{$navbar-height}, #{$footer-height});
+        }
+      }
+    }
+
+    &.footer-hidden {
+      .app-content {
+
+        .content-area-wrapper,
+        .kanban-wrapper {
+          @include content-area-wrapper-height(#{$content-padding}, #{$navbar-height}, 0rem, 0rem, 0rem, 2);
+        }
+      }
+    }
+
+    &.footer-fixed {
+      .app-content {
+
+        .content-area-wrapper,
+        .kanban-wrapper {
+          @include content-area-wrapper-height(#{$content-padding},
+            #{$navbar-height},
+            #{$footer-height},
+            0rem,
+            0rem,
+            2);
+        }
+      }
+    }
+  }
+
+  // navbar search width for sticky and static navbar
+  .navbar-static,
+  .navbar-sticky {
+    .nav.header-navbar {
+      .navbar-container {
+        padding-left: 1.6rem;
+        padding-right: 1.6rem;
+
+        .search-input {
+          .search-list {
+            &.show {
+              width: 98%;
+              left: 1%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Fixed layout
+  .footer-fixed {
+    .content {
+      &.app-content {
+        padding-bottom: $footer-height  !important; // ? Added extra padding bottom due to fixed footer height
+      }
+    }
+  }
+
+  //Remove left margin for 1 column layout
+  [data-col='1-column'] {
+    .header-navbar {
+
+      // Custom width for floating nav
+      &.floating-nav {
+        width: calc(100vw - (100vw - 100%) - calc(#{$content-padding} * 2)) !important; // ? override all navbar type width
+      }
+
+      width: 100%; // Full width for other nav options
+      left: 0 !important;
+    }
+
+    .content,
+    .footer {
+      margin-left: 0px !important;
+    }
+
+    // horizontal layout
+    &.horizontal-layout {
+      .header-navbar {
+        width: 100% !important;
+      }
+
+      .app-content {
+        padding: calc(#{$content-padding} + #{$navbar-height} + #{$floating-nav-margin}) #{$content-padding} 0 #{$content-padding} !important; // ? need to check all navbar types case
+      }
+
+      &.footer-fixed {
+        .app-content {
+          padding: calc(#{$content-padding} + #{$navbar-height} + #{$floating-nav-margin}) #{$content-padding} #{$footer-height} #{$content-padding} !important; // ? need to check all navbar types case
+        }
+      }
+    }
+  }
+
+  /*
+    * Blank page
+    */
+
+  .blank-page {
+    .content {
+      margin-left: 0; // not using in both cases
+
+      // overflow-x hidden, overflow for y in sm screen issue resolved default
+      &.app-content {
+        overflow: overlay;
+        overflow-x: hidden;
+        padding: 0 !important;
+        transition: none;
+
+        // remove white space on top by header-navbar-shadow class
+        .header-navbar-shadow {
+          display: none;
+        }
+      }
+    }
+
+    // blank page content-wrapper
+    .content-wrapper {
+      padding: 0 !important;
+
+      // content to be in center horizontally and vertically
+      .flexbox-container {
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
+        justify-content: center;
+      }
+    }
+  }
+
+  .pace {
+    .pace-progress {
+      background: $primary;
+    }
+  }
+}
+
+.app-content.center-layout {
+  overflow: hidden;
+}
+
+/*
+* Col 3 layout for detached and general type
+*/
+
+@include media-breakpoint-up(lg) {
+  body {
+
+    // Normal sidebar
+    .content-right {
+      width: calc(100vw - (100vw - 100%) - #{$sidebar-width});
+      float: right;
+    }
+
+    .content-left {
+      width: calc(100vw - (100vw - 100%) - #{$sidebar-width});
+      float: left;
+    }
+
+    // Detached sidebar
+    .content-detached {
+      width: 100%;
+
+      &.content-right {
+        float: right;
+        margin-left: -$sidebar-width;
+
+        .content-body {
+          margin-left: calc(#{$sidebar-width} + #{$content-padding});
+        }
+      }
+
+      &.content-left {
+        float: left;
+        margin-right: -$sidebar-width;
+
+        .content-body {
+          margin-right: calc(#{$sidebar-width} + #{$content-padding});
+        }
+      }
+    }
+  }
+
+  .sidebar-right.sidebar-sticky {
+    float: right !important;
+    margin-left: -$sidebar-width;
+    width: $sidebar-width  !important;
+    margin-top: $navbar-height + 1.25;
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  html body .app-content {
+    padding: calc(#{$content-padding} - 0.8rem + #{$navbar-height} + #{$floating-nav-margin}) calc(#{$content-padding} - 0.8rem) 0 calc(#{$content-padding} - 0.8rem) !important; // - 0.8rem to reduce padding in small screen
+  }
+
+  // For static navbar
+  html body.navbar-static .app-content {
+    padding: calc(#{$content-padding} - 0.8rem) calc(#{$content-padding} - 0.8rem) 0 calc(#{$content-padding} - 0.8rem) !important; // - 0.8rem to reduce padding in small screen
+  }
+
+  // For sticky navbar
+  html body.navbar-sticky .app-content {
+    padding: calc(#{$content-padding} - 0.8rem + #{$navbar-height}) calc(#{$content-padding} - 0.8rem) 0 calc(#{$content-padding} - 0.8rem) !important; // - 0.8rem to reduce padding in small screen
+  }
+
+  // For Hidden navbar
+  html body.navbar-hidden .app-content {
+    padding: calc(#{$content-padding} - 0.8rem) calc(#{$content-padding} - 0.8rem) 0 calc(#{$content-padding} - 0.8rem) !important; // - 0.8rem to reduce padding in small screen
+  }
+}
+
+@include media-breakpoint-down(xs) {
+
+  .navbar-static,
+  .navbar-sticky {
+    .app-content {
+      .header-navbar {
+        .navbar-container {
+          padding-left: 1rem;
+          padding-right: 0.5rem;
+        }
+      }
+    }
+  }
+}
+
+// For Fullscreen IE
+@media screen and (-ms-high-contrast: active),
+(-ms-high-contrast: none) {
+  html.full-screen {
+    width: 100%;
+
+    .content.app-content {
+      height: 100%;
+      overflow: scroll;
+      overflow-x: hidden;
+    }
+  }
+}
+
+
+
+// Jr's CSS Code //
+
+.active-user {
+  line-height: 1.714rem;
+}
+
+.active-user-main {
+  line-height: 3rem;
+}
+
+.border-left {
+  border-left: 0.286rem solid #836af9 !important;
+  border-radius: 0.071rem 0 0.071rem 0;
+  padding: 0.429rem;
+}
+
+.border-left-light {
+  border-left: 0.286rem solid #E9EDF7 !important;
+  padding: 0.429rem;
+  border-radius: 0.071rem 0 0.071rem 0;
+}
+
+.statistics-card {
+  border-radius: 1.429rem;
+}
+
+button {
+  height: 3rem !important;
+}
+
+.table-cc th,
+.table-cc td {
+  border-top: none !important;
+}
+
+.table-cc thead th {
+  border-bottom: 0rem solid #ebe9f1;
+  background-color: transparent !important;
+}
+
+.card-img {
+  width: 4.143rem;
+  height: 2.857rem;
+}
+
+.session-card {
+  background: #f4f7fe !important;
+}
+
+.bar-chart-img {
+  width: 5rem;
+  height: 3.571rem;
+}
+
+.live-chat-img {
+  width: 3.571rem;
+  height: 3.571rem;
+  border-radius: 100%;
+}
+
+.description-content {
+  flex-grow: 1 !important;
+  background: #f4f7fe;
+  border-radius: 0rem 1.429rem 1.429rem 1.429rem;
+  padding: 0.571rem;
+}
+
+.description-content-rtl {
+  flex-grow: 1 !important;
+  color: #fff;
+  background: #7a60e0;
+  border-radius: 1.429rem 0px 1.429rem 1.429rem;
+  padding: 0.714rem;
+}
+
+.task-list {
+  border-bottom: 1px solid#EAEEF4;
+  padding: 0.714rem 0rem 1.429rem;
+}
+
+.bg-skyblue {
+  background-color: #F4F7FE;
+}
+
+.bg-green {
+  background-color: $green;
+}
+
+.text-green {
+  color: $green;
+}
+
+.spent-time {
+  margin-top: -7.143rem;
+}
+
+
+.transfer-select {
+  border-color: #f7f7f9 !important;
+}
+
+.mastercard-img {
+  position: absolute;
+  top: 55%;
+  right: 1.429rem;
+}
+
+#payment-card-number {
+  position: relative;
+}
+
+.contact-modal-textarea,
+.accoutn-setting-textarea,
+.textarea {
+  height: 7.12rem !important;
+}
+
+.account-setting-password {
+  border-left: 0.071rem !important;
+}
+
+.modal-purple {
+  .modal-header .close {
+    padding: 0.2rem 1.2rem !important;
+  }
+
+  .modal-content {
+    border-radius: 1.071rem;
+  }
+
+  .modal-header {
+    padding: 1.8rem 1.4rem;
+    background-color: $primary  !important;
+    border-top-left-radius: 1.071rem;
+    border-top-right-radius: 1.071rem;
+  }
+
+  .modal-header .modal-title {
+    color: $ghostwhite;
+  }
+
+  .modal-header .close {
+    display: none;
+  }
+}
+
+
+
+// Media Queries 
+
+@media screen and (max-width:567px) {
+  .b-media {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .b-media-aside {
+    align-self: center !important;
+    margin-bottom: 1.786rem;
+  }
+
+  .b-media-body {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1800px) and (max-width: 2400px) {
+  .transfer-field {
+    font-size: 1.1rem !important;
+  }
+}

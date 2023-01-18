@@ -1,0 +1,627 @@
+<template>
+
+  <div>
+    <div class="web3-token-project">
+        <div class="web3-token-bg"></div>
+        <div class="webtoken-project pb-5">
+            <div class="container">
+                <!--Header-->
+                    <!-- <Header /> -->
+                    
+          <div class="ivr-builder-header d-flex align-items-end mb-3">
+            <div class="w-50">
+              <ivrheader :name="ivrName" />
+            </div>
+            <div class="w-50">
+              <b-button @click="toggal(false)" class="ivrec-btn">
+                <img src="@/assets/images/icons/up.png" alt="">
+                Close Nodes
+              </b-button>
+              <b-button @click="toggal(true)" class="ivrec-btn">
+                <img src="@/assets/images/icons/down.png" alt="">
+                Expand Nodes
+              </b-button>
+              <b-button @click="saveIvrNodes()" :disabled="isNodesContainError" class="ivrec-btn ivrec-btn-disab">
+                <feather-icon icon="SaveIcon" class="mr-1" size="21" />
+                Save - {{ isNodesContainError }}
+              </b-button>
+
+            </div>
+          </div>
+                <!--/Header-->
+                <div class="token-space-50"></div>
+                <div class="nft-token">
+                    <h2>ERC-20 Token</h2>
+                    <b-row class="mt-3">
+                        <b-col md="3">
+                            <div class="mb-2 d-flex align-items-center justify-content-between ">
+                                <h3>Fields</h3>
+                                <div class="hr"><hr></hr></div>
+                            </div>
+                            <div class="token-btns">
+                              <flowy-new-block v-for="(block, index) in blocks" :key="index" class="" @drag-start="onDragStartNewBlock"
+                                @drag-stop="onDragStopNewBlock">
+                                <template v-slot:preview="{}">
+                                  <demo-block :title="block.preview.title" :icons="block.preview.icons"
+                                    :description="block.preview.description" />
+                                </template>
+                                <template v-slot:node="{}">
+                                  <demo-node :title="block.node.title" :description="block.node.description"
+                                    :custom-attribute="block.node.canBeAdded" :blocks="blocks" />
+                                </template>
+                              </flowy-new-block>
+                            </div>
+                        </b-col>
+                        <b-col md="9">
+                            <div class="mb-2 d-flex align-items-center justify-content-between">
+                                <h3>Build Your Token</h3>
+                                <div class="hr"><hr></div>
+                            </div>
+                            <div class="token-layout-dropzone">
+                                <div class="token-layout d-none">
+                                    <div class="token-dragable">
+                                        <svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_6465_32248)">
+                                            <path d="M58.904 60.172C57.8427 61.4006 57.043 62.8328 56.554 64.381C56.394 64.8869 56.4414 65.4356 56.686 65.9065C56.9305 66.3774 57.3521 66.7319 57.858 66.892C58.3639 67.052 58.9127 67.0046 59.3836 66.76C59.8545 66.5155 60.209 66.0939 60.369 65.588C60.6949 64.5557 61.2282 63.6009 61.936 62.782C62.1074 62.5829 62.2379 62.352 62.32 62.1025C62.4022 61.853 62.4344 61.5897 62.4148 61.3278C62.3952 61.0658 62.3242 60.8103 62.2059 60.5758C62.0875 60.3412 61.9241 60.1323 61.725 59.961C61.526 59.7896 61.2951 59.6591 61.0456 59.577C60.796 59.4948 60.5328 59.4626 60.2708 59.4822C60.0089 59.5018 59.7534 59.5728 59.5188 59.6911C59.2843 59.8095 59.0754 59.9729 58.904 60.172ZM58 81.092C58.5305 81.092 59.0392 80.8812 59.4143 80.5062C59.7893 80.1311 60 79.6224 60 79.092V75.047C60 74.5165 59.7893 74.0078 59.4143 73.6327C59.0392 73.2577 58.5305 73.047 58 73.047C57.4696 73.047 56.9609 73.2577 56.5858 73.6327C56.2108 74.0078 56 74.5165 56 75.047V79.092C56 79.6224 56.2108 80.1311 56.5858 80.5062C56.9609 80.8812 57.4696 81.092 58 81.092ZM56 107.405C56 107.935 56.2108 108.444 56.5858 108.819C56.9609 109.194 57.4696 109.405 58 109.405C58.5305 109.405 59.0392 109.194 59.4143 108.819C59.7893 108.444 60 107.935 60 107.405V103.36C60 102.83 59.7893 102.321 59.4143 101.946C59.0392 101.571 58.5305 101.36 58 101.36C57.4696 101.36 56.9609 101.571 56.5858 101.946C56.2108 102.321 56 102.83 56 103.36V107.405ZM60.09 117.21C60.0015 116.694 59.714 116.233 59.2893 115.926C58.8646 115.62 58.3366 115.492 57.8187 115.571C57.3009 115.649 56.8345 115.928 56.5199 116.346C56.2052 116.765 56.0674 117.291 56.136 117.81C56.3776 119.416 56.9463 120.956 57.807 122.334C58.0977 122.772 58.5449 123.083 59.0571 123.202C59.5694 123.321 60.1078 123.24 60.562 122.975C61.0122 122.694 61.3326 122.247 61.4526 121.73C61.5726 121.213 61.4825 120.67 61.202 120.22C60.6304 119.303 60.2523 118.279 60.091 117.21H60.09ZM56 93.249C56 93.7794 56.2108 94.2881 56.5858 94.6632C56.9609 95.0382 57.4696 95.249 58 95.249C58.5305 95.249 59.0392 95.0382 59.4143 94.6632C59.7893 94.2881 60 93.7794 60 93.249V89.204C60 88.6735 59.7893 88.1648 59.4143 87.7897C59.0392 87.4147 58.5305 87.204 58 87.204C57.4696 87.204 56.9609 87.4147 56.5858 87.7897C56.2108 88.1648 56 88.6735 56 89.204V93.249ZM67.507 58C67.507 58.5304 67.7178 59.0391 68.0928 59.4142C68.4679 59.7892 68.9766 60 69.507 60H73.551C74.0815 60 74.5902 59.7892 74.9653 59.4142C75.3403 59.0391 75.551 58.5304 75.551 58C75.551 57.4695 75.3403 56.9608 74.9653 56.5857C74.5902 56.2107 74.0815 56 73.551 56H69.507C68.9766 56 68.4679 56.2107 68.0928 56.5857C67.7178 56.9608 67.507 57.4695 67.507 58ZM97.819 60H101.864C102.394 60 102.903 59.7892 103.278 59.4142C103.653 59.0391 103.864 58.5304 103.864 58C103.864 57.4695 103.653 56.9608 103.278 56.5857C102.903 56.2107 102.394 56 101.864 56H97.82C97.2896 56 96.7809 56.2107 96.4058 56.5857C96.0307 56.9608 95.82 57.4695 95.82 58C95.82 58.5304 96.0307 59.0391 96.4058 59.4142C96.7809 59.7892 97.2896 60 97.82 60H97.819ZM123.907 66.774C124.001 67.2913 124.29 67.7528 124.714 68.0638C125.138 68.3747 125.665 68.5115 126.187 68.446C126.711 68.3654 127.182 68.0799 127.496 67.6524C127.809 67.2248 127.94 66.6901 127.86 66.166C127.614 64.5601 127.043 63.0216 126.18 61.645C125.899 61.1951 125.451 60.8754 124.934 60.7562C124.417 60.6369 123.874 60.7278 123.424 61.009C122.974 61.2901 122.655 61.7384 122.535 62.2552C122.416 62.7721 122.507 63.3151 122.788 63.765C123.363 64.681 123.744 65.705 123.908 66.774H123.907ZM83.663 60H87.708C88.2385 60 88.7472 59.7892 89.1223 59.4142C89.4973 59.0391 89.708 58.5304 89.708 58C89.708 57.4695 89.4973 56.9608 89.1223 56.5857C88.7472 56.2107 88.2385 56 87.708 56H83.663C83.1326 56 82.6239 56.2107 82.2488 56.5857C81.8738 56.9608 81.663 57.4695 81.663 58C81.663 58.5304 81.8738 59.0391 82.2488 59.4142C82.6239 59.7892 83.1326 60 83.663 60ZM114.513 124H110.469C109.939 124 109.43 124.211 109.055 124.586C108.68 124.961 108.469 125.47 108.469 126C108.469 126.53 108.68 127.039 109.055 127.414C109.43 127.789 109.939 128 110.469 128H114.514C115.044 128 115.553 127.789 115.928 127.414C116.303 127.039 116.514 126.53 116.514 126C116.514 125.47 116.303 124.961 115.928 124.586C115.553 124.211 115.044 124 114.514 124H114.513ZM126.143 117.088C125.637 116.93 125.088 116.979 124.618 117.224C124.148 117.47 123.794 117.892 123.635 118.398C123.312 119.43 122.781 120.385 122.075 121.205C121.73 121.607 121.558 122.131 121.599 122.659C121.639 123.188 121.888 123.679 122.29 124.025C122.698 124.358 123.218 124.521 123.743 124.481C124.268 124.441 124.757 124.201 125.11 123.81C126.169 122.579 126.966 121.145 127.451 119.596C127.53 119.345 127.559 119.082 127.535 118.82C127.512 118.558 127.438 118.304 127.317 118.071C127.195 117.838 127.029 117.631 126.828 117.463C126.626 117.294 126.394 117.167 126.143 117.088ZM126 102.888C125.47 102.888 124.961 103.099 124.586 103.474C124.211 103.849 124 104.358 124 104.888V108.932C124 109.462 124.211 109.971 124.586 110.346C124.961 110.721 125.47 110.932 126 110.932C126.53 110.932 127.039 110.721 127.414 110.346C127.789 109.971 128 109.462 128 108.932V104.888C128 104.358 127.789 103.849 127.414 103.474C127.039 103.099 126.53 102.888 126 102.888ZM126 88.731C125.47 88.731 124.961 88.9417 124.586 89.3167C124.211 89.6918 124 90.2005 124 90.731V94.776C124 95.3064 124.211 95.8151 124.586 96.1902C124.961 96.5652 125.47 96.776 126 96.776C126.53 96.776 127.039 96.5652 127.414 96.1902C127.789 95.8151 128 95.3064 128 94.776V90.73C128 90.1995 127.789 89.6908 127.414 89.3157C127.039 88.9407 126.53 88.73 126 88.73V88.731ZM126 74.575C125.47 74.575 124.961 74.7857 124.586 75.1607C124.211 75.5358 124 76.0445 124 76.575V80.619C124 81.1494 124.211 81.6581 124.586 82.0332C124.961 82.4082 125.47 82.619 126 82.619C126.53 82.619 127.039 82.4082 127.414 82.0332C127.789 81.6581 128 81.1494 128 80.619V76.575C128 76.0445 127.789 75.5358 127.414 75.1607C127.039 74.7857 126.53 74.575 126 74.575ZM72.045 124H67.959C67.6974 124 67.4385 124.052 67.1972 124.153C66.9558 124.254 66.7368 124.402 66.5527 124.588C66.3687 124.774 66.2233 124.994 66.1248 125.237C66.0263 125.479 65.9768 125.738 65.979 126C65.9838 126.533 66.1989 127.042 66.5775 127.416C66.9561 127.791 67.4674 128.001 68 128H72.045C72.5755 128 73.0842 127.789 73.4593 127.414C73.8343 127.039 74.045 126.53 74.045 126C74.045 125.47 73.8343 124.961 73.4593 124.586C73.0842 124.211 72.5755 124 72.045 124ZM100.357 124H96.312C95.7816 124 95.2729 124.211 94.8978 124.586C94.5228 124.961 94.312 125.47 94.312 126C94.312 126.53 94.5228 127.039 94.8978 127.414C95.2729 127.789 95.7816 128 96.312 128H100.357C100.887 128 101.396 127.789 101.771 127.414C102.146 127.039 102.357 126.53 102.357 126C102.357 125.47 102.146 124.961 101.771 124.586C101.396 124.211 100.887 124 100.357 124ZM86.201 124H82.156C81.6256 124 81.1169 124.211 80.7418 124.586C80.3668 124.961 80.156 125.47 80.156 126C80.156 126.53 80.3668 127.039 80.7418 127.414C81.1169 127.789 81.6256 128 82.156 128H86.201C86.7315 128 87.2402 127.789 87.6152 127.414C87.9903 127.039 88.201 126.53 88.201 126C88.201 125.47 87.9903 124.961 87.6152 124.586C87.2402 124.211 86.7315 124 86.201 124ZM116 56H111.976C111.446 56 110.937 56.2107 110.562 56.5857C110.187 56.9608 109.976 57.4695 109.976 58C109.976 58.5304 110.187 59.0391 110.562 59.4142C110.937 59.7892 111.446 60 111.976 60H116.021C116.551 59.9972 117.059 59.7838 117.432 59.4067C117.805 59.0297 118.013 58.5199 118.011 57.9895C118.008 57.459 117.794 56.9514 117.417 56.5783C117.04 56.2052 116.53 55.9972 116 56ZM28.453 24.625L36.858 27.46C37.1069 27.544 37.3699 27.5782 37.6319 27.5606C37.894 27.543 38.1501 27.474 38.3855 27.3575C38.6209 27.2409 38.831 27.0792 39.0039 26.8814C39.1768 26.6837 39.309 26.4538 39.393 26.205C39.4771 25.9561 39.5113 25.6931 39.4937 25.4311C39.4761 25.169 39.4071 24.9129 39.2906 24.6775C39.174 24.4421 39.0123 24.232 38.8145 24.0591C38.6168 23.8862 38.3869 23.754 38.138 23.67L21.64 18.105C21.2862 17.9913 20.9082 17.9761 20.5464 18.0608C20.1846 18.1455 19.8526 18.3271 19.586 18.586C19.3297 18.854 19.1499 19.1857 19.0653 19.5468C18.9807 19.9079 18.9944 20.285 19.105 20.639L24.669 37.137C24.8462 37.6342 25.2096 38.0432 25.6826 38.2775C26.1556 38.5119 26.7011 38.5533 27.204 38.393C27.453 38.309 27.683 38.1769 27.8808 38.004C28.0787 37.8312 28.2406 37.6211 28.3572 37.3857C28.4739 37.1503 28.543 36.8942 28.5606 36.632C28.5783 36.3699 28.5441 36.1069 28.46 35.858L25.624 27.452L50.564 52.392C50.9438 52.7579 51.4507 52.9623 51.978 52.9623C52.5054 52.9623 53.0123 52.7579 53.392 52.392C53.5778 52.2062 53.7252 51.9857 53.8258 51.743C53.9264 51.5003 53.9781 51.2402 53.9781 50.9775C53.9781 50.7147 53.9264 50.4546 53.8258 50.2119C53.7252 49.9692 53.5778 49.7487 53.392 49.563L28.453 24.625ZM104.918 102.523C105.025 102.142 105.018 101.738 104.896 101.361L99.33 84.863C99.2461 84.614 99.1139 84.3841 98.941 84.1863C98.7682 83.9884 98.5581 83.8266 98.3227 83.7099C98.0873 83.5933 97.8312 83.5242 97.5691 83.5065C97.307 83.4888 97.044 83.523 96.795 83.607C96.5461 83.6909 96.3162 83.8231 96.1183 83.996C95.9205 84.1688 95.7587 84.3789 95.642 84.6143C95.5254 84.8497 95.4563 85.1058 95.4386 85.3679C95.4209 85.63 95.4551 85.893 95.539 86.142L98.375 94.548L73.435 69.608C73.2493 69.4223 73.0288 69.275 72.7861 69.1745C72.5434 69.074 72.2833 69.0224 72.0207 69.0224C71.758 69.0224 71.498 69.0742 71.2553 69.1748C71.0127 69.2753 70.7922 69.4227 70.6065 69.6085C70.4209 69.7942 70.2736 70.0147 70.1731 70.2574C70.0726 70.5001 70.0209 70.7602 70.021 71.0228C70.021 71.2855 70.0728 71.5455 70.1734 71.7882C70.2739 72.0308 70.4213 72.2513 70.607 72.437L95.547 97.376L87.141 94.541C86.6385 94.3712 86.089 94.4081 85.6136 94.6434C85.1382 94.8788 84.7758 95.2934 84.606 95.796C84.4363 96.2985 84.4732 96.848 84.7085 97.3234C84.9439 97.7988 85.3585 98.1612 85.861 98.331L102.359 103.895C102.711 104.008 103.087 104.023 103.446 103.94C103.806 103.856 104.137 103.677 104.403 103.421C104.65 103.172 104.827 102.862 104.917 102.523H104.918Z" fill="#0099FF"/>
+                                            <path d="M54.984 69.87C54.2961 69.3729 53.7214 68.7356 53.298 68H12C9.87908 67.9974 7.84579 67.1536 6.34607 65.6539C4.84635 64.1542 4.00265 62.1209 4 60V12C4.00265 9.87908 4.84635 7.84579 6.34607 6.34607C7.84579 4.84635 9.87908 4.00265 12 4H60C62.1209 4.00265 64.1542 4.84635 65.6539 6.34607C67.1536 7.84579 67.9974 9.87908 68 12V52H72V12C71.9966 8.81846 70.7312 5.76821 68.4815 3.51852C66.2318 1.26883 63.1815 0.00344108 60 0L12 0C8.81846 0.00344108 5.76821 1.26883 3.51852 3.51852C1.26883 5.76821 0.00344108 8.81846 0 12L0 60C0.00344108 63.1815 1.26883 66.2318 3.51852 68.4815C5.76821 70.7312 8.81846 71.9966 12 72H52.838C53.3619 71.1201 54.1002 70.3873 54.984 69.87Z" fill="#0099FF"/>
+                                            <path opacity="0.3" d="M68 12V14C67.9974 11.8791 67.1536 9.84579 65.6539 8.34607C64.1542 6.84635 62.1209 6.00265 60 6H12C9.87908 6.00265 7.84579 6.84635 6.34607 8.34607C4.84635 9.84579 4.00265 11.8791 4 14V12C4.00265 9.87908 4.84635 7.84579 6.34607 6.34607C7.84579 4.84635 9.87908 4.00265 12 4H60C62.1209 4.00265 64.1542 4.84635 65.6539 6.34607C67.1536 7.84579 67.9974 9.87908 68 12Z" fill="#E8FBFC"/>
+                                            <path opacity="0.25" d="M53.28 68H12C9.87908 67.9974 7.84579 67.1536 6.34607 65.6539C4.84635 64.1542 4.00265 62.1209 4 60V58C4.00265 60.1209 4.84635 62.1542 6.34607 63.6539C7.84579 65.1536 9.87908 65.9974 12 66H52.55C52.6709 66.7052 52.9182 67.3827 53.28 68Z" fill="#0099FF"/>
+                                            </g>
+                                            <defs>
+                                            <clipPath id="clip0_6465_32248">
+                                            <rect width="128" height="128" fill="white"/>
+                                            </clipPath>
+                                            </defs>
+                                        </svg>
+                                        <p class="mt-2">Drag and Drop Node Here to Build your Token</p>
+                                    </div>
+                                </div>
+                                <div v-if="getNodes.length == 0">
+                                  <drop @drop="handleDrop" @dragover="handleOver" @dragleave="handleLeave">
+
+                                    <div class="ivr-box-build " id="testIvr" :class="{ 'draggable--is-dragging': isDragged }">
+                                      <b-row class="dropIconArea">
+                                        <b-col md="12" class="d-flex justify-content-center align-items-start">
+                                          <div class="text-center align-self-center" v-if="getNodes.length == 0">
+                                            <img src="@/assets/images/ivr/dropIcon.png" />
+                                            <p class="mt-2">Drag and Drop Node Here to Build an IVR Tree</p>
+                                          </div>
+                                          <div v-else class="flex-grow overflow-auto" style="width: 100%">
+                                            <flowy class="q-mx-auto" :nodes="getNodes" :beforeMove="beforeMove" :beforeAdd="beforeAdd"
+                                              @add="add" @move="move" @drag-start="onDragStart"></flowy>
+                                          </div>
+                                        </b-col>
+                                      </b-row>
+                                    </div>
+                                  </drop>
+                                </div>
+                                <div v-else class="ivr-box-build " id="testIvr" :class="{ 'draggable--is-dragging': isDragged }">
+                                  <b-row class="dropIconArea">
+                                    <b-col md="12" class="d-flex justify-content-center align-items-start">
+                                      <div class="text-center" v-if="getNodes.length == 0">
+                                        <img src="@/assets/images/ivr/dropIcon.png" />
+                                        <p class="mt-2">Drag and Drop Node Here to Build an IVR Tree</p>
+                                      </div>
+                                      <div class="flex-grow overflow-auto" style="width: 100%" v-else>
+                                        <flowy class="q-mx-auto" :nodes="getNodes" :beforeMove="beforeMove" :beforeAdd="beforeAdd"
+                                          @drag-start="onDragStart">
+                                        </flowy>
+                                      </div>
+                                    </b-col>
+                                  </b-row>
+                                </div>
+                            </div>
+                            
+                            <div class="web3-btn-connect mt-3">
+                                <b-button v-b-modal.deployed-modal>Deploy Token</b-button>
+                            </div>
+                        </b-col>
+                    </b-row>
+                </div>
+            </div>
+        </div>
+        <!--///////////////Deployed Modal/////////////////-->
+        <b-modal id="deployed-modal" centered size="md" ok-title="Cancel" ok-only modal-class="deployed-modal"  hide-footer hide-header>
+            <div class="text-center">
+                <b-img src="@/assets/images/webtokens/robo.png"></b-img>
+                <h2>Simple ERC 1155 Airlock Token Successfully Deployed!</h2>
+                <p class="mt-2 mb-5">Please wait for a while, Lorem Ipsum consectetur adipiscing elit. You will be automatically redirected you.</p>
+            </div>
+        </b-modal>
+        <!--///////////////Deployed Modal/////////////////-->
+    </div>
+  </div>
+</template>
+
+<script>
+import {
+  BRow,
+  BCol,
+  BForm,
+  BCard,
+  BButton,
+  BCardText,
+  BFormInput,
+  BModal,
+  VBModal,
+} from "bootstrap-vue";
+import Vue from "vue";
+import VueLodash from "vue-lodash";
+import lodash from "lodash";
+import store from "../store";
+import Ripple from "vue-ripple-directive";
+Vue.use(VueLodash, { name: "custom", lodash: lodash });
+import ivrheader from "./components/ivrheader.vue";
+import { toastAlert } from "@core/mixins/ui/toast";
+
+export default {
+  components: {
+    ivrheader,
+    BRow,
+    BCol,
+    BForm,
+    BCard,
+    BButton,
+    BCardText,
+    BFormInput,
+    BModal,
+    VBModal,
+  },
+  directives: {
+    "b-modal": VBModal,
+    Ripple,
+  },
+  computed: {
+    ids() {
+      return this.$store.state.ivrBuilder.allCollapseIds
+    },
+    getNodes() {
+      return this.$store.state.ivrBuilder.nodes
+    },
+    isNodeHaveChild() {
+      return this.$store.getters['ivrBuilder/isNodeHaveChild']
+    },
+    ivrUuid() {
+      return this.$store.state.ivrBuilder.ivrUuid
+    },
+    isNodesContainError() {
+      return this.$store.state.ivrBuilder.isNodesContainError
+    }
+  },
+  mixins: [toastAlert],
+  data: () => ({
+    isDragged: false,
+    allCollapseIds: [],
+    parentNode: {
+      id: "1",
+      parentId: -1,
+      type: -1,
+      nodeComponent: "demo-node",
+      isOpen: true,
+      isActiveGoTo: false,
+      destinationNodeId: '',
+      gotoSourceNodeId: [],
+      blinkHeader: false,
+      parentLabel: '',
+      formData: [],
+      formErrors: [],
+      errorCount: 0,
+      ivrUuid: '',
+      node_type: '',
+      data: {
+        text: "",
+        title: "",
+        description: "",
+      },
+    },
+    holder: [],
+    dragging: false,
+    blocks: [
+      {
+        preview: {
+          title: "Dial",
+          icons: "PhoneCallIcon",
+        },
+        node: {
+          title: "Dial",
+          description: "<span>Dial Node.</span>",
+        },
+      },
+      {
+        preview: {
+          title: "Gather",
+          icons: "GridIcon",
+        },
+        node: {
+          title: "Gather",
+          description: "<span>Gather Node.</span>",
+        },
+      },
+      {
+        preview: {
+          title: "Go To",
+          icons: "RepeatIcon",
+        },
+        node: {
+          title: "Go To",
+          description: "<span>Go To Node.</span>",
+        },
+      },
+      {
+        preview: {
+          title: "Hangup",
+          icons: "PhoneIcon",
+        },
+        node: {
+          title: "Hangup",
+          description: "<span>Hangup Node.</span>",
+        },
+      },
+      {
+        preview: {
+          title: "Menu",
+          icons: "AlignLeftIcon",
+        },
+        node: {
+          title: "Menu",
+          description: "<span>Menu Node.</span>",
+        },
+      },
+      {
+        preview: {
+          title: "Play",
+          icons: "PlayIcon",
+        },
+        node: {
+          title: "Play",
+          description: "<span>Play Node.</span>",
+        },
+      },
+      {
+        preview: {
+          title: "Voicemail",
+          icons: "Volume2Icon",
+        },
+        node: {
+          title: "Voicemail",
+          description: "<span>Voicemail Node.</span>",
+        },
+      },
+      // {
+      //   preview: {
+      //     title: "Peach",
+      //   },
+      //   node: {
+      //     title: "Peach",
+      //     description: "Triggers after a specified <b>amount</b> of time",
+      //     canBeAdded: false,
+      //   },
+      // },
+    ],
+    nodes: [],
+    ivrName: 'New Ivr'
+  }),
+
+  methods: {
+    saveIvrNodes() {
+      if (!this.isNodesContainError) {
+        //update the nodes action uuids in formData
+        this.updateNodeAction()
+        let data = {}
+        const { nodes, ivrName, ivrUuid } = this.$store.state.ivrBuilder
+
+        const nodesList = nodes.map(node => {
+          return node.formData
+        })
+        data['nodes'] = nodesList
+        data['ivr_uuid'] = ivrUuid
+        data['ivr_name'] = ivrName
+        this.$store.dispatch('ivrBuilder/saveIvrNodes', data)
+      }
+    },
+    getChildNodeUUid(node, type) {
+      const record = this.$store.getters["ivrBuilder/isChildExist"](node.id, type);
+
+      if (record) {
+        return record.id
+      } else {
+        return ''
+      }
+    },
+    updateNodeAction() {
+      const { nodes } = this.$store.state.ivrBuilder
+      nodes.forEach((node) => {
+        const actions = this.getNodeAction(node)
+        if (Object.keys(actions).length > 0) {
+          Object.assign(node.formData, actions)
+        }
+      })
+      this.$store.commit('ivrBuilder/UPDATE_NODES', nodes)
+    },
+    getNodeAction(node) {
+      var action = {}
+      if (['dial', 'goto'].includes(node.node_type)) {
+        action.on_failer = this.getChildNodeUUid(node, 'fail')
+
+
+      } else if (['play', 'voicemail'].includes(node.node_type)) {
+        action.on_success = this.getChildNodeUUid(node, 'success')
+
+
+      } else if (node.node_type == 'gather') {
+
+        action.on_failer = this.getChildNodeUUid(node, 'fail')
+        action.on_success = this.getChildNodeUUid(node, 'success')
+
+      } else if (node.node_type == 'menu') {
+
+        action.on_failer = this.getChildNodeUUid(node, 'fail')
+        action.on_success = this.getChildNodeUUid(node, 'success')
+        action.press_0 = this.getChildNodeUUid(node, '0')
+        action.press_1 = this.getChildNodeUUid(node, '1')
+        action.press_2 = this.getChildNodeUUid(node, '2')
+        action.press_3 = this.getChildNodeUUid(node, '3')
+        action.press_4 = this.getChildNodeUUid(node, '4')
+        action.press_5 = this.getChildNodeUUid(node, '5')
+        action.press_6 = this.getChildNodeUUid(node, '6')
+        action.press_7 = this.getChildNodeUUid(node, '7')
+        action.press_8 = this.getChildNodeUUid(node, '8')
+        action.press_9 = this.getChildNodeUUid(node, '9')
+
+      }
+      return action
+    },
+    handleDrop(title) {
+      const lowerCasetitle = title.replace(/\s/g, "").toLowerCase()
+
+      this.isDragged = false
+      if (this.getNodes.length === 0) {
+        if (lowerCasetitle == 'goto') {
+          this.errorToast('Error', "Go To node can not added as the root node")
+          return true
+        }
+        this.parentNode.data.title = title
+        this.parentNode.data.description = title;
+        this.parentNode.node_type = lowerCasetitle;
+
+
+        this.$store.dispatch('ivrBuilder/storeIvr').then(() => {
+          this.parentNode.ivrUuid = this.$store.state.ivrBuilder.ivrUuid
+          const node = {
+            ivr_uuid: this.parentNode.ivrUuid,
+            parent_uuid: null,
+            node_type: lowerCasetitle,
+          }
+          this.registerParentNode(node)
+
+        })
+
+      }
+    },
+    registerParentNode(parentNodeData) {
+
+      this.$store.dispatch('ivrBuilder/registerNode', parentNodeData).then(response => {
+        const { data: { data: { uuid } } } = response
+        this.parentNode.id = uuid
+        this.$store.dispatch('ivrBuilder/addNode', this.parentNode)
+
+      })
+    },
+
+    handleOver(event) {
+      if (this.getNodes.length === 0) {
+        this.isDragged = true
+      }
+
+    },
+    handleLeave(event) {
+      if (this.getNodes.length === 0) {
+        this.isDragged = false
+      }
+    },
+    toggal(val) {
+      this.getNodes.forEach((el) => {
+        el.isOpen = val
+      })
+    },
+    customAdd(node) {
+      const id = this.generateId()
+      const newNode = {
+        id: this.generateId(),
+        isOpen: true,
+        isActiveGoTo: false,
+        destinationNodeId: '',
+        gotoSourceNodeId: [],
+        blinkHeader: false,
+        parentLabel: node.title,
+        parentId: node.parentId,
+        type: node.type,
+        nodeComponent: "demo-node",
+        formData: [],
+        formErrors: [],
+        errorCount: 0,
+        ivrUuid: this.$store.state.ivrBuilder.ivrUuid,
+        node_type: node.title.replace(/\s/g, "").toLowerCase(),
+        data: {
+          text: node.title,
+          title: node.title,
+          description: `<span>${node.title}</span>`,
+        },
+      }
+
+      // register node
+      const registerNode = {
+        ivr_uuid: newNode.ivrUuid,
+        parent_uuid: node.parentId,
+        node_type: node.title.replace(/\s/g, "").toLowerCase(),
+      }
+
+      this.$store.dispatch('ivrBuilder/registerNode', registerNode).then(response => {
+        //remove connection error from  parent node
+        // this.$store.commit('ivrBuilder/UPDATE_NODE_MISSING_CONNECTION_ERROR', { nodeId: node.parentId })
+        const { data: { data: { uuid } } } = response
+        // this.parentNode.id = uuid
+        // this.nodes.push(this.parentNode);
+        newNode.id = uuid
+        // this.nodes.push({
+        //   id,
+        //   ...newNode,
+        // });
+        this.$store.dispatch('ivrBuilder/addNode', {
+          id,
+          ...newNode,
+        })
+
+      })
+
+    },
+
+    onDragStartNewBlock(event) {
+      // this.dragCount++
+      // const { props } = event;
+      // this.newDraggingBlock = props;
+
+      // if (this.nodes.length == 0 && this.dragCount === 2) {
+      //   this.parentNode.data.title = props.title;
+      //   this.parentNode.data.description = props.description;
+      // }
+      // if (this.dragCount > 2) {
+      //   this.addParentNode();
+      // }
+    },
+    onDragStopNewBlock(event) {
+      console.log("onDragStopNewBlock", event);
+      this.newDraggingBlock = null;
+    },
+
+    // REQUIRED
+    beforeMove({ to, from }) {
+
+      // called before moving node (during drag and after drag)
+      // indicator will turn red when we return false
+      // from is null when we're not dragging from the current node tree
+      console.log("beforeMove", to, from);
+      // we cannot drag upper parent nodes in this demo
+      if (from && from.parentId === -1) {
+        return false;
+      }
+      // we're adding a new node (not moving an existing one)
+      if (from === null) {
+        // we've passed this attribute to the demo-node
+        if (this.newDraggingBlock["custom-attribute"] === false) {
+          return false;
+        }
+      }
+      return true;
+    },
+    // REQUIRED
+    beforeAdd({ to, from }) {
+      // called before moving node (during drag and after drag)
+      // indicator will turn red when we return false
+      // from is null when we're not dragging from the current node tree
+      console.log("beforeAdd", to, from);
+      // we've passed this attribute to the demo-node
+      if (this.newDraggingBlock["custom-attribute"] === false) {
+        return false;
+      }
+      return true;
+    },
+    randomInteger() {
+      return Math.floor(Math.random() * 10000) + 1;
+    },
+    generateId(nodes) {
+      let id = this.randomInteger();
+      // _.find is a lodash function
+      while (_.find(nodes, { id }) !== undefined) {
+        id = this.randomInteger();
+      }
+      return id;
+    },
+    addNode(_event) {
+      // const id = this.generateId();
+      // _event.node.isOpen = true
+      // this.nodes.push({
+      //   ..._event.node,
+      //   id,
+      // });
+    },
+    remove(event) {
+      // console.log("remove", event);
+      // // node we're dragging to
+      // const { node } = event;
+      // // we use lodash in this demo to remove node from the array
+      // const nodeIndex = _.findIndex(this.nodes, { id: node.id });
+
+      // if (this.nodes[nodeIndex].parentId === -1) {
+      //   this.nodes = [];
+      // } else {
+      //   this.nodes.splice(nodeIndex, 1);
+      // }
+    },
+    move(event) {
+      console.log("move", event);
+      // node we're dragging to and node we've just dragged
+      const { dragged, to } = event;
+      // change panentId to id of node we're dragging to
+      dragged.parentId = to.id;
+    },
+    add(event) {
+      // console.log("you are here! add event=============================");
+      // // every node needs an ID
+      // const id = this.generateId();
+      // // for collapse
+      // event.node.isOpen = true
+      // // add to array of nodes
+      // this.nodes.push({
+      //   id,
+      //   ...event.node,
+      // });
+    },
+    onDragStart(event) {
+      console.log("onDragStart", event);
+      this.dragging = true;
+    },
+  },
+  watch: {
+    "$store.state.ivrBuilder.newNode": function (newVal, oldVal) {
+      if (Object.keys(newVal).length > 0) {
+        this.customAdd(newVal);
+      }
+    },
+  },
+  created() {
+    const APP_STORE_MODULE_NAME = "ivrBuilder";
+    // Register module
+    if (!this.$store.hasModule(APP_STORE_MODULE_NAME)) {
+      this.$store.registerModule(APP_STORE_MODULE_NAME, store);
+    }
+    if (this.$route.query.hasOwnProperty('uuid')) {
+
+
+      this.$store.commit('ivrBuilder/UPDATE_IS_EDITED', true)
+      this.$store.dispatch('ivrBuilder/getIvr', { uuid: this.$route.query.uuid }).then(() => {
+        // update ivr name 
+        this.ivrName = this.$store.state.ivrBuilder.ivrName
+
+        setTimeout(() => {
+          this.$store.commit('ivrBuilder/UPDATE_IS_EDITED', false)
+        }, 3000);
+
+      })
+
+    }
+  },
+  destroyed() {
+    this.$store.commit('ivrBuilder/CLEAN_IVR_STATE')
+    // UnRegister on leave
+    const APP_STORE_MODULE_NAME = "ivrBuilder";
+    if (this.$store.hasModule(APP_STORE_MODULE_NAME)) {
+      this.$store.unregisterModule(APP_STORE_MODULE_NAME);
+    }
+  },
+};
+</script>
+
+<style lang="scss">
+@import "@/assets/scss/ivrStyles/_Style.scss";
+</style>
