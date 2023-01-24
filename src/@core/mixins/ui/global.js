@@ -4,6 +4,7 @@ import { isUserLoggedIn } from "@/auth/utils";
 import { getHomeRouteForLoggedInUser } from "@/auth/utils";
 import { toastAlert } from "@core/mixins/ui/toast";
 import store from "@/store";
+import { first, isEmpty } from "lodash";
 export const globalHelper = {
   mixins: [toastAlert],
   data() {
@@ -93,14 +94,13 @@ export const globalHelper = {
       return (msg = `Please confirm that you want to delete Route ${node.priority} filters and their child nodes`);
     },
     remove(node) {
-      console.log(node);
       let msg = "";
       if (node.node_type == "filter") {
         msg = this.filterChildRemoveMessage(node);
       } else {
         msg = this.nodeRemoveCommonMessage(node);
       }
-
+      console.log(node.id);
       this.$bvModal
         .msgBoxConfirm(`${msg}.`, {
           title: "Please Confirm",
@@ -117,13 +117,16 @@ export const globalHelper = {
             // if (node.node_type == "filter") {
             // } else {
             // get all child node
-            const ids = this.generateChild(node.id);
-            ids.push(node.id);
-            this.getRouterFilterNode(ids);
+            var ids = [];
+            if (node.node_type == "filter") {
+              ids = this.generateFilterChild(node.id);
+            } else {
+              ids = this.generateChild(node.id);
+              ids.push(node.id);
+            }
 
+            this.getRouterFilterNode(ids);
             this.removeApiCall(node, ids);
-            // }
-            // return true;
           }
         });
     },
@@ -152,6 +155,7 @@ export const globalHelper = {
     },
     generateChild(id) {
       const arr = this.$store.state.ivrBuilder.nodes;
+
       const nodes = arr.reduce((acc, val, ind, array) => {
         const childs = [];
         array.forEach((el, i) => {
@@ -159,13 +163,49 @@ export const globalHelper = {
             childs.push(el.id);
           }
         });
+
         return acc.concat({ ...val, childs });
       }, []);
+
       const index = nodes.findIndex((el) => {
         return el.id == id;
       });
 
       return nodes[index].childs;
+    },
+    generateFilterChild(id) {
+      const allNodes = this.$store.state.ivrBuilder.nodes;
+
+      const firstFilterNode = allNodes.find(
+        (data) => data.parent_fillter_uuid == id
+      );
+      if (firstFilterNode) {
+        const nodes = allNodes.reduce((acc, val, ind, array) => {
+          const childs = [];
+          array.forEach((el, i) => {
+            if (childs.includes(el.parentId) || el.parentId === val.id) {
+              childs.push(el.id);
+            }
+          });
+
+          return acc.concat({ ...val, childs });
+        }, []);
+
+        const index = nodes.findIndex((el) => {
+          return el.parent_fillter_uuid == id;
+        });
+
+        allNodes.map((el) => {
+          el.filters.forEach((value, index) => {
+            if (value.id == id) {
+              el.filters.splice(index, 1);
+            }
+          });
+        });
+
+        const parentNodeId = [firstFilterNode.id];
+        return nodes[index].childs.concat(parentNodeId);
+      }
     },
     gotoanynode(uuid) {
       document.getElementById(uuid).scrollIntoView();
