@@ -444,7 +444,7 @@ export default {
     getFilterRecord({ commit, state }, ivr_builder_id) {
       return new Promise((resolve, reject) => {
         axios
-          .get(`get-ivr-filter-record?ivr_builder_id=${ivr_builder_id}`)
+          .get(`get-ivr-filter-record?ivr_builder_uuid=${ivr_builder_id}`)
           .then((response) => {
             const {
               data: {

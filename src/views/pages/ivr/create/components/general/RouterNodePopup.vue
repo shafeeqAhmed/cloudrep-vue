@@ -175,7 +175,7 @@ import Ripple from "vue-ripple-directive";
 import vSelect from "vue-select";
 
 export default {
-  props: ["parentId", "popOverId", "type", "ivr_builder_id"],
+  props: ["parentId", "popOverId", "type", "ivr_builder_uuid"],
   directives: {
     Ripple,
   },
@@ -248,7 +248,7 @@ export default {
     onOpen(parentId) {
       this.$store.commit("ivrBuilder/UPDATE_ACTIVE_PARENT_ID", parentId);
       this.show = !this.show;
-      this.conditionTags(this.ivr_builder_id);
+      this.conditionTags(this.ivr_builder_uuid);
     },
     onClose() {
       this.conditions.forEach((data) => {
@@ -269,12 +269,12 @@ export default {
       this.show = false;
       this.$emit("selectNode", this.type);
     },
-    conditionTags(ivr_builder_id) {
+    conditionTags(ivr_builder_uuid) {
       this.$store.dispatch("ivrBuilder/getTags").then(() => {
         this.tags = this.$store.state.ivrBuilder.tags;
       });
       this.$store
-        .dispatch("ivrBuilder/getFilterRecord", ivr_builder_id)
+        .dispatch("ivrBuilder/getFilterRecord", ivr_builder_uuid)
         .then(() => {
           const filterRecord = this.$store.state.ivrBuilder.filterRecord;
           if (filterRecord.length != 0) {
@@ -317,7 +317,7 @@ export default {
     saveFilterRecord() {
       const payload = {
         filters: [],
-        ivr_builder_id: this.ivr_builder_id,
+        ivr_builder_uuid: this.ivr_builder_uuid,
       };
       this.conditions.forEach((element) => {
         payload.filters.push({

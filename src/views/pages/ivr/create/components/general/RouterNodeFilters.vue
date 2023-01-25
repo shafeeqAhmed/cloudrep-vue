@@ -28,7 +28,7 @@
           <div id="route_filter">
             <router-node-popup
               :parentId="node.id"
-              :ivr_builder_id="`${filter.id}`"
+              :ivr_builder_uuid="`${filter.id}`"
               :popOverId="`${filter.id}-router-condition-${node.id}`"
             />
           </div>
