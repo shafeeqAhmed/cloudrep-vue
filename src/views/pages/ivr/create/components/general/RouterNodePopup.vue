@@ -2,25 +2,57 @@
   <div>
     <div class="">
       <div class="">
-        <b-button :id="popOverId" class="popover-btn" @click="onOpen(parentId)">
-          <feather-icon icon="FilterIcon" class="cursor-pointer" size="18" />
+        <b-button
+          :id="popOverId"
+          class="popover-btn"
+          @click="onOpen(parentId)"
+        >
+          <feather-icon
+            icon="FilterIcon"
+            class="cursor-pointer"
+            size="18"
+          />
         </b-button>
       </div>
-      <b-popover :target="popOverId" v-if="activeParentId === parentId" :show.sync="show"
-        custom-class="route_filter_modal">
+      <b-popover
+        :target="popOverId"
+        v-if="activeParentId === parentId"
+        :show.sync="show"
+        custom-class="route_filter_modal"
+      >
         <div class="route_condition">
           <h4 class="mt-2">
             Condition
-            <feather-icon icon="XIcon" class="cursor-pointer" size="21" @click="onClose" />
+            <feather-icon
+              icon="XIcon"
+              class="cursor-pointer"
+              size="21"
+              @click="onClose"
+            />
           </h4>
-          <div class="route_condition_card" v-for="(condition, key) in conditions" :key="key">
+          <div
+            class="route_condition_card"
+            v-for="(condition, key) in conditions"
+            :key="key"
+          >
             <div class="input-gradient mb-1">
-              <v-select :options="tags" v-model="condition.tag" label="name" :reduce="(list) => list.uuid"
-                @input="getTagFilters($event, key)" placeholder="Select Tag"></v-select>
+              <v-select
+                :options="tags"
+                v-model="condition.tag"
+                label="name"
+                :reduce="(list) => list.uuid"
+                @input="getTagFilters($event, key)"
+                placeholder="Select Tag"
+              ></v-select>
             </div>
             <div class="input-gradient mb-1">
-              <v-select :options="condition.operators" v-model="condition.operator" :reduce="(list) => list.uuid"
-                label="name" placeholder="Operators"></v-select>
+              <v-select
+                :options="condition.operators"
+                v-model="condition.operator"
+                :reduce="(list) => list.uuid"
+                label="name"
+                placeholder="Operators"
+              ></v-select>
             </div>
             <!--
             <div
@@ -47,41 +79,78 @@
             <div class="router_states">
               <div class="left_state_box">
                 <b-list-group>
-                  <b-list-group-item v-for="(state, stateIndex) in condition.states" :ref="`state-${stateIndex}${key}`"
-                    :key="stateIndex" @click="selectOperatorValue(stateIndex, key, state.name)">{{
-                      state.name
-                    }}</b-list-group-item>
+                  <b-list-group-item
+                    v-for="(state, stateIndex) in condition.states"
+                    :ref="`state-${stateIndex}${key}`"
+                    :key="stateIndex"
+                    @click="selectOperatorValue(stateIndex, key, state.name)"
+                    >{{ state.name }}</b-list-group-item
+                  >
                 </b-list-group>
               </div>
               <div class="center_state_box">
                 <div class="mb-1">
-                  <feather-icon icon="ArrowRightIcon" class="cursor-pointer" size="21"
-                    @click="assignAllOperatorValue(key)" />
+                  <feather-icon
+                    icon="ArrowRightIcon"
+                    class="cursor-pointer"
+                    size="21"
+                    @click="assignAllOperatorValue(key)"
+                  />
                 </div>
                 <div class="mb-1">
-                  <feather-icon icon="RepeatIcon" class="cursor-pointer" size="21" />
+                  <feather-icon
+                    icon="RepeatIcon"
+                    class="cursor-pointer"
+                    size="21"
+                  />
                 </div>
                 <div class="mb-1">
-                  <feather-icon icon="ArrowLeftIcon" class="cursor-pointer" size="21"
-                    @click="removeAllOperatorValue(key)" />
+                  <feather-icon
+                    icon="ArrowLeftIcon"
+                    class="cursor-pointer"
+                    size="21"
+                    @click="removeAllOperatorValue(key)"
+                  />
                 </div>
               </div>
               <div class="right_state_box">
                 <b-list-group>
-                  <b-list-group-item v-for="(state, valueIndex) in condition.val" :key="valueIndex"
-                    @click="removeOperatorValue(valueIndex, key, state)">{{ state }}</b-list-group-item>
+                  <b-list-group-item
+                    v-for="(state, valueIndex) in condition.val"
+                    :key="valueIndex"
+                    @click="removeOperatorValue(valueIndex, key, state)"
+                    >{{ state }}</b-list-group-item
+                  >
                 </b-list-group>
               </div>
             </div>
           </div>
           <div class="router_rule mt-2">
-            <b-button variant="primary" class="mr-1" @click="addCondition('or')">ADD OR RULE</b-button>
-            <b-button variant="primary" class="mr-1" @click="addCondition('and')">ADD AND RULE</b-button>
-            <b-button variant="primary" @click="onClose">skip</b-button>
+            <b-button
+              variant="primary"
+              class="mr-1"
+              @click="addCondition('or')"
+              >ADD OR RULE</b-button
+            >
+            <b-button
+              variant="primary"
+              class="mr-1"
+              @click="addCondition('and')"
+              >ADD AND RULE</b-button
+            >
+            <b-button
+              variant="primary"
+              @click="onClose"
+              >skip</b-button
+            >
           </div>
 
           <div class="router_rule mt-2">
-            <b-button variant="primary" @click="saveFilterRecord">Apply Filter</b-button>
+            <b-button
+              variant="primary"
+              @click="saveFilterRecord"
+              >Apply Filter</b-button
+            >
           </div>
         </div>
         <!-- <div class="bottom_modal mt-2 w-100">
@@ -106,7 +175,7 @@ import Ripple from "vue-ripple-directive";
 import vSelect from "vue-select";
 
 export default {
-  props: ["parentId", "popOverId", "type"],
+  props: ["parentId", "popOverId", "type", "ivr_builder_id"],
   directives: {
     Ripple,
   },
@@ -179,6 +248,7 @@ export default {
     onOpen(parentId) {
       this.$store.commit("ivrBuilder/UPDATE_ACTIVE_PARENT_ID", parentId);
       this.show = !this.show;
+      this.conditionTags(this.ivr_builder_id);
     },
     onClose() {
       this.conditions.forEach((data) => {
@@ -199,28 +269,29 @@ export default {
       this.show = false;
       this.$emit("selectNode", this.type);
     },
-    conditionTags() {
+    conditionTags(ivr_builder_id) {
       this.$store.dispatch("ivrBuilder/getTags").then(() => {
         this.tags = this.$store.state.ivrBuilder.tags;
       });
-
-      this.$store.dispatch("ivrBuilder/getFilterRecord", "1").then(() => {
-        const filterRecord = this.$store.state.ivrBuilder.filterRecord;
-        if (filterRecord.length != 0) {
-          this.conditions = [];
-          filterRecord.forEach((value, index) => {
-            this.conditions.push({
-              operators: value["operators"],
-              val: value["tag_operator_value"],
-              tag: value["tag_uuid"],
-              operator: value["tag_operator_uuid"],
-              operation: value["type"],
-              states: value["states"],
-              preSelectedStates: [],
+      this.$store
+        .dispatch("ivrBuilder/getFilterRecord", ivr_builder_id)
+        .then(() => {
+          const filterRecord = this.$store.state.ivrBuilder.filterRecord;
+          if (filterRecord.length != 0) {
+            this.conditions = [];
+            filterRecord.forEach((value, index) => {
+              this.conditions.push({
+                operators: value["operators"],
+                val: value["tag_operator_value"],
+                tag: value["tag_uuid"],
+                operator: value["tag_operator_uuid"],
+                operation: value["type"],
+                states: value["states"],
+                preSelectedStates: [],
+              });
             });
-          });
-        }
-      });
+          }
+        });
     },
     getTagFilters(value, key) {
       this.conditions[key].operator = "";
@@ -246,7 +317,7 @@ export default {
     saveFilterRecord() {
       const payload = {
         filters: [],
-        ivr_builder_id: 1,
+        ivr_builder_id: this.ivr_builder_id,
       };
       this.conditions.forEach((element) => {
         payload.filters.push({
@@ -269,10 +340,6 @@ export default {
 
       this.onClose();
     },
-  },
-
-  created() {
-    this.conditionTags();
   },
 };
 </script>

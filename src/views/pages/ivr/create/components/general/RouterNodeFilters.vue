@@ -23,10 +23,12 @@
             <div>{{ filter.child_node_type }}</div>
           </div>
         </div>
+
         <div class="route_filters">
           <div id="route_filter">
             <router-node-popup
               :parentId="node.id"
+              :ivr_builder_id="`${filter.id}`"
               :popOverId="`${filter.id}-router-condition-${node.id}`"
             />
           </div>
