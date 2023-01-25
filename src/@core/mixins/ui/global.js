@@ -121,19 +121,26 @@ export const globalHelper = {
             if (node.node_type == "filter") {
               ids = this.generateFilterChild(node);
 
-              this.$store
-                .dispatch("ivrBuilder/removeNodes", {
-                  uuids: [node.id],
-                  parentId: node.parentId,
-                  ivrUuid: this.$store.state.ivrBuilder.ivrUuid,
-                })
-                .then(() => {});
-
+              var payLoad = {
+                uuids: [node.id],
+                parentId: node.parentId,
+                ivrUuid: this.$store.state.ivrBuilder.ivrUuid,
+              };
             } else {
               ids = this.generateChild(node);
               //push parent id to deleted ids
               ids.push(node.id);
+
+              var payLoad = {
+                uuids: [node.parent_fillter_uuid],
+                parentId: node.parentId,
+                ivrUuid: this.$store.state.ivrBuilder.ivrUuid,
+              };
             }
+
+            this.$store
+              .dispatch("ivrBuilder/removeNodes", payLoad)
+              .then(() => {});
 
             this.getRouterFilterNode(ids);
             this.removeApiCall(node, ids);
@@ -177,6 +184,13 @@ export const globalHelper = {
         return acc.concat({ ...val, childs });
       }, []);
 
+      arr.map((el) => {
+        el.filters.forEach((value, index) => {
+          if (value.id == node.parent_fillter_uuid) {
+            el.filters.splice(index, 1);
+          }
+        });
+      });
       //if node type is  filter
       if (node.type == "filter") {
         const routerFilters = node.filters.map((filter) => {
