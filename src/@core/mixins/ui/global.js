@@ -114,24 +114,24 @@ export const globalHelper = {
         })
         .then((value) => {
           if (value) {
-            let ids = this.generateChild(node);
-
-            // this.getRouterFilterNode(ids);
-
-            // this.removeApiCall(node, ids);
-            //
-
-            if (node.node_type == "router") {
-            } else {
-            }
             // if (node.node_type == "filter") {
             // } else {
             // get all child node
             var ids = [];
             if (node.node_type == "filter") {
-              ids = this.generateFilterChild(node.id);
+              ids = this.generateFilterChild(node);
+
+              this.$store
+                .dispatch("ivrBuilder/removeNodes", {
+                  uuids: [node.id],
+                  parentId: node.parentId,
+                  ivrUuid: this.$store.state.ivrBuilder.ivrUuid,
+                })
+                .then(() => {});
+
             } else {
-              ids = this.generateChild(node.id);
+              ids = this.generateChild(node);
+              //push parent id to deleted ids
               ids.push(node.id);
             }
 
@@ -169,7 +169,7 @@ export const globalHelper = {
       const nodes = arr.reduce((acc, val, ind, array) => {
         let childs = [];
         array.forEach((el, i) => {
-          if (childs.includes(el.parentId) || el.parentId === val.node.id) {
+          if (childs.includes(el.parentId) || el.parentId === val.id) {
             childs.push(el.id);
           }
         });
@@ -182,21 +182,20 @@ export const globalHelper = {
         const routerFilters = node.filters.map((filter) => {
           return filter.id;
         });
-        childs = childs.concat(routerFilters);
+        childs = childs.concat();
       }
-      //push parent id to deleted ids
-      childs.push(node.id);
+
       const index = nodes.findIndex((el) => {
-        return el.id == id;
+        return el.id == node.id;
       });
 
       return nodes[index].childs;
     },
-    generateFilterChild(id) {
+    generateFilterChild(node) {
       const allNodes = this.$store.state.ivrBuilder.nodes;
 
       const firstFilterNode = allNodes.find(
-        (data) => data.parent_fillter_uuid == id
+        (data) => data.parent_fillter_uuid == node.id
       );
       if (firstFilterNode) {
         const nodes = allNodes.reduce((acc, val, ind, array) => {
@@ -211,19 +210,18 @@ export const globalHelper = {
         }, []);
 
         const index = nodes.findIndex((el) => {
-          return el.parent_fillter_uuid == id;
+          return el.parent_fillter_uuid == node.id;
         });
 
         allNodes.map((el) => {
           el.filters.forEach((value, index) => {
-            if (value.id == id) {
+            if (value.id == node.id) {
               el.filters.splice(index, 1);
             }
           });
         });
-
         const parentNodeId = [firstFilterNode.id];
-        return nodes[index].childs.concat(parentNodeId);
+        return [...nodes[index].childs, ...parentNodeId];
       }
     },
     gotoanynode(uuid) {
