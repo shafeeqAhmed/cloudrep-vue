@@ -26,7 +26,11 @@ export default {
     assignedPublisherNumbers: [],
     isTargetsChanged: false,
     isRoutingChanged: false,
-    currencies:[]
+    currencies: [],
+    tags: [],
+    tagsFilters: [],
+    states: [],
+    filterRecord: [],
   },
   getters: {
     btn1: (state) => {
@@ -153,6 +157,18 @@ export default {
     UPDATE_CAMPAIGN_RATE(state, val) {
       state.campaign.campaign_rate = val;
     },
+    UPDATE_TAGS(state, val) {
+      state.tags = val;
+    },
+    UPDATE_TAG_FILTERS(state, val) {
+      state.tagsFilters = val;
+    },
+    UPDATE_STATES(state, val) {
+      state.states = val;
+    },
+    UPDATE_FILTER_RECORD(state, val) {
+      state.filterRecord = val;
+    },
   },
   actions: {
     getCountries(ctx) {
@@ -177,7 +193,7 @@ export default {
           .then((response) => {
             const {
               data: {
-                data:{currencies},
+                data: { currencies },
               },
             } = response;
 
@@ -624,7 +640,7 @@ export default {
           })
           .catch((error) => reject(error))
           .finally(() => {
-          //  toastAlert.methods.hideLoader();
+            //  toastAlert.methods.hideLoader();
           });
       });
     },
@@ -632,7 +648,7 @@ export default {
       return new Promise((resolve, reject) => {
         toastAlert.methods.showLoader();
         axios
-          .get('/get-all-verticals')
+          .get("/get-all-verticals")
           .then((response) => {
             const {
               data: {
@@ -891,6 +907,87 @@ export default {
           .finally(() => {
             toastAlert.methods.hideLoader();
           });
+      });
+    },
+    getTags({ commit, state }) {
+      return new Promise((resolve, reject) => {
+        axios
+          .get("get-tags")
+          .then((response) => {
+            const {
+              data: { tags },
+            } = response;
+            commit("UPDATE_TAGS", tags);
+
+            resolve(response);
+          })
+          .catch((error) => reject(error))
+          .finally(() => {});
+      });
+    },
+    getTagFilters({ commit }, tagId) {
+      return new Promise((resolve, reject) => {
+        toastAlert.methods.showLoader();
+        axios
+          .get(`get-tag-operators?tag_uuid=${tagId}`)
+          .then((response) => {
+            const {
+              data: { operators },
+            } = response;
+            commit("UPDATE_TAG_FILTERS", operators);
+
+            resolve(response);
+          })
+          .catch((error) => reject(error))
+          .finally(() => {
+            toastAlert.methods.hideLoader();
+          });
+      });
+    },
+    getStates(ctx) {
+      return new Promise((resolve, reject) => {
+        axios
+          .get(`/state-list`)
+          .then((response) => {
+            const {
+              data: { states },
+            } = response;
+            ctx.commit("UPDATE_STATES", states);
+            resolve(response);
+          })
+          .catch((error) => reject(error));
+      });
+    },
+    storeCampaignFilterRecord(ctx, params) {
+      return new Promise((resolve, reject) => {
+        toastAlert.methods.showLoader();
+        axios
+          .post("store-tag-filter-conditions", params)
+          .then((response) => {
+            resolve(response);
+          })
+          .catch((error) => reject(error))
+          .finally(() => {
+            toastAlert.methods.hideLoader();
+          });
+      });
+    },
+    getFilterRecord({ commit, state }, camapgin_uuid) {
+      return new Promise((resolve, reject) => {
+        axios
+          .get(`get-campaign-filter-record?campaign_uuid=${camapgin_uuid}`)
+          .then((response) => {
+            const {
+              data: {
+                data: { filters },
+              },
+            } = response;
+
+            commit("UPDATE_FILTER_RECORD", filters);
+            resolve(response);
+          })
+          .catch((error) => reject(error))
+          .finally(() => {});
       });
     },
   },
