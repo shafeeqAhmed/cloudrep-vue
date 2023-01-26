@@ -14,9 +14,9 @@
           />
         </b-button>
       </div>
+
       <b-popover
         :target="popOverId"
-        v-if="activeParentId === parentId"
         :show.sync="show"
         custom-class="route_filter_modal"
       >
@@ -211,6 +211,9 @@ export default {
     activeParentId() {
       return this.$store.state.ivrBuilder.activeParentId;
     },
+    activeFilterId() {
+      return this.$store.state.ivrBuilder.activeFilterId;
+    },
   },
   methods: {
     selectOperatorValue(stateIndex, filtrIndex, name) {
@@ -246,7 +249,7 @@ export default {
       });
     },
     onOpen(parentId) {
-      this.$store.commit("ivrBuilder/UPDATE_ACTIVE_PARENT_ID", parentId);
+      this.$root.$emit("bv::hide::popover");
       this.show = !this.show;
       this.conditionTags(this.ivr_builder_uuid);
     },
@@ -267,6 +270,7 @@ export default {
         type: this.type,
       });
       this.show = false;
+
       this.$emit("selectNode", this.type);
     },
     conditionTags(ivr_builder_uuid) {
