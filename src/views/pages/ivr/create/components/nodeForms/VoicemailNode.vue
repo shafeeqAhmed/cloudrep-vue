@@ -224,7 +224,7 @@
                 <div class="input-gradient">
                   <b-form-input
                     id="seconds"
-                    type="number"
+                    type="text"
                     v-model="voicemail.finish_on_key"
                     @keydown="ivrInputValidate($event, 1)"
                     placeholder="#"
