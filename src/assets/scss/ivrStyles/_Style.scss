@@ -321,6 +321,9 @@
   &::-webkit-scrollbar {
     display: none;
   }
+  hr{
+    border: 0.5px solid #aaa !important;
+  }
 }
 .route_condition_card {
   border: 2px solid rgb(119, 119, 119);
