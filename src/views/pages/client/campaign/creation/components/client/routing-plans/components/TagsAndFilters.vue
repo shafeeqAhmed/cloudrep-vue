@@ -16,20 +16,20 @@
           <!--============================================================================-->
           <div class="" v-for="(condition, key) in conditions" :key="key">
             <!--==============================-->
-              <div class="d-flex align-items-center justify-content-center mt-1 mb-1" v-if="key != 0">
-                  <hr />
-                  <p class="m-0 mr-1 ml-1">{{condition.operation}}</p>
-                  <hr />
-              </div>
-              <!--==============================-->
+            <div class="d-flex align-items-center justify-content-center mt-1 mb-1" v-if="key != 0">
+              <hr />
+              <p class="m-0 mr-1 ml-1">{{ condition.operation }}</p>
+              <hr />
+            </div>
+            <!--==============================-->
             <div class="route_condition_card">
               <div class="d-flex align-items-center justify-content-end mb-1" v-if="key != 0">
-                <div class=""><feather-icon icon="XIcon" class="cursor-pointer" size="21"/></div>
+                <div class=""><feather-icon icon="XIcon" class="cursor-pointer" size="21" /></div>
               </div>
               <div class="">
                 <div class="input-gradient mb-1">
-                <v-select :options="tags" v-model="condition.tag" label="name" :reduce="(list) => list.uuid"
-                  @input="getTagFilters($event, key)" placeholder="Select Tag"></v-select>
+                  <v-select :options="tags" v-model="condition.tag" label="name" :reduce="(list) => list.uuid"
+                    @input="getTagFilters($event, key)" placeholder="Select Tag"></v-select>
                 </div>
                 <div class="input-gradient mb-1">
                   <v-select :options="condition.operators" v-model="condition.operator" :reduce="(list) => list.uuid"
@@ -38,7 +38,8 @@
                 <div class="router_states">
                   <div class="left_state_box">
                     <b-list-group>
-                      <b-list-group-item v-for="(state, stateIndex) in condition.states" :ref="`state-${stateIndex}${key}`"
+                      <b-list-group-item v-for="(state, stateIndex) in condition.states"
+                        :ref="`state-${stateIndex}${key}`" :key="`state-${stateIndex}${key}`"
                         @click="selectOperatorValue(stateIndex, key, state.name)">{{ state.name }}</b-list-group-item>
                     </b-list-group>
                   </div>
@@ -65,7 +66,7 @@
               </div>
             </div>
           </div>
-          
+
           <div class="router_rule mt-2">
             <b-button variant="primary" class="mr-1" @click="addCondition('or')">ADD OR RULE</b-button>
             <b-button variant="primary" class="mr-1" @click="addCondition('and')">ADD AND RULE</b-button>
