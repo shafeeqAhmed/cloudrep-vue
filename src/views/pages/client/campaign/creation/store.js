@@ -972,10 +972,10 @@ export default {
           });
       });
     },
-    getFilterRecord({ commit, state }, camapgin_uuid) {
+    getFilterRecord({ commit, state }, params) {
       return new Promise((resolve, reject) => {
         axios
-          .get(`get-campaign-filter-record?campaign_uuid=${camapgin_uuid}`)
+          .get(`get-campaign-filter-record`, { params })
           .then((response) => {
             const {
               data: {
