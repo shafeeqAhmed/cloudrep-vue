@@ -6,7 +6,7 @@
           <feather-icon icon="FilterIcon" class="cursor-pointer" size="18" />
         </b-button>
       </div>
-      <b-popover :target="target_uuid" custom-class="route_filter_modal" :show.sync="show">
+      <b-popover :target="target_uuid" custom-class="route_filter_modal" :show.sync="show" placement="left">
         <div class="route_condition">
           <h4 class="mt-2 mb-1 d-flex align-items-center justify-content-between">
             Condition
@@ -24,7 +24,9 @@
             <!--==============================-->
             <div class="route_condition_card">
               <div class="d-flex align-items-center justify-content-end mb-1" v-if="key != 0">
-                <div class=""><feather-icon icon="XIcon" class="cursor-pointer" size="21" /></div>
+                <div class="">
+                  <feather-icon icon="XIcon" class="cursor-pointer" @click="removeFilterCondition(key)" size="21" />
+                </div>
               </div>
               <div class="">
                 <div class="input-gradient mb-1">
@@ -39,8 +41,9 @@
                   <div class="left_state_box">
                     <b-list-group>
                       <b-list-group-item v-for="(state, stateIndex) in condition.states"
-                        :ref="`state-${stateIndex}${key}`" :key="`state-${stateIndex}${key}`"
-                        @click="selectOperatorValue(stateIndex, key, state.name)">{{ state.name }}</b-list-group-item>
+                        :ref="`state-${stateIndex}${key}`" :key="`state-${stateIndex}${key}`" @click="
+                          selectOperatorValue(stateIndex, key, state.name)
+                        ">{{ state.name }}</b-list-group-item>
                     </b-list-group>
                   </div>
                   <div class="center_state_box">
@@ -129,6 +132,9 @@ export default {
   },
 
   methods: {
+    removeFilterCondition(index) {
+      this.conditions.splice(index, 1);
+    },
     openPopup() {
       this.$root.$emit("bv::hide::popover");
       this.show = !this.show;
@@ -265,3 +271,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.route_filter_modal {
+  left: -150px !important;
+}
+</style>
