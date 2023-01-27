@@ -306,8 +306,12 @@
   }
 }
 .route_filter_modal {
+  border-radius: 10px;
+  background: #eee !important;
   .popover-body {
-    width: 500px;
+    width: 650px;
+    background: #eee !important;
+    border-radius: 10px;
   }
   .bottom_modal {
     display: flex;
@@ -370,7 +374,35 @@
     }
   }
 }
-
+.dark-layout{
+  .route_filter_modal {
+    .popover-body {
+      background: #000f19 !important;
+    }
+  }
+  .route_condition {
+    hr{
+      border: 0.5px solid #aaa !important;
+    }
+  }
+  .route_condition_card {
+    border: 2px solid rgb(119, 119, 119);
+    border-left: 10px solid #00575e;
+  }
+  .router_states {
+    .left_state_box,
+    .right_state_box {
+      border: 1px solid rgb(119, 119, 119);
+    }
+    .center_state_box {
+      svg {
+        &:hover {
+          stroke: #00575e;
+        }
+      }
+    }
+  }
+}
 ////////////////////////////
 .singleIvrNode {
   background-color: #eeedfd;

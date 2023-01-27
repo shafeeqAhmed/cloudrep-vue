@@ -9,20 +9,22 @@
 
       <b-popover :target="popOverId" :show.sync="show" custom-class="route_filter_modal">
         <div class="route_condition">
-          <h4 class="mt-2"> Condition <feather-icon icon="XIcon" class="cursor-pointer" size="21" @click="onClose" /> </h4>
+          <h4 class="mt-2 mb-1 d-flex align-items-center justify-content-between"> Condition <feather-icon icon="XIcon" class="cursor-pointer" size="21" @click="onClose" /> </h4>
           <!--============================================================================-->
           <!--============================================================================-->
           <div class="" v-for="(condition, key) in conditions" :key="key">
             <!--==============================-->
-            <!--==============================-->
-            <div class="route_condition_card">
-              <!--==============================-->
-              <div class="d-flex align-items-center justify-content-center mt-1 mb-1" v-if="key != 0">
+            <div class="d-flex align-items-center justify-content-center mt-1 mb-1" v-if="key != 0">
                 <hr />
                 <p class="m-0 mr-1 ml-1">{{condition.operation}}</p>
                 <hr />
               </div>
-              <!--==============================-->
+            <!--==============================-->
+            <!--==============================-->
+            <div class="route_condition_card">
+              <div class="d-flex align-items-center justify-content-end mb-1" v-if="key != 0">
+                <div class=""><feather-icon icon="XIcon" class="cursor-pointer" size="21"/></div>
+              </div>
               <div class="">
                 <div class="input-gradient mb-1">
                 <v-select :options="tags" v-model="condition.tag" label="name" :reduce="(list) => list.uuid"
