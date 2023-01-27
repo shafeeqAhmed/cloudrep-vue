@@ -274,9 +274,14 @@ export default {
       this.$emit("selectNode", this.type);
     },
     conditionTags(ivr_builder_uuid) {
-      this.$store.dispatch("ivrBuilder/getTags").then(() => {
+      if (this.$store.state.ivrBuilder.tags.length == 0) {
+        this.$store.dispatch("ivrBuilder/getTags").then(() => {
+          this.tags = this.$store.state.ivrBuilder.tags;
+        });
+      } else {
         this.tags = this.$store.state.ivrBuilder.tags;
-      });
+      }
+
       this.$store
         .dispatch("ivrBuilder/getFilterRecord", ivr_builder_uuid)
         .then(() => {
