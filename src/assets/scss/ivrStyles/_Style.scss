@@ -280,18 +280,18 @@
   }
 }
 .router_tab {
-  background: #1f263d;
+  background: #eee;
   padding: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   span {
-    color: #ccc;
+    color: #333;
     font-size: 18px;
   }
   .route_name {
     font-size: 16px;
-    color: #fbfbfb;
+    color: #333;
     display: flex;
     align-items: center;
   }
@@ -375,6 +375,22 @@
   }
 }
 .dark-layout{
+  .router_tab {
+    background: #1f263d;
+    span {
+      color: #ccc;
+    }
+    .route_name {
+      color: #fbfbfb;
+    }
+    .route_filters {
+      svg {
+        &:hover {
+          stroke: #0099ff;
+        }
+      }
+    }
+  }
   .route_filter_modal {
     .popover-body {
       background: #000f19 !important;
