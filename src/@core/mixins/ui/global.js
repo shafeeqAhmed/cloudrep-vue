@@ -184,13 +184,15 @@ export const globalHelper = {
         return acc.concat({ ...val, childs });
       }, []);
 
-      arr.map((el) => {
-        el.filters.forEach((value, index) => {
-          if (value.id == node.parent_fillter_uuid) {
-            el.filters.splice(index, 1);
-          }
+      if (node.parent_fillter_uuid) {
+        arr.map((el) => {
+          el.filters.forEach((value, index) => {
+            if (value.id == node.parent_fillter_uuid) {
+              el.filters.splice(index, 1);
+            }
+          });
         });
-      });
+      }
       //if node type is  filter
       if (node.type == "filter") {
         const routerFilters = node.filters.map((filter) => {

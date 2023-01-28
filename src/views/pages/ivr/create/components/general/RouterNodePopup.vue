@@ -341,13 +341,19 @@ export default {
       );
 
       if (tag.value === "state") {
-        this.$store.dispatch("ivrBuilder/getStates").then(() => {
+        if (this.$store.state.ivrBuilder.states.length == 0) {
+          this.$store.dispatch("ivrBuilder/getStates").then(() => {
+            this.conditions[key].states = [
+              ...this.$store.state.ivrBuilder.states,
+            ];
+
+            // this.isStateDrodown = 1;
+          });
+        } else {
           this.conditions[key].states = [
             ...this.$store.state.ivrBuilder.states,
           ];
-
-          this.isStateDrodown = 1;
-        });
+        }
       }
     },
     saveFilterRecord() {
