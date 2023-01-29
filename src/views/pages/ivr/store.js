@@ -208,7 +208,10 @@ export default {
 
         //update gotSourceNodeId
         state.nodes.forEach((el) => {
-          if (Object.values(el.gotoSourceNodeId).includes(id)) {
+          if (
+            el.gotoSourceNodeId &&
+            Object.values(el.gotoSourceNodeId).includes(id)
+          ) {
             const tempArray = Object.entries(el.gotoSourceNodeId).map(
               (entry) => {
                 return entry[1];
