@@ -385,3 +385,9 @@ export default {
   },
 };
 </script>
+
+<style scopped>
+.right_state_box .list-group-item {
+  background: #7a60e0  !important;
+}
+</style>

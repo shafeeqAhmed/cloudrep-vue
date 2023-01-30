@@ -3,7 +3,7 @@
   padding: 0.3rem .5rem !important;
 }
 .list-group-item:hover {
-  background: #fff !important;
+  background: #7a60e0 !important;
 }
 .list-group-item::after {
   content: "";
