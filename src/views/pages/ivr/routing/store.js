@@ -9,6 +9,10 @@ export default {
     routingPlan: [],
     fetchRoutingPlan: 0,
     fetchTargets: 0,
+    tags: [],
+    tagsFilters: [],
+    states: [],
+    filterRecord: [],
   },
   getters: {
     clientList(state) {
@@ -37,6 +41,18 @@ export default {
     UPDATE_FETCH_TARGETS(state, val) {
       state.fetchTargets = val;
     },
+    UPDATE_TAGS(state, val) {
+      state.tags = val;
+    },
+    UPDATE_TAG_FILTERS(state, val) {
+      state.tagsFilters = val;
+    },
+    UPDATE_STATES(state, val) {
+      state.states = val;
+    },
+    UPDATE_FILTER_RECORD(state, val) {
+      state.filterRecord = val;
+    },
   },
   actions: {
     routings(ctx, params) {
@@ -53,6 +69,90 @@ export default {
           });
       });
     },
+    getTags({ commit, state }) {
+      return new Promise((resolve, reject) => {
+        axios
+          .get("get-tags")
+          .then((response) => {
+            const {
+              data: { tags },
+            } = response;
+            commit("UPDATE_TAGS", tags);
+
+            resolve(response);
+          })
+          .catch((error) => reject(error))
+          .finally(() => {});
+      });
+    },
+    getTagFilters({ commit }, tagId) {
+      return new Promise((resolve, reject) => {
+        toastAlert.methods.showLoader();
+        axios
+          .get(`get-tag-operators?tag_uuid=${tagId}`)
+          .then((response) => {
+            const {
+              data: { operators },
+            } = response;
+            commit("UPDATE_TAG_FILTERS", operators);
+
+            resolve(response);
+          })
+          .catch((error) => reject(error))
+          .finally(() => {
+            toastAlert.methods.hideLoader();
+          });
+      });
+    },
+    storeCampaignFilterRecord(ctx, params) {
+      return new Promise((resolve, reject) => {
+        toastAlert.methods.showLoader();
+        axios
+          .post("store-tag-filter-conditions", params)
+          .then((response) => {
+            resolve(response);
+          })
+          .catch((error) => reject(error))
+          .finally(() => {
+            toastAlert.methods.hideLoader();
+          });
+      });
+    },
+    getFilterRecord({ commit, state }, target_uuid) {
+      return new Promise((resolve, reject) => {
+        axios
+          .get(
+            `get-ivr-routing-target-filter-record?target_uuid=${target_uuid}`
+          )
+          .then((response) => {
+            const {
+              data: {
+                data: { filters },
+              },
+            } = response;
+
+            commit("UPDATE_FILTER_RECORD", filters);
+            resolve(response);
+          })
+          .catch((error) => reject(error))
+          .finally(() => {});
+      });
+    },
+    getStates(ctx) {
+      return new Promise((resolve, reject) => {
+        axios
+          .get(`/state-list`)
+          .then((response) => {
+            const {
+              data: { states },
+            } = response;
+            ctx.commit("UPDATE_STATES", states);
+            resolve(response);
+          })
+          .catch((error) => reject(error));
+      });
+    },
+
     storeRouting(ctx, params) {
       return new Promise((resolve, reject) => {
         toastAlert.methods.showLoader();
