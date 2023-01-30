@@ -32,7 +32,7 @@
 
           <template #cell(actions)="data">
             <div class="d-flex align-items-center justify-content-center">
-              <TagsAndFilters :target_uuid="data.item.target.uuid" />
+              <!-- <TagsAndFilters :target_uuid="data.item.target.uuid" /> -->
               <div class="action-btn">
                 <feather-icon
                   size="18"
