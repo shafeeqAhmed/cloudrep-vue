@@ -204,7 +204,17 @@ export default {
     REMOVE_NODE(state, ids) {
       ids.forEach((id) => {
         const nodeIndex = _.findIndex(state.nodes, { id: id });
-        state.nodes.splice(nodeIndex, 1);
+        if (nodeIndex != -1) {
+          state.nodes.splice(nodeIndex, 1);
+        } else {
+          state.nodes.map((el) => {
+            el.filters.forEach((value, index) => {
+              if (value.id == id) {
+                el.filters.splice(index, 1);
+              }
+            });
+          });
+        }
 
         //update gotSourceNodeId
         state.nodes.forEach((el) => {

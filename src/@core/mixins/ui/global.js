@@ -120,27 +120,13 @@ export const globalHelper = {
             var ids = [];
             if (node.node_type == "filter") {
               ids = this.generateFilterChild(node);
-
-              var payLoad = {
-                uuids: [node.id],
-                parentId: node.parentId,
-                ivrUuid: this.$store.state.ivrBuilder.ivrUuid,
-              };
+              ids.push(node.id);
             } else {
               ids = this.generateChild(node);
               //push parent id to deleted ids
               ids.push(node.id);
-
-              var payLoad = {
-                uuids: [node.parent_fillter_uuid],
-                parentId: node.parentId,
-                ivrUuid: this.$store.state.ivrBuilder.ivrUuid,
-              };
+              ids.push(node.parent_fillter_uuid);
             }
-
-            this.$store
-              .dispatch("ivrBuilder/removeNodes", payLoad)
-              .then(() => {});
 
             this.getRouterFilterNode(ids);
             this.removeApiCall(node, ids);
@@ -184,15 +170,6 @@ export const globalHelper = {
         return acc.concat({ ...val, childs });
       }, []);
 
-      if (node.parent_fillter_uuid) {
-        arr.map((el) => {
-          el.filters.forEach((value, index) => {
-            if (value.id == node.parent_fillter_uuid) {
-              el.filters.splice(index, 1);
-            }
-          });
-        });
-      }
       //if node type is  filter
       if (node.type == "filter") {
         const routerFilters = node.filters.map((filter) => {
@@ -229,13 +206,6 @@ export const globalHelper = {
           return el.parent_fillter_uuid == node.id;
         });
 
-        allNodes.map((el) => {
-          el.filters.forEach((value, index) => {
-            if (value.id == node.id) {
-              el.filters.splice(index, 1);
-            }
-          });
-        });
         const parentNodeId = [firstFilterNode.id];
         return [...nodes[index].childs, ...parentNodeId];
       }
