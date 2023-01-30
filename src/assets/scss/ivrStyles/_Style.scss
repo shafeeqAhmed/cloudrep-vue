@@ -1,17 +1,19 @@
 .flowy {
   overflow: scroll !important;
   height: 70vh;
-  padding-bottom: 10rem;
+  padding: 15px;
+  // padding-bottom: 10rem;
   scroll-behavior: smooth;
   &::-webkit-scrollbar {
     width: 10px;
+    height: 10px;
   }
   &::-webkit-scrollbar-corner {
     opacity: 0;
   }
 
   &::-webkit-scrollbar-track {
-    background-color: #333;
+    background-color: #aaa;
     -webkit-border-radius: 10px;
     border-radius: 10px;
   }
@@ -31,7 +33,7 @@
   border: 1px solid #ccc;
   background: #fbfbfb;
   border-radius: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   height: 70vh;
 }
 .ivr-builder {
@@ -920,9 +922,6 @@
 .ivr-box-build {
   padding: 0px 10px;
   position: relative;
-  .dropIconArea {
-    padding: 20px 0px;
-  }
 }
 //===============================================================================//
 //===============================================================================//

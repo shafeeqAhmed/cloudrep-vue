@@ -8,147 +8,70 @@
               <ivrheader :name="ivrName" />
             </div>
             <div class="w-50">
-              <b-button
-                @click="toggal(false)"
-                class="ivrec-btn"
-              >
-                <img
-                  src="@/assets/images/icons/up.png"
-                  alt=""
-                />
+              <b-button @click="toggal(false)" class="ivrec-btn">
+                <img src="@/assets/images/icons/up.png" alt="" />
                 Close Nodes
               </b-button>
-              <b-button
-                @click="toggal(true)"
-                class="ivrec-btn"
-              >
-                <img
-                  src="@/assets/images/icons/down.png"
-                  alt=""
-                />
+              <b-button @click="toggal(true)" class="ivrec-btn">
+                <img src="@/assets/images/icons/down.png" alt="" />
                 Expand Nodes
               </b-button>
-              <b-button
-                @click="saveIvrNodes()"
-                :disabled="isNodesContainError"
-                class="ivrec-btn ivrec-btn-disab"
-              >
-                <feather-icon
-                  icon="SaveIcon"
-                  class="mr-1"
-                  size="21"
-                />
+              <b-button @click="saveIvrNodes()" :disabled="isNodesContainError" class="ivrec-btn ivrec-btn-disab">
+                <feather-icon icon="SaveIcon" class="mr-1" size="21" />
                 Save
               </b-button>
             </div>
           </div>
           <div class="ivr-nodedrag-btn mt-2 mb-2">
-            <flowy-new-block
-              v-for="(block, index) in blocks"
-              :key="index"
-              class=""
-              @drag-start="onDragStartNewBlock"
-              @drag-stop="onDragStopNewBlock"
-            >
+            <flowy-new-block v-for="(block, index) in blocks" :key="index" class="" @drag-start="onDragStartNewBlock"
+              @drag-stop="onDragStopNewBlock">
               <template v-slot:preview="{}">
-                <demo-block
-                  :title="block.preview.title"
-                  :icons="block.preview.icons"
-                  :description="block.preview.description"
-                />
+                <demo-block :title="block.preview.title" :icons="block.preview.icons"
+                  :description="block.preview.description" />
               </template>
               <template v-slot:node="{}">
-                <demo-node
-                  :title="block.node.title"
-                  :description="block.node.description"
-                  :custom-attribute="block.node.canBeAdded"
-                  :blocks="blocks"
-                />
+                <demo-node :title="block.node.title" :description="block.node.description"
+                  :custom-attribute="block.node.canBeAdded" :blocks="blocks" />
               </template>
             </flowy-new-block>
           </div>
 
           <!-- draggable--is-dragging -->
           <div v-if="getNodes.length == 0">
-            <drop
-              @drop="handleDrop"
-              @dragover="handleOver"
-              @dragleave="handleLeave"
-            >
-              <div
-                class="ivr-box-build"
-                id="testIvr"
-                :class="{ 'draggable--is-dragging': isDragged }"
-              >
+            <drop @drop="handleDrop" @dragover="handleOver" @dragleave="handleLeave">
+              <div class="ivr-box-build" id="testIvr" :class="{ 'draggable--is-dragging': isDragged }">
                 <b-row class="dropIconArea">
-                  <b-col
-                    md="12"
-                    class="d-flex justify-content-center align-items-start"
-                  >
-                    <div
-                      class="text-center align-self-center"
-                      v-if="getNodes.length == 0"
-                    >
+                  <div class="d-flex justify-content-center align-items-start w-100">
+                    <div class="text-center align-self-center" v-if="getNodes.length == 0">
                       <img src="@/assets/images/ivr/dropIcon.png" />
                       <p class="mt-2">
                         Drag and Drop Node Here to Build an IVR Tree
                       </p>
                     </div>
-                    <div
-                      v-else
-                      class="flex-grow overflow-auto"
-                      style="width: 100%"
-                    >
-                      <flowy
-                        class="q-mx-auto"
-                        :nodes="getNodes"
-                        :beforeMove="beforeMove"
-                        :beforeAdd="beforeAdd"
-                        @add="add"
-                        @move="move"
-                        @drag-start="onDragStart"
-                      ></flowy>
+                    <div v-else class="flex-grow overflow-auto" style="width: 100%">
+                      <flowy class="q-mx-auto" :nodes="getNodes" :beforeMove="beforeMove" :beforeAdd="beforeAdd"
+                        @add="add" @move="move" @drag-start="onDragStart"></flowy>
                     </div>
-                  </b-col>
+                  </div>
                 </b-row>
               </div>
             </drop>
           </div>
-          <div
-            v-else
-            class="ivr-box-build"
-            id="testIvr"
-            :class="{ 'draggable--is-dragging': isDragged }"
-          >
+          <div v-else class="ivr-box-build" id="testIvr" :class="{ 'draggable--is-dragging': isDragged }">
             <b-row class="dropIconArea">
-              <b-col
-                md="12"
-                class="d-flex justify-content-center align-items-start"
-              >
-                <div
-                  class="text-center"
-                  v-if="getNodes.length == 0"
-                >
+              <div class="d-flex justify-content-center align-items-start w-100">
+                <div class="text-center" v-if="getNodes.length == 0">
                   <img src="@/assets/images/ivr/dropIcon.png" />
                   <p class="mt-2">
                     Drag and Drop Node Here to Build an IVR Tree
                   </p>
                 </div>
-                <div
-                  class="flex-grow overflow-auto"
-                  style="width: 100%"
-                  v-else
-                >
-                  <flowy
-                    class="q-mx-auto"
-                    :nodes="getNodes"
-                    :beforeMove="beforeMove"
-                    :beforeAdd="beforeAdd"
-                    @drag-start="onDragStart"
-                  >
+                <div class="flex-grow overflow-auto" style="width: 100%" v-else>
+                  <flowy class="q-mx-auto" :nodes="getNodes" :beforeMove="beforeMove" :beforeAdd="beforeAdd"
+                    @drag-start="onDragStart">
                   </flowy>
                 </div>
-              </b-col>
+              </div>
             </b-row>
           </div>
         </div>
