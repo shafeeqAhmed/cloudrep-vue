@@ -207,11 +207,9 @@
 
         </div>
       </b-collapse>
-      <b-row class="m-auto">
-        <b-col sm="12" class="mt-2 success-node">
-          <child-node-menu label="On Success" :node="node" type="success" />
-        </b-col>
-      </b-row>
+      <div class="success-node">
+        <child-node-menu label="On Success" :node="node" type="success" />
+      </div>
     </div>
   </div>
 </template>

@@ -4,10 +4,7 @@
       <b-col cols="12">
         <div class="upp-header">
           <div class="upp-img">
-            <b-img
-              class="w-100"
-              src="@/assets/images/campaign-img/bghead.png"
-            ></b-img>
+            <b-img class="w-100" src="@/assets/images/campaign-img/bghead.png"></b-img>
           </div>
           <div class="upp-heading">
             <h1>Create Campaign</h1>
@@ -21,212 +18,98 @@
               <div class="float-right text-right">
                 <!-- <b-button variant="primary" class="mr-1" @click="expandTab">Expand </b-button>
                 <b-button variant="primary" class="mr-1" @click="closeTab">Close </b-button> -->
-                <b-button
-                  variant="primary"
-                  class="next-btn"
-                  @click="storeCampaignPublish"
-                  >Publish Campaign</b-button
-                >
+                <b-button variant="primary" class="next-btn" @click="storeCampaignPublish">Publish Campaign</b-button>
               </div>
             </b-col>
           </b-row>
           <!-- Campaign Name -->
-          <step-header
-            heading="Campaign Name"
-            name="name"
-            @toggleTab="updateCollapse"
-            class="camp_req"
-          />
-          <b-collapse
-            v-model="campaignStep.name"
-            class="p-1"
-          >
+          <step-header heading="Campaign Name" name="name" @toggleTab="updateCollapse" class="camp_req" />
+          <b-collapse v-model="campaignStep.name" class="p-1">
             <campaign-name />
           </b-collapse>
 
           <!-- Services -->
-          <step-header
-            heading="Services"
-            name="services"
-            @toggleTab="updateCollapse"
-            class="camp_not_req"
-          />
-          <b-collapse
-            v-model="campaignStep.services"
-            class="p-1"
-          >
+          <step-header heading="Services" name="services" @toggleTab="updateCollapse" class="camp_not_req" />
+          <b-collapse v-model="campaignStep.services" class="p-1">
             <Services v-if="campaignStep.services" />
           </b-collapse>
 
           <!-- Client Information -->
-          <step-header
-            heading="Client Information "
-            name="clientInformation"
-            @toggleTab="updateCollapse"
-            class="camp_req"
-          />
-          <b-collapse
-            v-model="campaignStep.clientInformation"
-            class="p-1"
-          >
+          <step-header heading="Client Information " name="clientInformation" @toggleTab="updateCollapse"
+            class="camp_req" />
+          <b-collapse v-model="campaignStep.clientInformation" class="p-1">
             <ClientInformation v-if="campaignStep.clientInformation" />
           </b-collapse>
 
           <!-- Client Address -->
-          <step-header
-            heading="Client Address"
-            name="clientAddress"
-            @toggleTab="updateCollapse"
-            class="camp_not_req"
-          />
-          <b-collapse
-            v-model="campaignStep.clientAddress"
-            class="p-1"
-          >
+          <step-header heading="Client Address" name="clientAddress" @toggleTab="updateCollapse" class="camp_not_req" />
+          <b-collapse v-model="campaignStep.clientAddress" class="p-1">
             <client-address v-if="campaignStep.clientAddress" />
           </b-collapse>
 
           <!-- Business Category & Verticals -->
-          <step-header
-            class="camp_not_req"
-            heading="Business Category & Verticals"
-            name="bussinessCategoryAndVertical"
-            @toggleTab="updateCollapse"
-          />
-          <b-collapse
-            v-model="campaignStep.bussinessCategoryAndVertical"
-            class="p-1"
-          >
-            <business-category-vertical
-              v-if="campaignStep.bussinessCategoryAndVertical"
-            />
+          <step-header class="camp_not_req" heading="Business Category & Verticals" name="bussinessCategoryAndVertical"
+            @toggleTab="updateCollapse" />
+          <b-collapse v-model="campaignStep.bussinessCategoryAndVertical" class="p-1">
+            <business-category-vertical v-if="campaignStep.bussinessCategoryAndVertical" />
           </b-collapse>
 
           <!-- Business Category & Verticals -->
-          <step-header
-            class="camp_not_req"
-            heading="Date & Time"
-            name="campaignDateTime"
-            @toggleTab="updateCollapse"
-          />
-          <b-collapse
-            v-model="campaignStep.campaignDateTime"
-            class="p-1"
-          >
+          <step-header class="camp_not_req" heading="Date & Time" name="campaignDateTime" @toggleTab="updateCollapse" />
+          <b-collapse v-model="campaignStep.campaignDateTime" class="p-1">
             <date-and-time v-if="campaignStep.campaignDateTime" />
           </b-collapse>
 
           <!-- Social Links -->
-          <step-header
-            class="camp_not_req"
-            heading="Social Links"
-            name="socialLinks"
-            @toggleTab="updateCollapse"
-          />
-          <b-collapse
-            v-model="campaignStep.socialLinks"
-            class="p-1"
-          >
+          <step-header class="camp_not_req" heading="Social Links" name="socialLinks" @toggleTab="updateCollapse" />
+          <b-collapse v-model="campaignStep.socialLinks" class="p-1">
             <social-links v-if="campaignStep.socialLinks" />
           </b-collapse>
 
           <!-- Campaign Rates -->
-          <step-header
-            class="camp_req"
-            heading="Rates"
-            name="campaignRates"
-            @toggleTab="updateCollapse"
-          />
-          <b-collapse
-            v-model="campaignStep.campaignRates"
-            class="p-1"
-          >
+          <step-header class="camp_req" heading="Rates" name="campaignRates" @toggleTab="updateCollapse" />
+          <b-collapse v-model="campaignStep.campaignRates" class="p-1">
             <campaign-rates v-if="campaignStep.campaignRates" />
           </b-collapse>
 
           <!-- Campaign Images -->
-          <step-header
-            class="camp_not_req"
-            heading="Images"
-            name="campaignImages"
-            @toggleTab="updateCollapse"
-          />
-          <b-collapse
-            v-model="campaignStep.campaignImages"
-            class="p-1"
-          >
+          <step-header class="camp_not_req" heading="Images" name="campaignImages" @toggleTab="updateCollapse" />
+          <b-collapse v-model="campaignStep.campaignImages" class="p-1">
             <campaign-images v-if="campaignStep.campaignImages" />
           </b-collapse>
 
           <!-- Campaign Add LMS -->
-          <step-header
-            class="camp_not_req"
-            heading="Add LMS"
-            name="campaignAndLms"
-            @toggleTab="updateCollapse"
-          />
-          <b-collapse
-            v-model="campaignStep.campaignAndLms"
-            class="p-1"
-          >
+          <step-header class="camp_not_req" heading="Add LMS" name="campaignAndLms" @toggleTab="updateCollapse" />
+          <b-collapse v-model="campaignStep.campaignAndLms" class="p-1">
             <campaign-add-lms v-if="campaignStep.campaignAndLms" />
           </b-collapse>
 
           <!-- Campaign Agent Payout Setting -->
-          <step-header
-            class="camp_not_req"
-            heading="Agent Payout Settings"
-            name="agentPayoutSetting"
-            @toggleTab="updateCollapse"
-            v-if="$store.state.clientCampaign.campaign.is_agent_include == 1"
-          />
-          <b-collapse
-            v-model="campaignStep.agentPayoutSetting"
-            class="p-1"
-            v-if="$store.state.clientCampaign.campaign.is_agent_include == 1"
-          >
+          <step-header class="camp_not_req" heading="Agent Payout Settings" name="agentPayoutSetting"
+            @toggleTab="updateCollapse" v-if="$store.state.clientCampaign.campaign.is_agent_include == 1" />
+          <b-collapse v-model="campaignStep.agentPayoutSetting" class="p-1"
+            v-if="$store.state.clientCampaign.campaign.is_agent_include == 1">
             <agent-payout-settings v-if="campaignStep.agentPayoutSetting" />
           </b-collapse>
 
           <!-- Campaign Addresses -->
-          <step-header
-            class="camp_not_req"
-            heading="Campaign Addresses"
-            name="campaignAddress"
-            @toggleTab="updateCollapse"
-          />
-          <b-collapse
-            v-model="campaignStep.campaignAddress"
-            class="p-1"
-          >
+          <step-header class="camp_not_req" heading="Campaign Addresses" name="campaignAddress"
+            @toggleTab="updateCollapse" />
+          <b-collapse v-model="campaignStep.campaignAddress" class="p-1">
             <campaign-address v-if="campaignStep.campaignAddress" />
           </b-collapse>
 
           <!-- Campaign Target & Routing -->
-          <step-header
-            class="camp_req"
-            heading="Target & Routing"
-            name="targetsAndRoutings"
-            @toggleTab="updateCollapse"
-          />
-          <b-collapse
-            v-model="campaignStep.targetsAndRoutings"
-            class="p-1"
-          >
+          <step-header class="camp_req" heading="Target & Routing" name="targetsAndRoutings"
+            @toggleTab="updateCollapse" />
+          <b-collapse v-model="campaignStep.targetsAndRoutings" class="p-1">
             <targets-and-routings v-if="campaignStep.targetsAndRoutings" />
           </b-collapse>
 
           <!-- Campaign Manage Publisher -->
-          <step-header
-            class="camp_req"
-            heading="Manage Publisher"
-            name="managePublishers"
-            @toggleTab="updateCollapse"
-          />
-          <b-collapse
-            v-model="campaignStep.managePublishers"
-            class="p-1"
-          >
+          <step-header class="camp_req" heading="Manage Publisher" name="managePublishers"
+            @toggleTab="updateCollapse" />
+          <b-collapse v-model="campaignStep.managePublishers" class="p-1">
             <campaign-publisher v-if="campaignStep.managePublishers" />
           </b-collapse>
         </b-col>
@@ -389,7 +272,7 @@ export default {
           // this.$route.query.campaign
           uuid
         );
-        this.$store.dispatch("clientCampaign/getCampaign").then(() => {});
+        this.$store.dispatch("clientCampaign/getCampaign").then(() => { });
       } else {
         this.$store.commit("clientCampaign/RESET_STATE");
       }

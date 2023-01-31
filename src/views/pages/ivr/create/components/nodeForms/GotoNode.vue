@@ -125,11 +125,9 @@
 
         </b-row>
       </b-collapse>
-      <b-row class="m-auto">
-        <b-col sm="12" class="mt-2 failure-node">
-          <child-node-menu label="On Failure" :node="node" type="fail" />
-        </b-col>
-      </b-row>
+      <div class="failure-node">
+        <child-node-menu label="On Failure" :node="node" type="fail" />
+      </div>
     </div>
   </div>
 
