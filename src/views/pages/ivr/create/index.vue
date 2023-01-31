@@ -1,5 +1,5 @@
 <template>
-  <div class="ivr-builder pb-2">
+  <div class="ivr-builder pb-1">
       <div class="ivr-builder-header d-flex align-items-end mb-3">
         <div class="w-50">
           <ivrheader :name="ivrName" />
