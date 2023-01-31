@@ -214,7 +214,7 @@
                   <div class="input-gradient">
                     <!-- <b-form-input id="routing_plan" v-model="dial.routing_plan" type="number" placeholder="" /> -->
                     <v-select class="IvrNodeVSelect" v-model="dial.routing_plan" :options="routingPlanList" label="name"
-                      :reduce="(name) => name.uuid" placeholder="Please select an routing plan">
+                      :reduce="(name) => name.uuid" placeholder="Select an routing plan">
                     </v-select>
                   </div>
                   <!-- <small class="text-danger">Must Have Value</small> -->
