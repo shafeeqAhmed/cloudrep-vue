@@ -198,7 +198,7 @@
                 </div>
                 <div class="ivr-input">
                   <div class="input-gradient">
-                    <b-form-input id="seconds" type="text" v-model="play.text" @keydown="ivrInputValidateText($event, 100)" placeholder="" />
+                    <b-form-textarea id="seconds" type="text" v-model="play.text" @keydown="ivrInputValidateText($event, 100)" placeholder="" />
                   </div>
                 </div>
               </div>
@@ -223,6 +223,7 @@ import {
   BButton,
   BCardText,
   BFormInput,
+  BFormTextarea,
   BFormGroup,
   BFormLabel,
   BFormFile,
@@ -254,6 +255,7 @@ export default {
     BCollapse,
     VBToggle,
     BButtonGroup,
+    BFormTextarea,
     BSpinner
   },
   mixins: [toastAlert, globalHelper],
