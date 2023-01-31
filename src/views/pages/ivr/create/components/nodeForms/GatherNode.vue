@@ -198,7 +198,7 @@
                 </div>
                 <div class="ivr-input">
                   <div class="input-gradient">
-                    <b-form-input id="seconds" type="text" v-model="gather.text"
+                    <b-form-textarea id="seconds" type="text" v-model="gather.text"
                       @keydown="ivrInputValidateText($event, 100)" placeholder="" />
                   </div>
                 </div>

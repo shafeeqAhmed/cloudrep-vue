@@ -5,7 +5,7 @@
         <validation-observer ref="stepFourForm" #default="{ errors }">
           <b-form>
             <b-row class="mb-1" :class="disableSchdeuling == true ? 'disable-campaign-end-date-and-time' : ''">
-              <b-col lg="2">
+              <b-col lg="3">
                 <h4 class="m-0">Campaign Scheduling</h4>
               </b-col>
               <b-col lg="2">

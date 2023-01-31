@@ -325,13 +325,14 @@
 }
 .ivr-input.menu_node {
   width: 50%;
-  textarea {
-    background: #161d31 !important;
-    height: 120px !important;
-  }
 }
 .ivr-input{
   width: 50%;
+  textarea {
+    background: transparent !important;
+    height: 120px !important;
+    font-size: 14px;
+  }
 }
 
 .ivr-nodes {
@@ -458,6 +459,7 @@
   .router_states {
     .left_state_box,
     .right_state_box {
+      background: #1D203E !important;
       .list-group-item{
         &:hover{
           background: #252D42 !important;
@@ -958,6 +960,11 @@
   .popover-btn {
     color: #fff !important;
 
+  }
+  .ivr-input{
+    textarea {
+      background: #161d31 !important;
+    }
   }
   .ivr-builder{
     .ivr-nodedrag-btn {
