@@ -117,12 +117,20 @@
     width: 40%;
     // border: 1px solid rgb(119, 119, 119);
     background: #1D3C5C;
-    border: 1px solid #782c96;
+    border: 1px solid #0099ff;
     height: 250px;
     overflow-y: scroll;
     border-radius: 5px;
     &::-webkit-scrollbar {
       display: none;
+    }
+    &::after{
+      display: none;
+    }
+  }
+  .left_state_box{
+    .list-group-item{
+      background: #1D203E !important;
     }
   }
   .right_state_box{
@@ -423,7 +431,7 @@
   }
   .route_filter_modal {
     .popover-body {
-      background: #000f19 !important;
+      background: #252D42 !important;
     }
   }
   .route_condition {
@@ -432,8 +440,8 @@
     }
   }
   .route_condition_card {
-    border: 2px solid rgb(119, 119, 119);
-    border-left: 10px solid #00575e;
+    border: 2px solid #0099ff;
+  border-left: 10px solid #782c96;
   }
   .router_states {
     .left_state_box,
