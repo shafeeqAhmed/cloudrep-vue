@@ -112,12 +112,13 @@
   align-items: center;
   width: 100%;
   margin-top: 20px;
+  .input-gradient{
+    width: 40%;
+  }
   .left_state_box,
   .right_state_box {
-    width: 40%;
-    // border: 1px solid rgb(119, 119, 119);
+    width: 100%;
     background: #1D203E;
-    border: 1px solid #0099ff;
     height: 250px;
     overflow-y: scroll;
     border-radius: 5px;
