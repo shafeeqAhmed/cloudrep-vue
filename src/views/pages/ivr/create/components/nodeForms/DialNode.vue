@@ -123,7 +123,7 @@
                   <div class="ivr-input">
                     <div class="input-gradient">
                       <b-form-input id="seconds" v-model="dial.timeout" type="number"
-                        @keydown="ivrInputValidate($event, 5)" placeholder="the target timeout" />
+                        @keydown="ivrInputValidate($event, 5)" placeholder="Target Timeout" />
                       <!-- @input="validateTimeOutPositiveNumber"  -->
                     </div>
                   </div>
@@ -376,7 +376,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="d-flex alig-items-end justify-content-between mb-2">
+                  <div class="d-flex align-items-start justify-content-between mb-2">
                     <div class="label-tooltip">
                       <label class="IvrNodeInputLabel">Text</label>
                       <div class="ivr-tooptip-quiz">
@@ -395,8 +395,8 @@
                     </div>
                     <div class="ivr-input">
                       <div class="input-gradient">
-                        <b-form-input id="seconds" v-model="dial.text" @keydown="ivrInputValidateText($event, 100)"
-                          type="text" placeholder="" />
+                        <b-form-textarea id="seconds" v-model="dial.text" @keydown="ivrInputValidateText($event, 100)"
+                           placeholder="" />
                       </div>
                     </div>
                   </div>

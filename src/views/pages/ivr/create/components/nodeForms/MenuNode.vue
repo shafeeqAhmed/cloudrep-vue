@@ -266,7 +266,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="d-flex alig-items-end justify-content-between mb-2">
+                  <div class="d-flex align-items-start justify-content-between mb-2">
                     <div class="label-tooltip">
                       <label class="IvrNodeInputLabel">Text</label>
                       <div class="ivr-tooptip-quiz">
@@ -284,7 +284,7 @@
                     </div>
                     <div class="ivr-input menu_node">
                       <div class="input-gradient">
-                        <b-form-textarea id="seconds" type="text" v-model="menu.text"
+                        <b-form-textarea id="seconds"  v-model="menu.text"
                           @keydown="ivrInputValidateText($event, 100)" placeholder="text" />
                       </div>
                     </div>
@@ -347,7 +347,7 @@
       </div>
       <!-- for new build  -->
     </div>
-    
+
   </div>
 </template>
 <script>
