@@ -35,7 +35,6 @@
           <b-col lg="6">
             <div class="input-gradient">
               <v-select
-                :searchable="false"
                 placeholder="Select an route"
                 v-model="ivrRoute"
                 :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
