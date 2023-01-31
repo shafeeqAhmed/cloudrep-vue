@@ -125,8 +125,10 @@
     &::-webkit-scrollbar {
       display: none;
     }
-    &::after{
-      display: none;
+    .list-group-item{
+      &::after{
+        display: none;
+      }
     }
   }
   .left_state_box{
@@ -323,6 +325,9 @@
     background: #161d31 !important;
     height: 120px !important;
   }
+}
+.ivr-input{
+  width: 50%;
 }
 
 .ivr-nodes {
