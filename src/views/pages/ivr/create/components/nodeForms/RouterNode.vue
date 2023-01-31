@@ -42,12 +42,9 @@
       <b-collapse v-model="node.isOpen" :id="collapseId">
         <router-node-filters :node="node" :remove="remove" />
       </b-collapse>
-
-      <b-row class="m-auto">
-        <b-col sm="12" class="mt-2 success-node">
-          <child-node-menu label="Add Route" :node="node" type="route" />
-        </b-col>
-      </b-row>
+      <div class="success-node">
+        <child-node-menu label="Add Route" :node="node" type="route" />
+      </div>
     </div>
 
 

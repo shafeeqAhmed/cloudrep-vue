@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="nodeContainer" class="card nodeContainer pb-2">
+    <div id="nodeContainer" class="nodeContainer">
       <div class="ivr-node-overlay-select" v-if="node.isActiveGoTo" @click="selectGoToNode(node)">
         <div class="node-select-btn">
           <feather-icon icon="CornerUpLeftIcon" size="21" />

@@ -164,14 +164,13 @@
             >
             <b-button
               variant="primary"
+              class="mr-1"
               @click="onClose"
               >skip</b-button
             >
-          </div>
-
-          <div class="router_rule mt-2">
             <b-button
               variant="primary"
+              class="mr-1"
               @click="saveFilterRecord"
               >Apply Filter</b-button
             >
@@ -388,6 +387,6 @@ export default {
 
 <style scopped>
 .right_state_box .list-group-item {
-  background: #7a60e0  !important;
+  background: #7a60e0 !important;
 }
 </style>

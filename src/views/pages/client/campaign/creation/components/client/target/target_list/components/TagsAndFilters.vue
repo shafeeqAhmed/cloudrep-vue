@@ -138,7 +138,7 @@
             </div>
           </div>
 
-          <div class="router_rule mt-2">
+          <div class="router_rule mt-2 mb-1">
             <b-button
               variant="primary"
               class="mr-1"
@@ -153,15 +153,15 @@
             >
             <b-button
               variant="primary"
+              class="mr-1"
               @click="onClose"
               >skip</b-button
             >
-          </div>
 
-          <div class="router_rule mt-2">
             <b-button
               variant="primary"
               @click="saveFilterRecord"
+              class="mr-1"
               >Apply Filter</b-button
             >
           </div>

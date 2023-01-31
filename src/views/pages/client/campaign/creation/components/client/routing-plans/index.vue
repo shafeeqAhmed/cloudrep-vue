@@ -43,7 +43,7 @@
                 <feather-icon
                   icon="TrashIcon"
                   size="20"
-                  class="mr-1"
+                  class="mr-1 cursor-pointer"
                   @click="deletePlan(data.item.uuid)"
                 />
               </div>

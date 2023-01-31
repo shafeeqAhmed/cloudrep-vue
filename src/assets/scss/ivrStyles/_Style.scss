@@ -1,3 +1,156 @@
+.ivr-builder{
+  .ivr-builder-header{
+    .ivrec-btn {
+      background-color: #7a60e0 !important;
+      background: #7a60e0;
+      border: 1px solid #7a60e0 !important;
+      float: right;
+      border-radius: 5px;
+      color: #333;
+      padding: 10px 20px;
+      margin: 0px 10px;
+      &:hover {
+        background: linear-gradient(138.29deg, #01b7c5 -6.3%, #782c96 103.83%);
+        border: 1px solid #0099ff;
+        color: #fff;
+        transition: 0.4s all ease-in-out;
+      }
+    }
+  }
+  .ivr-nodedrag-btn {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    .flowy-block {
+      margin-right: 10px !important;
+      .drag-node-btn {
+        width: 145px;
+        .DraggableItemContainer {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          flex-wrap: wrap;
+          margin-top: 10px;
+          .input-gradient {
+            padding: 1px;
+            width: 100%;
+          }
+          .draggableItem {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            height: 45px;
+            padding: 0px 10px;
+            position: relative;
+            border-radius: 5px;
+            color: #000;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+              rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            background: #fbfbfb;
+            font-size: 14px;
+            &:hover {
+              background: linear-gradient(
+                138.29deg,
+                #01b7c5 -6.3%,
+                #782c96 103.83%
+              ) !important;
+              cursor: pointer;
+              color: #fff;
+            }
+            .ivr-node-icon {
+              margin-right: 10px;
+            }
+            .ivr-node-dots {
+              position: absolute;
+              right: -3px;
+              bottom: -3px;
+              svg {
+                color: #000;
+                stroke: #000;
+              }
+            }
+            span {
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.nodeContainer {
+  width: 450px;
+  background-color: #f4f7fe;
+  .head-node-ivr {
+    border-radius: 5px 5px 0px 0px;
+    border: 1px solid #ccc;
+    background: #ccc;
+    transition: all 0.4s ease-in-out;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    h2 {
+      margin: 0px;
+      font-size: 16px;
+    }
+  }
+  .IvrNodeDeleteIconArea {
+    cursor: pointer;
+    .IvrNodeDeleteIcon {
+      width: 24px;
+    }
+    img{
+      &:hover{
+        scale: 1.2;
+        transition: all 0.4s ease-in-out;
+      }
+    }
+  }
+}
+.router_states {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  .left_state_box,
+  .right_state_box {
+    width: 40%;
+    // border: 1px solid rgb(119, 119, 119);
+    background: #1D203E;
+    border: 1px solid #0099ff;
+    height: 250px;
+    overflow-y: scroll;
+    border-radius: 5px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &::after{
+      display: none;
+    }
+  }
+  .left_state_box{
+    .list-group-item{
+      background: #1D203E !important;
+    }
+  }
+  .right_state_box{
+    .list-group-item{
+      color: #fff !important;
+    }
+  }
+  .center_state_box {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    svg {
+      &:hover {
+        stroke: #00575e;
+      }
+    }
+  }
+}
 .flowy {
   overflow: scroll !important;
   height: 70vh;
@@ -36,33 +189,6 @@
   margin-bottom: 50px;
   height: 70vh;
 }
-.ivr-builder {
-  .ivr-build-left {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    .ivrec-btn {
-      background-color: #7a60e0 !important;
-      background: #7a60e0;
-      border: 1px solid #7a60e0 !important;
-      float: right;
-      border-radius: 5px;
-      color: #333;
-      padding: 10px 20px;
-      margin: 0px 10px;
-      &:hover {
-        background: linear-gradient(138.29deg, #01b7c5 -6.3%, #782c96 103.83%);
-        border: 1px solid #0099ff;
-        color: #fff;
-        transition: 0.4s all ease-in-out;
-      }
-    }
-  }
-  .ivr-build-right {
-    user-select: none;
-    width: 100%;
-  }
-}
 .ivr-pill-btn {
   .group-btn {
     width: 100%;
@@ -74,10 +200,7 @@
 .ivr-pill-btn button.active {
   background: linear-gradient(138.29deg, #00575e -6.3%, #6e0099 103.83%);
 }
-.nodeContainer {
-  width: 450px;
-  background-color: #f4f7fe;
-}
+
 .edit-ivr-search {
   svg path {
     fill: #393939;
@@ -225,54 +348,6 @@
   background: #2c2f48;
   box-shadow: inset 1px 0px 0px rgba(255, 255, 255, 0.1);
 }
-.DraggableItemContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 10px;
-  .input-gradient {
-    padding: 1px;
-    width: 100%;
-  }
-  .draggableItem {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    height: 50px;
-    padding: 0px 15px;
-    position: relative;
-    border-radius: 5px;
-    color: #000;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    background: #fbfbfb;
-    &:hover {
-      background: linear-gradient(
-        138.29deg,
-        #01b7c5 -6.3%,
-        #782c96 103.83%
-      ) !important;
-      cursor: pointer;
-      color: #fff;
-    }
-    .ivr-node-icon {
-      margin-right: 10px;
-    }
-    .ivr-node-dots {
-      position: absolute;
-      right: -3px;
-      bottom: -3px;
-      svg {
-        color: #000;
-        stroke: #000;
-      }
-    }
-    span {
-      text-transform: uppercase;
-    }
-  }
-}
 
 /*********************************** Step Two  *********************************************/
 .accordian-btn {
@@ -283,7 +358,7 @@
 }
 .router_tab {
   background: #eee;
-  padding: 15px;
+  padding:5px 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -336,46 +411,7 @@
   border-left: 10px solid #00575e;
   padding: 15px;
 }
-.router_states {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin-top: 20px;
-  .left_state_box,
-  .right_state_box {
-    width: 40%;
-    border: 1px solid rgb(119, 119, 119);
-    height: 250px;
-    overflow-y: scroll;
-    &::-webkit-scrollbar {
-      width: 7px;
-    }
-    &::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-    }
-    &::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      background-image: linear-gradient(
-        138.29deg,
-        #01b7c5 -6.3%,
-        #782c96 103.83%
-      );
-    }
-  }
-  .center_state_box {
-    width: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    svg {
-      &:hover {
-        stroke: #00575e;
-      }
-    }
-  }
-}
+
 .dark-layout{
   .router_tab {
     background: #1f263d;
@@ -395,7 +431,7 @@
   }
   .route_filter_modal {
     .popover-body {
-      background: #1F263D !important;
+      background: #252D42 !important;
     }
   }
   .route_condition {
@@ -404,13 +440,13 @@
     }
   }
   .route_condition_card {
-    border: 2px solid rgb(119, 119, 119);
-    border-left: 10px solid #00575e;
+    border: 2px solid #0099ff;
+    border-left: 10px solid #782c96;
   }
   .router_states {
     .left_state_box,
     .right_state_box {
-      border: 1px solid rgb(119, 119, 119);
+      // border: 1px solid rgb(119, 119, 119);
     }
     .center_state_box {
       svg {
@@ -435,20 +471,8 @@
   background: rgba(44, 47, 72, 0.75);
   border-radius: 30px;
 }
-.IvrNodeDeleteIconArea {
-  border-radius: 50%;
-  padding: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  &:hover {
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  }
-}
-.IvrNodeDeleteIcon {
-  width: 25px;
-}
+
+
 .ivrUploadFileContainer {
   position: relative;
 }
@@ -477,7 +501,7 @@
 }
 .ivrNodeClose {
   position: relative;
-  height: 48px;
+  height: 44px;
   border: 1px dashed #f52e2e !important;
   border-radius: 4px;
   text-align: center;
@@ -535,7 +559,7 @@
   color: #f52e2e;
 }
 .ivrNodeOpen {
-  height: 48px;
+  height: 44px;
   border: 1px dashed #999;
   border-radius: 4px;
   text-align: center;
@@ -601,6 +625,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 4;
   p {
     margin: 0px;
   }
@@ -752,14 +778,8 @@
     }
   }
 }
-.drag-node-btn {
-  width: 160px;
-}
-.ivr-nodedrag-btn {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
+
+
 .bg-direction {
   background: linear-gradient(
     138.29deg,
@@ -767,19 +787,7 @@
     #782c96 103.83%
   ) !important;
 }
-.head-node-ivr {
-  border-radius: 5px 5px 0px 0px;
-  border: 1px solid #ccc;
-  background: #ccc;
-  transition: all 0.4s ease-in-out;
-  height: 4rem;
-  display: flex;
-  align-items: center;
-  h2 {
-    margin: 0px;
-    font-size: 20px;
-  }
-}
+
 .arrow-direction {
   cursor: pointer;
 }
@@ -831,9 +839,6 @@
       width: 100%;
     }
   }
-}
-.ivr-nodedrag-btn .flowy-block {
-  margin-right: 10px !important;
 }
 .header-search-ivr {
   input {
@@ -928,6 +933,29 @@
 //===============================================================================//
 //===============================================================================//
 .dark-layout {
+  .ivr-builder{
+    .ivr-nodedrag-btn {
+      .flowy-block {
+        .drag-node-btn {
+          .DraggableItemContainer {
+            .draggableItem {
+              color: #fbfbfb;
+              box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+                rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+              background: #262a50;
+              &:hover {
+                background: linear-gradient(
+                  138.29deg,
+                  #01b7c5 -6.3%,
+                  #782c96 103.83%
+                ) !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
   .modern-nav-toggle {
     svg {
       stroke: #fbfbfb;
@@ -959,21 +987,6 @@
       color: #fff;
     }
   }
-  .DraggableItemContainer {
-    .draggableItem {
-      color: #fbfbfb;
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-      background: #262a50;
-      &:hover {
-        background: linear-gradient(
-          138.29deg,
-          #01b7c5 -6.3%,
-          #782c96 103.83%
-        ) !important;
-      }
-    }
-  }
   .dropIconArea {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border: 1px solid #283046;
@@ -981,27 +994,27 @@
   }
   .nodeContainer {
     background-color: #161d31;
-  }
-  .head-node-ivr {
-    background: #323e61;
-    border: 1px solid #323e61;
-  }
-  .ivrec-btn {
-    background-color: #393839 !important;
-    background: #000f19;
-    border: 1px solid #000f19 !important;
-    float: right;
-    border-radius: 5px;
-    color: #333;
-    padding: 10px 20px;
-    margin: 0px 10px;
-    &:hover {
-      background: linear-gradient(138.29deg, #01b7c5 -6.3%, #782c96 103.83%);
-      border: 1px solid #0099ff;
-      color: #fff;
-      transition: 0.4s all ease-in-out;
+    .head-node-ivr {
+      background: #323e61;
+      border: 1px solid #323e61;
     }
   }
+  // .ivrec-btn {
+  //   background-color: #393839 !important;
+  //   background: #000f19;
+  //   border: 1px solid #000f19 !important;
+  //   float: right;
+  //   border-radius: 5px;
+  //   color: #333;
+  //   padding: 10px 20px;
+  //   margin: 0px 10px;
+  //   &:hover {
+  //     background: linear-gradient(138.29deg, #01b7c5 -6.3%, #782c96 103.83%);
+  //     border: 1px solid #0099ff;
+  //     color: #fff;
+  //     transition: 0.4s all ease-in-out;
+  //   }
+  // }
   .ivr-input {
     .input-gradient {
       input {
