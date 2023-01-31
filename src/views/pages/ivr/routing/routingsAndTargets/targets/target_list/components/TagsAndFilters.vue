@@ -260,6 +260,13 @@ export default {
           if (filterRecord.length != 0) {
             this.conditions = [];
             filterRecord.forEach((value, index) => {
+
+              this.$store.commit(
+                "routingsAndTargets/UPDATE_STATES",
+                value["states"]
+              );
+
+
               this.conditions.push({
                 operators: value["operators"],
                 val: value["tag_operator_value"],
