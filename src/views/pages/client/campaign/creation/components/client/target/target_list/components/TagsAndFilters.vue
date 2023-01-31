@@ -186,6 +186,7 @@ import {
 import { FilterIcon } from "vue-feather-icons";
 import Ripple from "vue-ripple-directive";
 import vSelect from "vue-select";
+import { toastAlert } from "@core/mixins/ui/toast";
 
 export default {
   props: ["target_uuid"],
@@ -200,7 +201,7 @@ export default {
     BListGroup,
     BListGroupItem,
   },
-
+  mixins: [toastAlert],
   data() {
     return {
       tags: [],
@@ -319,20 +320,36 @@ export default {
         campaign_uuid: this.$store.state.clientCampaign.campaignUuid,
         target_uuid: this.target_uuid,
       };
-      this.conditions.forEach((element) => {
-        payload.filters.push({
-          tag_uuid: element.tag,
-          tag_operator_uuid: element.operator,
-          tag_operator_value: element.val,
-          type: element.operation,
-        });
-      });
 
-      this.$store
-        .dispatch("clientCampaign/storeCampaignFilterRecord", payload)
-        .then(() => {
-          this.assignValue();
+      if (
+        this.conditions[0].tag === "" ||
+        this.conditions[0].operator === "" ||
+        this.conditions[0].val.length == 0
+      ) {
+        this.conditionalToast(
+          "danger",
+          "Error",
+          "Please select Tag, Operator and State!",
+          "error"
+        );
+      } else {
+        this.conditions.forEach((element) => {
+          payload.filters.push({
+            tag_uuid: element.tag,
+            tag_operator_uuid: element.operator,
+            tag_operator_value: element.val,
+            type: element.operation,
+          });
         });
+
+        this.$store
+          .dispatch("clientCampaign/storeCampaignFilterRecord", payload)
+          .then(() => {
+            this.assignValue();
+          });
+
+        this.onClose();
+      }
       // this.conditions.forEach((data) => {
       //   data.val = [];
       //   data.operator = "";
@@ -340,8 +357,6 @@ export default {
       //   data.states = [];
       //   data.preSelectedStates = [];
       // });
-
-      this.onClose();
     },
     assignValue() {
       let payload = {

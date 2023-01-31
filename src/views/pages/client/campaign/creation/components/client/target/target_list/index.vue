@@ -62,7 +62,7 @@
           </template>
 
           <template #cell(actions)="data">
-            <div class="d-flex align-items-center justify-content-center">
+            <div class="d-flex align-items-center justify-content-left">
               <TagsAndFilters :target_uuid="data.item.uuid" />
               <div class="action-btn">
                 <feather-icon
@@ -71,6 +71,7 @@
                   class="mr-50 cursor-pointer"
                   @click="action(data.item.uuid, 'edit')"
                 />
+
                 <feather-icon
                   icon="PlayIcon"
                   size="20"
