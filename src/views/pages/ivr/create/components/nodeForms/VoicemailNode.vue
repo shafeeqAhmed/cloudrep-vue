@@ -116,7 +116,8 @@
                     :target="`${node.type}-ivrVoicemail-1-${node.id}`"
                     triggers="hover"
                   >
-                    The amount of time the Target has to answer before Ringba marks the call as a 'No Answer'.
+                    The amount of time the Target has to answer before Ringba
+                    marks the call as a 'No Answer'.
                   </b-tooltip>
                 </div>
               </div>
@@ -600,7 +601,8 @@
                         :target="`${node.type}-ivrVoicemail-9-${node.id}`"
                         triggers="hover"
                       >
-                        The language of the text that will be converted to speech.
+                        The language of the text that will be converted to
+                        speech.
                       </b-tooltip>
                     </div>
                   </div>
@@ -616,7 +618,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="d-flex alig-items-end justify-content-between mb-2">
+                <div
+                  class="d-flex align-items-start justify-content-between mb-2"
+                >
                   <div class="label-tooltip">
                     <label class="IvrNodeInputLabel">Text</label>
                     <div class="ivr-tooptip-quiz">
@@ -649,9 +653,8 @@
                   </div>
                   <div class="ivr-input">
                     <div class="input-gradient">
-                      <b-form-input
+                      <b-form-textarea
                         id="seconds"
-                        type="text"
                         v-model="voicemail.text"
                         @keydown="ivrInputValidateText($event, 100)"
                         placeholder=""
@@ -664,18 +667,13 @@
           </div>
         </div>
       </b-collapse>
-      <b-row class="m-auto">
-        <b-col
-          class="mt-2"
-          sm="12 success-node"
-        >
-          <child-node-menu
-            label="On Success"
-            :node="node"
-            type="success"
-          />
-        </b-col>
-      </b-row>
+      <div class="success-node">
+        <child-node-menu
+          label="On Success"
+          :node="node"
+          type="success"
+        />
+      </div>
     </div>
   </div>
 </template>

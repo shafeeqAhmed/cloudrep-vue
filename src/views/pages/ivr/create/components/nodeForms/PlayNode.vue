@@ -120,7 +120,7 @@
                 </b-row>
               </div>
               <!-- <div v-if="audioPath">
-                  <img src="@/assets/images/ivr/sound.jpg" style=" width:60%"/>                 
+                  <img src="@/assets/images/ivr/sound.jpg" style=" width:60%"/>
                 </div>
                 <span  v-if="audioPath" class="removeIcon" @click="removeSound">
                   <feather-icon size="1.5x" icon="TrashIcon" />
@@ -180,7 +180,7 @@
                   </div>
                 </div>
               </div>
-              <div class="d-flex alig-items-end justify-content-between mb-2">
+              <div class="d-flex align-items-start justify-content-between mb-2">
                 <div class="label-tooltip">
                   <label class="IvrNodeInputLabel">Text</label>
                   <div class="ivr-tooptip-quiz">
@@ -198,7 +198,7 @@
                 </div>
                 <div class="ivr-input">
                   <div class="input-gradient">
-                    <b-form-input id="seconds" type="text" v-model="play.text" @keydown="ivrInputValidateText($event, 100)" placeholder="" />
+                    <b-form-textarea id="seconds" v-model="play.text" @keydown="ivrInputValidateText($event, 100)" placeholder="" />
                   </div>
                 </div>
               </div>
@@ -207,11 +207,9 @@
 
         </div>
       </b-collapse>
-      <b-row class="m-auto">
-        <b-col sm="12" class="mt-2 success-node">
-          <child-node-menu label="On Success" :node="node" type="success" />
-        </b-col>
-      </b-row>
+      <div class="success-node">
+        <child-node-menu label="On Success" :node="node" type="success" />
+      </div>
     </div>
   </div>
 </template>
@@ -225,6 +223,7 @@ import {
   BButton,
   BCardText,
   BFormInput,
+  BFormTextarea,
   BFormGroup,
   BFormLabel,
   BFormFile,
@@ -256,6 +255,7 @@ export default {
     BCollapse,
     VBToggle,
     BButtonGroup,
+    BFormTextarea,
     BSpinner
   },
   mixins: [toastAlert, globalHelper],

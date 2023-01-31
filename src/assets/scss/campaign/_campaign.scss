@@ -265,6 +265,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .camp-service {
   width: 345px;
@@ -932,6 +933,11 @@
   .input-gradient {
     position: relative;
     z-index: 99999;
+  }
+}
+.flatpickr-time{
+  input{
+    height: auto !important;
   }
 }
 ///////////////////////////////////////////////////////////////////

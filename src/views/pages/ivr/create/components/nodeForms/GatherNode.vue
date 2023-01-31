@@ -335,7 +335,9 @@
                   </div>
                 </div>
               </div>
-              <div class="d-flex alig-items-end justify-content-between mb-2">
+              <div
+                class="d-flex align-items-start justify-content-between mb-2"
+              >
                 <div class="label-tooltip">
                   <label class="IvrNodeInputLabel">Text</label>
                   <div class="ivr-tooptip-quiz">
@@ -368,9 +370,8 @@
                 </div>
                 <div class="ivr-input">
                   <div class="input-gradient">
-                    <b-form-input
+                    <b-form-textarea
                       id="seconds"
-                      type="text"
                       v-model="gather.text"
                       @keydown="ivrInputValidateText($event, 100)"
                       placeholder=""
@@ -382,432 +383,432 @@
           </b-col>
         </div>
 
-          <b-col
-            md="12"
-            class="mb-2"
-          >
-            <b-form-group>
-              <div class="d-flex alig-items-end justify-content-between">
-                <div class="label-tooltip">
-                  <label class="IvrNodeInputLabel">Gather Tag Name</label>
-                  <div class="ivr-tooptip-quiz">
-                    <svg
-                      :id="`${node.type}-ivrgather-5-${node.id}`"
-                      width="16"
-                      height="17"
-                      viewBox="0 0 16 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        cx="8"
-                        cy="8.5"
-                        r="8"
-                        fill="white"
-                      />
-                      <path
-                        d="M10.4609 6.24316C10.3242 5.94434 10.1299 5.67578 9.88184 5.44629C9.37793 4.97852 8.70898 4.7207 8 4.7207C7.29102 4.7207 6.62207 4.97852 6.11816 5.44531C5.87012 5.67578 5.67578 5.94336 5.53906 6.24316C5.39648 6.55566 5.32422 6.88672 5.32422 7.22852V7.49219C5.32422 7.55273 5.37305 7.60156 5.43359 7.60156H5.96094C6.02148 7.60156 6.07031 7.55273 6.07031 7.49219V7.22852C6.07031 6.25684 6.93555 5.4668 8 5.4668C9.06445 5.4668 9.92969 6.25684 9.92969 7.22852C9.92969 7.62695 9.78809 8.00195 9.51953 8.31445C9.25391 8.62402 8.87891 8.8457 8.46387 8.93945C8.22656 8.99316 8.0127 9.12695 7.86133 9.31836C7.71049 9.50911 7.62827 9.7451 7.62793 9.98828V10.2949C7.62793 10.3555 7.67676 10.4043 7.7373 10.4043H8.26465C8.3252 10.4043 8.37402 10.3555 8.37402 10.2949V9.98828C8.37402 9.83496 8.48047 9.7002 8.62793 9.66699C9.19824 9.53809 9.71582 9.23047 10.0859 8.80078C10.2725 8.58301 10.418 8.34082 10.5186 8.07812C10.623 7.80566 10.6758 7.51953 10.6758 7.22852C10.6758 6.88672 10.6035 6.55469 10.4609 6.24316ZM8 11.1855C7.69824 11.1855 7.45312 11.4307 7.45312 11.7324C7.45312 12.0342 7.69824 12.2793 8 12.2793C8.30176 12.2793 8.54688 12.0342 8.54688 11.7324C8.54688 11.4307 8.30176 11.1855 8 11.1855Z"
-                        fill="black"
-                      />
-                    </svg>
-                    <b-tooltip
-                      :target="`${node.type}-ivrgather-5-${node.id}`"
-                      triggers="hover"
-                    >
-                      The call will be tagged with this value, it is used to control how subsequent nodes process the call. Select a tag name that if you want to use a filter based on it, will be the one that populates in the platform.
-                    </b-tooltip>
-                  </div>
-                </div>
-
-                <div class="ivr-input">
-                  <div class="input-gradient">
-                    <b-form-input
-                      id="gatherTagName"
-                      type="text"
-                      v-model="gather.tag_name"
-                      @keydown="ivrInputValidateText($event, 20)"
-                      placeholder=""
-                    />
-                  </div>
-                </div>
-              </div>
-            </b-form-group>
-          </b-col>
-          <b-col
-            md="12"
-            class="mb-2"
-          >
-            <b-form-group>
-              <div class="d-flex alig-items-end justify-content-between">
-                <div class="label-tooltip">
-                  <label class="IvrNodeInputLabel">Max Number of Digits</label>
-                  <div class="ivr-tooptip-quiz">
-                    <svg
-                      :id="`${node.type}-ivrgather-6-${node.id}`"
-                      width="16"
-                      height="17"
-                      viewBox="0 0 16 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        cx="8"
-                        cy="8.5"
-                        r="8"
-                        fill="white"
-                      />
-                      <path
-                        d="M10.4609 6.24316C10.3242 5.94434 10.1299 5.67578 9.88184 5.44629C9.37793 4.97852 8.70898 4.7207 8 4.7207C7.29102 4.7207 6.62207 4.97852 6.11816 5.44531C5.87012 5.67578 5.67578 5.94336 5.53906 6.24316C5.39648 6.55566 5.32422 6.88672 5.32422 7.22852V7.49219C5.32422 7.55273 5.37305 7.60156 5.43359 7.60156H5.96094C6.02148 7.60156 6.07031 7.55273 6.07031 7.49219V7.22852C6.07031 6.25684 6.93555 5.4668 8 5.4668C9.06445 5.4668 9.92969 6.25684 9.92969 7.22852C9.92969 7.62695 9.78809 8.00195 9.51953 8.31445C9.25391 8.62402 8.87891 8.8457 8.46387 8.93945C8.22656 8.99316 8.0127 9.12695 7.86133 9.31836C7.71049 9.50911 7.62827 9.7451 7.62793 9.98828V10.2949C7.62793 10.3555 7.67676 10.4043 7.7373 10.4043H8.26465C8.3252 10.4043 8.37402 10.3555 8.37402 10.2949V9.98828C8.37402 9.83496 8.48047 9.7002 8.62793 9.66699C9.19824 9.53809 9.71582 9.23047 10.0859 8.80078C10.2725 8.58301 10.418 8.34082 10.5186 8.07812C10.623 7.80566 10.6758 7.51953 10.6758 7.22852C10.6758 6.88672 10.6035 6.55469 10.4609 6.24316ZM8 11.1855C7.69824 11.1855 7.45312 11.4307 7.45312 11.7324C7.45312 12.0342 7.69824 12.2793 8 12.2793C8.30176 12.2793 8.54688 12.0342 8.54688 11.7324C8.54688 11.4307 8.30176 11.1855 8 11.1855Z"
-                        fill="black"
-                      />
-                    </svg>
-                    <b-tooltip
-                      :target="`${node.type}-ivrgather-6-${node.id}`"
-                      triggers="hover"
-                    >
-                      The maximum number of digits to be processed in the current operation.
-                    </b-tooltip>
-                  </div>
-                </div>
-                <div class="ivr-input">
-                  <div class="input-gradient">
-                    <b-form-input
-                      id="seconds"
-                      type="number"
-                      v-model="gather.inbound_number_max"
-                      @keydown="ivrInputValidate($event, 5)"
-                      placeholder="30"
-                    />
-                  </div>
-                </div>
-              </div>
-            </b-form-group>
-          </b-col>
-          <b-col
-            md="12"
-            class="mb-2"
-          >
-            <b-form-group>
-              <div class="d-flex alig-items-end justify-content-between">
-                <div class="label-tooltip">
-                  <label class="IvrNodeInputLabel">Min Number of Digits</label>
-                  <div class="ivr-tooptip-quiz">
-                    <svg
-                      :id="`${node.type}-ivrgather-7-${node.id}`"
-                      width="16"
-                      height="17"
-                      viewBox="0 0 16 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        cx="8"
-                        cy="8.5"
-                        r="8"
-                        fill="white"
-                      />
-                      <path
-                        d="M10.4609 6.24316C10.3242 5.94434 10.1299 5.67578 9.88184 5.44629C9.37793 4.97852 8.70898 4.7207 8 4.7207C7.29102 4.7207 6.62207 4.97852 6.11816 5.44531C5.87012 5.67578 5.67578 5.94336 5.53906 6.24316C5.39648 6.55566 5.32422 6.88672 5.32422 7.22852V7.49219C5.32422 7.55273 5.37305 7.60156 5.43359 7.60156H5.96094C6.02148 7.60156 6.07031 7.55273 6.07031 7.49219V7.22852C6.07031 6.25684 6.93555 5.4668 8 5.4668C9.06445 5.4668 9.92969 6.25684 9.92969 7.22852C9.92969 7.62695 9.78809 8.00195 9.51953 8.31445C9.25391 8.62402 8.87891 8.8457 8.46387 8.93945C8.22656 8.99316 8.0127 9.12695 7.86133 9.31836C7.71049 9.50911 7.62827 9.7451 7.62793 9.98828V10.2949C7.62793 10.3555 7.67676 10.4043 7.7373 10.4043H8.26465C8.3252 10.4043 8.37402 10.3555 8.37402 10.2949V9.98828C8.37402 9.83496 8.48047 9.7002 8.62793 9.66699C9.19824 9.53809 9.71582 9.23047 10.0859 8.80078C10.2725 8.58301 10.418 8.34082 10.5186 8.07812C10.623 7.80566 10.6758 7.51953 10.6758 7.22852C10.6758 6.88672 10.6035 6.55469 10.4609 6.24316ZM8 11.1855C7.69824 11.1855 7.45312 11.4307 7.45312 11.7324C7.45312 12.0342 7.69824 12.2793 8 12.2793C8.30176 12.2793 8.54688 12.0342 8.54688 11.7324C8.54688 11.4307 8.30176 11.1855 8 11.1855Z"
-                        fill="black"
-                      />
-                    </svg>
-                    <b-tooltip
-                      :target="`${node.type}-ivrgather-7-${node.id}`"
-                      triggers="hover"
-                    >
-                      The minimum number of digits to be processed in the current operation.
-                    </b-tooltip>
-                  </div>
-                </div>
-                <div class="ivr-input">
-                  <div class="input-gradient">
-                    <b-form-input
-                      id="seconds"
-                      type="number"
-                      v-model="gather.inbound_number_min"
-                      @keydown="ivrInputValidate($event, 5)"
-                      placeholder=""
-                    />
-                  </div>
-                </div>
-              </div>
-            </b-form-group>
-          </b-col>
-          <b-col
-            md="12"
-            class="mb-2"
-          >
-            <b-form-group>
-              <div class="d-flex alig-items-end justify-content-between">
-                <div class="label-tooltip">
-                  <label class="IvrNodeInputLabel">Valid Digits</label>
-                  <div class="ivr-tooptip-quiz">
-                    <svg
-                      :id="`${node.type}-ivrgather-8-${node.id}`"
-                      width="16"
-                      height="17"
-                      viewBox="0 0 16 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        cx="8"
-                        cy="8.5"
-                        r="8"
-                        fill="white"
-                      />
-                      <path
-                        d="M10.4609 6.24316C10.3242 5.94434 10.1299 5.67578 9.88184 5.44629C9.37793 4.97852 8.70898 4.7207 8 4.7207C7.29102 4.7207 6.62207 4.97852 6.11816 5.44531C5.87012 5.67578 5.67578 5.94336 5.53906 6.24316C5.39648 6.55566 5.32422 6.88672 5.32422 7.22852V7.49219C5.32422 7.55273 5.37305 7.60156 5.43359 7.60156H5.96094C6.02148 7.60156 6.07031 7.55273 6.07031 7.49219V7.22852C6.07031 6.25684 6.93555 5.4668 8 5.4668C9.06445 5.4668 9.92969 6.25684 9.92969 7.22852C9.92969 7.62695 9.78809 8.00195 9.51953 8.31445C9.25391 8.62402 8.87891 8.8457 8.46387 8.93945C8.22656 8.99316 8.0127 9.12695 7.86133 9.31836C7.71049 9.50911 7.62827 9.7451 7.62793 9.98828V10.2949C7.62793 10.3555 7.67676 10.4043 7.7373 10.4043H8.26465C8.3252 10.4043 8.37402 10.3555 8.37402 10.2949V9.98828C8.37402 9.83496 8.48047 9.7002 8.62793 9.66699C9.19824 9.53809 9.71582 9.23047 10.0859 8.80078C10.2725 8.58301 10.418 8.34082 10.5186 8.07812C10.623 7.80566 10.6758 7.51953 10.6758 7.22852C10.6758 6.88672 10.6035 6.55469 10.4609 6.24316ZM8 11.1855C7.69824 11.1855 7.45312 11.4307 7.45312 11.7324C7.45312 12.0342 7.69824 12.2793 8 12.2793C8.30176 12.2793 8.54688 12.0342 8.54688 11.7324C8.54688 11.4307 8.30176 11.1855 8 11.1855Z"
-                        fill="black"
-                      />
-                    </svg>
-                    <b-tooltip
-                      :target="`${node.type}-ivrgather-8-${node.id}`"
-                      triggers="hover"
-                    >
-                      A list of valid digits.
-                    </b-tooltip>
-                  </div>
-                </div>
-                <div class="ivr-input">
-                  <div class="input-gradient">
-                    <b-form-input
-                      id="seconds"
-                      type="text"
-                      v-model="gather.valid_digits"
-                      @keydown="ivrInputValidateText($event, 1)"
-                      placeholder="123456789*#"
-                    />
-                  </div>
-                </div>
-              </div>
-            </b-form-group>
-          </b-col>
-          <b-col
-            md="12"
-            class="mb-2"
-          >
-            <b-form-group>
-              <div class="d-flex alig-items-end justify-content-between">
-                <div class="label-tooltip">
-                  <label class="IvrNodeInputLabel">Finish on Key</label>
-                  <div class="ivr-tooptip-quiz">
-                    <svg
-                      :id="`${node.type}-ivrgather-9-${node.id}`"
-                      width="16"
-                      height="17"
-                      viewBox="0 0 16 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        cx="8"
-                        cy="8.5"
-                        r="8"
-                        fill="white"
-                      />
-                      <path
-                        d="M10.4609 6.24316C10.3242 5.94434 10.1299 5.67578 9.88184 5.44629C9.37793 4.97852 8.70898 4.7207 8 4.7207C7.29102 4.7207 6.62207 4.97852 6.11816 5.44531C5.87012 5.67578 5.67578 5.94336 5.53906 6.24316C5.39648 6.55566 5.32422 6.88672 5.32422 7.22852V7.49219C5.32422 7.55273 5.37305 7.60156 5.43359 7.60156H5.96094C6.02148 7.60156 6.07031 7.55273 6.07031 7.49219V7.22852C6.07031 6.25684 6.93555 5.4668 8 5.4668C9.06445 5.4668 9.92969 6.25684 9.92969 7.22852C9.92969 7.62695 9.78809 8.00195 9.51953 8.31445C9.25391 8.62402 8.87891 8.8457 8.46387 8.93945C8.22656 8.99316 8.0127 9.12695 7.86133 9.31836C7.71049 9.50911 7.62827 9.7451 7.62793 9.98828V10.2949C7.62793 10.3555 7.67676 10.4043 7.7373 10.4043H8.26465C8.3252 10.4043 8.37402 10.3555 8.37402 10.2949V9.98828C8.37402 9.83496 8.48047 9.7002 8.62793 9.66699C9.19824 9.53809 9.71582 9.23047 10.0859 8.80078C10.2725 8.58301 10.418 8.34082 10.5186 8.07812C10.623 7.80566 10.6758 7.51953 10.6758 7.22852C10.6758 6.88672 10.6035 6.55469 10.4609 6.24316ZM8 11.1855C7.69824 11.1855 7.45312 11.4307 7.45312 11.7324C7.45312 12.0342 7.69824 12.2793 8 12.2793C8.30176 12.2793 8.54688 12.0342 8.54688 11.7324C8.54688 11.4307 8.30176 11.1855 8 11.1855Z"
-                        fill="black"
-                      />
-                    </svg>
-                    <b-tooltip
-                      :target="`${node.type}-ivrgather-9-${node.id}`"
-                      triggers="hover"
-                    >
-                      The key the caller presses to stop collecting input.
-                    </b-tooltip>
-                  </div>
-                </div>
-                <div class="ivr-input">
-                  <div class="input-gradient">
-                    <b-form-input
-                      id="seconds"
-                      type="text"
-                      v-model="gather.finish_on_key"
-                      @keydown="ivrInputValidate($event, 1)"
-                      placeholder="#"
-                    />
-                  </div>
-                </div>
-              </div>
-            </b-form-group>
-          </b-col>
-          <b-col
-            md="12"
-            class="mb-2"
-          >
-            <b-form-group>
-              <div class="d-flex alig-items-end justify-content-between">
-                <div class="label-tooltip">
-                  <label class="IvrNodeInputLabel">Timeout (sec)</label>
-                  <div class="ivr-tooptip-quiz">
-                    <svg
-                      :id="`${node.type}-ivrgather-10-${node.id}`"
-                      width="16"
-                      height="17"
-                      viewBox="0 0 16 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        cx="8"
-                        cy="8.5"
-                        r="8"
-                        fill="white"
-                      />
-                      <path
-                        d="M10.4609 6.24316C10.3242 5.94434 10.1299 5.67578 9.88184 5.44629C9.37793 4.97852 8.70898 4.7207 8 4.7207C7.29102 4.7207 6.62207 4.97852 6.11816 5.44531C5.87012 5.67578 5.67578 5.94336 5.53906 6.24316C5.39648 6.55566 5.32422 6.88672 5.32422 7.22852V7.49219C5.32422 7.55273 5.37305 7.60156 5.43359 7.60156H5.96094C6.02148 7.60156 6.07031 7.55273 6.07031 7.49219V7.22852C6.07031 6.25684 6.93555 5.4668 8 5.4668C9.06445 5.4668 9.92969 6.25684 9.92969 7.22852C9.92969 7.62695 9.78809 8.00195 9.51953 8.31445C9.25391 8.62402 8.87891 8.8457 8.46387 8.93945C8.22656 8.99316 8.0127 9.12695 7.86133 9.31836C7.71049 9.50911 7.62827 9.7451 7.62793 9.98828V10.2949C7.62793 10.3555 7.67676 10.4043 7.7373 10.4043H8.26465C8.3252 10.4043 8.37402 10.3555 8.37402 10.2949V9.98828C8.37402 9.83496 8.48047 9.7002 8.62793 9.66699C9.19824 9.53809 9.71582 9.23047 10.0859 8.80078C10.2725 8.58301 10.418 8.34082 10.5186 8.07812C10.623 7.80566 10.6758 7.51953 10.6758 7.22852C10.6758 6.88672 10.6035 6.55469 10.4609 6.24316ZM8 11.1855C7.69824 11.1855 7.45312 11.4307 7.45312 11.7324C7.45312 12.0342 7.69824 12.2793 8 12.2793C8.30176 12.2793 8.54688 12.0342 8.54688 11.7324C8.54688 11.4307 8.30176 11.1855 8 11.1855Z"
-                        fill="black"
-                      />
-                    </svg>
-                    <b-tooltip
-                      :target="`${node.type}-ivrgather-10-${node.id}`"
-                      triggers="hover"
-                    >
-                      The amount of time the caller has to enter a response.
-                    </b-tooltip>
-                  </div>
-                </div>
-                <div class="ivr-input">
-                  <div class="input-gradient">
-                    <b-form-input
-                      id="seconds"
-                      type="number"
-                      v-model="gather.timeout"
-                      @keydown="ivrInputValidate($event, 5)"
-                      placeholder="10"
-                    />
-                  </div>
-                </div>
-              </div>
-            </b-form-group>
-          </b-col>
-          <b-col
-            md="12"
-            class="mb-2"
-          >
-            <b-form-group>
-              <div class="d-flex alig-items-end justify-content-between">
-                <div class="label-tooltip">
-                  <label class="IvrNodeInputLabel"
-                    >Key press time out (sec)</label
-                  >
-                  <div class="ivr-tooptip-quiz">
-                    <svg
-                      :id="`${node.type}-ivrgather-11-${node.id}`"
-                      width="16"
-                      height="17"
-                      viewBox="0 0 16 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        cx="8"
-                        cy="8.5"
-                        r="8"
-                        fill="white"
-                      />
-                      <path
-                        d="M10.4609 6.24316C10.3242 5.94434 10.1299 5.67578 9.88184 5.44629C9.37793 4.97852 8.70898 4.7207 8 4.7207C7.29102 4.7207 6.62207 4.97852 6.11816 5.44531C5.87012 5.67578 5.67578 5.94336 5.53906 6.24316C5.39648 6.55566 5.32422 6.88672 5.32422 7.22852V7.49219C5.32422 7.55273 5.37305 7.60156 5.43359 7.60156H5.96094C6.02148 7.60156 6.07031 7.55273 6.07031 7.49219V7.22852C6.07031 6.25684 6.93555 5.4668 8 5.4668C9.06445 5.4668 9.92969 6.25684 9.92969 7.22852C9.92969 7.62695 9.78809 8.00195 9.51953 8.31445C9.25391 8.62402 8.87891 8.8457 8.46387 8.93945C8.22656 8.99316 8.0127 9.12695 7.86133 9.31836C7.71049 9.50911 7.62827 9.7451 7.62793 9.98828V10.2949C7.62793 10.3555 7.67676 10.4043 7.7373 10.4043H8.26465C8.3252 10.4043 8.37402 10.3555 8.37402 10.2949V9.98828C8.37402 9.83496 8.48047 9.7002 8.62793 9.66699C9.19824 9.53809 9.71582 9.23047 10.0859 8.80078C10.2725 8.58301 10.418 8.34082 10.5186 8.07812C10.623 7.80566 10.6758 7.51953 10.6758 7.22852C10.6758 6.88672 10.6035 6.55469 10.4609 6.24316ZM8 11.1855C7.69824 11.1855 7.45312 11.4307 7.45312 11.7324C7.45312 12.0342 7.69824 12.2793 8 12.2793C8.30176 12.2793 8.54688 12.0342 8.54688 11.7324C8.54688 11.4307 8.30176 11.1855 8 11.1855Z"
-                        fill="black"
-                      />
-                    </svg>
-                    <b-tooltip
-                      :target="`${node.type}-ivrgather-11-${node.id}`"
-                      triggers="hover"
-                    >
-                      Time in seconds allowed between consecutive digit inputs.
-                    </b-tooltip>
-                  </div>
-                </div>
-                <div class="ivr-input">
-                  <div class="input-gradient">
-                    <b-form-input
-                      id="seconds"
-                      type="number"
-                      v-model="gather.timeout_key_press"
-                      @keydown="ivrInputValidate($event, 1)"
-                      placeholder="3"
-                    />
-                  </div>
-                </div>
-              </div>
-            </b-form-group>
-          </b-col>
-          <b-col
-            md="12"
-            class="mb-2"
-          >
-            <b-form-group>
-              <div class="d-flex alig-items-end justify-content-between">
-                <div class="label-tooltip">
-                  <label class="IvrNodeInputLabel">Retries</label>
-                  <div class="ivr-tooptip-quiz">
-                    <svg
-                      :id="`${node.type}-ivrgather-12-${node.id}`"
-                      width="16"
-                      height="17"
-                      viewBox="0 0 16 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        cx="8"
-                        cy="8.5"
-                        r="8"
-                        fill="white"
-                      />
-                      <path
-                        d="M10.4609 6.24316C10.3242 5.94434 10.1299 5.67578 9.88184 5.44629C9.37793 4.97852 8.70898 4.7207 8 4.7207C7.29102 4.7207 6.62207 4.97852 6.11816 5.44531C5.87012 5.67578 5.67578 5.94336 5.53906 6.24316C5.39648 6.55566 5.32422 6.88672 5.32422 7.22852V7.49219C5.32422 7.55273 5.37305 7.60156 5.43359 7.60156H5.96094C6.02148 7.60156 6.07031 7.55273 6.07031 7.49219V7.22852C6.07031 6.25684 6.93555 5.4668 8 5.4668C9.06445 5.4668 9.92969 6.25684 9.92969 7.22852C9.92969 7.62695 9.78809 8.00195 9.51953 8.31445C9.25391 8.62402 8.87891 8.8457 8.46387 8.93945C8.22656 8.99316 8.0127 9.12695 7.86133 9.31836C7.71049 9.50911 7.62827 9.7451 7.62793 9.98828V10.2949C7.62793 10.3555 7.67676 10.4043 7.7373 10.4043H8.26465C8.3252 10.4043 8.37402 10.3555 8.37402 10.2949V9.98828C8.37402 9.83496 8.48047 9.7002 8.62793 9.66699C9.19824 9.53809 9.71582 9.23047 10.0859 8.80078C10.2725 8.58301 10.418 8.34082 10.5186 8.07812C10.623 7.80566 10.6758 7.51953 10.6758 7.22852C10.6758 6.88672 10.6035 6.55469 10.4609 6.24316ZM8 11.1855C7.69824 11.1855 7.45312 11.4307 7.45312 11.7324C7.45312 12.0342 7.69824 12.2793 8 12.2793C8.30176 12.2793 8.54688 12.0342 8.54688 11.7324C8.54688 11.4307 8.30176 11.1855 8 11.1855Z"
-                        fill="black"
-                      />
-                    </svg>
-                    <b-tooltip
-                      :target="`${node.type}-ivrgather-12-${node.id}`"
-                      triggers="hover"
-                    >
-                      The number of attempts the user is allowed to enter the correct input if they select an invalid input.
-                    </b-tooltip>
-                  </div>
-                </div>
-                <div class="ivr-input">
-                  <div class="input-gradient">
-                    <b-form-input
-                      id="seconds"
-                      type="number"
-                      @keydown="ivrInputValidate($event, 5)"
-                      v-model="gather.retires"
-                      placeholder="2"
-                    />
-                  </div>
-                </div>
-              </div>
-            </b-form-group>
-          </b-col>
-      </b-collapse>
-      <b-row class="m-auto">
         <b-col
-          sm="12"
-          class="mt-2 failure-node"
+          md="12"
+          class="mb-2"
         >
+          <b-form-group>
+            <div class="d-flex alig-items-end justify-content-between">
+              <div class="label-tooltip">
+                <label class="IvrNodeInputLabel">Gather Tag Name</label>
+                <div class="ivr-tooptip-quiz">
+                  <svg
+                    :id="`${node.type}-ivrgather-5-${node.id}`"
+                    width="16"
+                    height="17"
+                    viewBox="0 0 16 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="8"
+                      cy="8.5"
+                      r="8"
+                      fill="white"
+                    />
+                    <path
+                      d="M10.4609 6.24316C10.3242 5.94434 10.1299 5.67578 9.88184 5.44629C9.37793 4.97852 8.70898 4.7207 8 4.7207C7.29102 4.7207 6.62207 4.97852 6.11816 5.44531C5.87012 5.67578 5.67578 5.94336 5.53906 6.24316C5.39648 6.55566 5.32422 6.88672 5.32422 7.22852V7.49219C5.32422 7.55273 5.37305 7.60156 5.43359 7.60156H5.96094C6.02148 7.60156 6.07031 7.55273 6.07031 7.49219V7.22852C6.07031 6.25684 6.93555 5.4668 8 5.4668C9.06445 5.4668 9.92969 6.25684 9.92969 7.22852C9.92969 7.62695 9.78809 8.00195 9.51953 8.31445C9.25391 8.62402 8.87891 8.8457 8.46387 8.93945C8.22656 8.99316 8.0127 9.12695 7.86133 9.31836C7.71049 9.50911 7.62827 9.7451 7.62793 9.98828V10.2949C7.62793 10.3555 7.67676 10.4043 7.7373 10.4043H8.26465C8.3252 10.4043 8.37402 10.3555 8.37402 10.2949V9.98828C8.37402 9.83496 8.48047 9.7002 8.62793 9.66699C9.19824 9.53809 9.71582 9.23047 10.0859 8.80078C10.2725 8.58301 10.418 8.34082 10.5186 8.07812C10.623 7.80566 10.6758 7.51953 10.6758 7.22852C10.6758 6.88672 10.6035 6.55469 10.4609 6.24316ZM8 11.1855C7.69824 11.1855 7.45312 11.4307 7.45312 11.7324C7.45312 12.0342 7.69824 12.2793 8 12.2793C8.30176 12.2793 8.54688 12.0342 8.54688 11.7324C8.54688 11.4307 8.30176 11.1855 8 11.1855Z"
+                      fill="black"
+                    />
+                  </svg>
+                  <b-tooltip
+                    :target="`${node.type}-ivrgather-5-${node.id}`"
+                    triggers="hover"
+                  >
+                    The call will be tagged with this value, it is used to
+                    control how subsequent nodes process the call. Select a tag
+                    name that if you want to use a filter based on it, will be
+                    the one that populates in the platform.
+                  </b-tooltip>
+                </div>
+              </div>
+
+              <div class="ivr-input">
+                <div class="input-gradient">
+                  <b-form-input
+                    id="gatherTagName"
+                    type="text"
+                    v-model="gather.tag_name"
+                    @keydown="ivrInputValidateText($event, 20)"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+            </div>
+          </b-form-group>
+        </b-col>
+        <b-col
+          md="12"
+          class="mb-2"
+        >
+          <b-form-group>
+            <div class="d-flex alig-items-end justify-content-between">
+              <div class="label-tooltip">
+                <label class="IvrNodeInputLabel">Max Number of Digits</label>
+                <div class="ivr-tooptip-quiz">
+                  <svg
+                    :id="`${node.type}-ivrgather-6-${node.id}`"
+                    width="16"
+                    height="17"
+                    viewBox="0 0 16 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="8"
+                      cy="8.5"
+                      r="8"
+                      fill="white"
+                    />
+                    <path
+                      d="M10.4609 6.24316C10.3242 5.94434 10.1299 5.67578 9.88184 5.44629C9.37793 4.97852 8.70898 4.7207 8 4.7207C7.29102 4.7207 6.62207 4.97852 6.11816 5.44531C5.87012 5.67578 5.67578 5.94336 5.53906 6.24316C5.39648 6.55566 5.32422 6.88672 5.32422 7.22852V7.49219C5.32422 7.55273 5.37305 7.60156 5.43359 7.60156H5.96094C6.02148 7.60156 6.07031 7.55273 6.07031 7.49219V7.22852C6.07031 6.25684 6.93555 5.4668 8 5.4668C9.06445 5.4668 9.92969 6.25684 9.92969 7.22852C9.92969 7.62695 9.78809 8.00195 9.51953 8.31445C9.25391 8.62402 8.87891 8.8457 8.46387 8.93945C8.22656 8.99316 8.0127 9.12695 7.86133 9.31836C7.71049 9.50911 7.62827 9.7451 7.62793 9.98828V10.2949C7.62793 10.3555 7.67676 10.4043 7.7373 10.4043H8.26465C8.3252 10.4043 8.37402 10.3555 8.37402 10.2949V9.98828C8.37402 9.83496 8.48047 9.7002 8.62793 9.66699C9.19824 9.53809 9.71582 9.23047 10.0859 8.80078C10.2725 8.58301 10.418 8.34082 10.5186 8.07812C10.623 7.80566 10.6758 7.51953 10.6758 7.22852C10.6758 6.88672 10.6035 6.55469 10.4609 6.24316ZM8 11.1855C7.69824 11.1855 7.45312 11.4307 7.45312 11.7324C7.45312 12.0342 7.69824 12.2793 8 12.2793C8.30176 12.2793 8.54688 12.0342 8.54688 11.7324C8.54688 11.4307 8.30176 11.1855 8 11.1855Z"
+                      fill="black"
+                    />
+                  </svg>
+                  <b-tooltip
+                    :target="`${node.type}-ivrgather-6-${node.id}`"
+                    triggers="hover"
+                  >
+                    The maximum number of digits to be processed in the current
+                    operation.
+                  </b-tooltip>
+                </div>
+              </div>
+              <div class="ivr-input">
+                <div class="input-gradient">
+                  <b-form-input
+                    id="seconds"
+                    type="number"
+                    v-model="gather.inbound_number_max"
+                    @keydown="ivrInputValidate($event, 5)"
+                    placeholder="30"
+                  />
+                </div>
+              </div>
+            </div>
+          </b-form-group>
+        </b-col>
+        <b-col
+          md="12"
+          class="mb-2"
+        >
+          <b-form-group>
+            <div class="d-flex alig-items-end justify-content-between">
+              <div class="label-tooltip">
+                <label class="IvrNodeInputLabel">Min Number of Digits</label>
+                <div class="ivr-tooptip-quiz">
+                  <svg
+                    :id="`${node.type}-ivrgather-7-${node.id}`"
+                    width="16"
+                    height="17"
+                    viewBox="0 0 16 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="8"
+                      cy="8.5"
+                      r="8"
+                      fill="white"
+                    />
+                    <path
+                      d="M10.4609 6.24316C10.3242 5.94434 10.1299 5.67578 9.88184 5.44629C9.37793 4.97852 8.70898 4.7207 8 4.7207C7.29102 4.7207 6.62207 4.97852 6.11816 5.44531C5.87012 5.67578 5.67578 5.94336 5.53906 6.24316C5.39648 6.55566 5.32422 6.88672 5.32422 7.22852V7.49219C5.32422 7.55273 5.37305 7.60156 5.43359 7.60156H5.96094C6.02148 7.60156 6.07031 7.55273 6.07031 7.49219V7.22852C6.07031 6.25684 6.93555 5.4668 8 5.4668C9.06445 5.4668 9.92969 6.25684 9.92969 7.22852C9.92969 7.62695 9.78809 8.00195 9.51953 8.31445C9.25391 8.62402 8.87891 8.8457 8.46387 8.93945C8.22656 8.99316 8.0127 9.12695 7.86133 9.31836C7.71049 9.50911 7.62827 9.7451 7.62793 9.98828V10.2949C7.62793 10.3555 7.67676 10.4043 7.7373 10.4043H8.26465C8.3252 10.4043 8.37402 10.3555 8.37402 10.2949V9.98828C8.37402 9.83496 8.48047 9.7002 8.62793 9.66699C9.19824 9.53809 9.71582 9.23047 10.0859 8.80078C10.2725 8.58301 10.418 8.34082 10.5186 8.07812C10.623 7.80566 10.6758 7.51953 10.6758 7.22852C10.6758 6.88672 10.6035 6.55469 10.4609 6.24316ZM8 11.1855C7.69824 11.1855 7.45312 11.4307 7.45312 11.7324C7.45312 12.0342 7.69824 12.2793 8 12.2793C8.30176 12.2793 8.54688 12.0342 8.54688 11.7324C8.54688 11.4307 8.30176 11.1855 8 11.1855Z"
+                      fill="black"
+                    />
+                  </svg>
+                  <b-tooltip
+                    :target="`${node.type}-ivrgather-7-${node.id}`"
+                    triggers="hover"
+                  >
+                    The minimum number of digits to be processed in the current
+                    operation.
+                  </b-tooltip>
+                </div>
+              </div>
+              <div class="ivr-input">
+                <div class="input-gradient">
+                  <b-form-input
+                    id="seconds"
+                    type="number"
+                    v-model="gather.inbound_number_min"
+                    @keydown="ivrInputValidate($event, 5)"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+            </div>
+          </b-form-group>
+        </b-col>
+        <b-col
+          md="12"
+          class="mb-2"
+        >
+          <b-form-group>
+            <div class="d-flex alig-items-end justify-content-between">
+              <div class="label-tooltip">
+                <label class="IvrNodeInputLabel">Valid Digits</label>
+                <div class="ivr-tooptip-quiz">
+                  <svg
+                    :id="`${node.type}-ivrgather-8-${node.id}`"
+                    width="16"
+                    height="17"
+                    viewBox="0 0 16 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="8"
+                      cy="8.5"
+                      r="8"
+                      fill="white"
+                    />
+                    <path
+                      d="M10.4609 6.24316C10.3242 5.94434 10.1299 5.67578 9.88184 5.44629C9.37793 4.97852 8.70898 4.7207 8 4.7207C7.29102 4.7207 6.62207 4.97852 6.11816 5.44531C5.87012 5.67578 5.67578 5.94336 5.53906 6.24316C5.39648 6.55566 5.32422 6.88672 5.32422 7.22852V7.49219C5.32422 7.55273 5.37305 7.60156 5.43359 7.60156H5.96094C6.02148 7.60156 6.07031 7.55273 6.07031 7.49219V7.22852C6.07031 6.25684 6.93555 5.4668 8 5.4668C9.06445 5.4668 9.92969 6.25684 9.92969 7.22852C9.92969 7.62695 9.78809 8.00195 9.51953 8.31445C9.25391 8.62402 8.87891 8.8457 8.46387 8.93945C8.22656 8.99316 8.0127 9.12695 7.86133 9.31836C7.71049 9.50911 7.62827 9.7451 7.62793 9.98828V10.2949C7.62793 10.3555 7.67676 10.4043 7.7373 10.4043H8.26465C8.3252 10.4043 8.37402 10.3555 8.37402 10.2949V9.98828C8.37402 9.83496 8.48047 9.7002 8.62793 9.66699C9.19824 9.53809 9.71582 9.23047 10.0859 8.80078C10.2725 8.58301 10.418 8.34082 10.5186 8.07812C10.623 7.80566 10.6758 7.51953 10.6758 7.22852C10.6758 6.88672 10.6035 6.55469 10.4609 6.24316ZM8 11.1855C7.69824 11.1855 7.45312 11.4307 7.45312 11.7324C7.45312 12.0342 7.69824 12.2793 8 12.2793C8.30176 12.2793 8.54688 12.0342 8.54688 11.7324C8.54688 11.4307 8.30176 11.1855 8 11.1855Z"
+                      fill="black"
+                    />
+                  </svg>
+                  <b-tooltip
+                    :target="`${node.type}-ivrgather-8-${node.id}`"
+                    triggers="hover"
+                  >
+                    A list of valid digits.
+                  </b-tooltip>
+                </div>
+              </div>
+              <div class="ivr-input">
+                <div class="input-gradient">
+                  <b-form-input
+                    id="seconds"
+                    type="text"
+                    v-model="gather.valid_digits"
+                    @keydown="ivrInputValidateText($event, 1)"
+                    placeholder="123456789*#"
+                  />
+                </div>
+              </div>
+            </div>
+          </b-form-group>
+        </b-col>
+        <b-col
+          md="12"
+          class="mb-2"
+        >
+          <b-form-group>
+            <div class="d-flex alig-items-end justify-content-between">
+              <div class="label-tooltip">
+                <label class="IvrNodeInputLabel">Finish on Key</label>
+                <div class="ivr-tooptip-quiz">
+                  <svg
+                    :id="`${node.type}-ivrgather-9-${node.id}`"
+                    width="16"
+                    height="17"
+                    viewBox="0 0 16 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="8"
+                      cy="8.5"
+                      r="8"
+                      fill="white"
+                    />
+                    <path
+                      d="M10.4609 6.24316C10.3242 5.94434 10.1299 5.67578 9.88184 5.44629C9.37793 4.97852 8.70898 4.7207 8 4.7207C7.29102 4.7207 6.62207 4.97852 6.11816 5.44531C5.87012 5.67578 5.67578 5.94336 5.53906 6.24316C5.39648 6.55566 5.32422 6.88672 5.32422 7.22852V7.49219C5.32422 7.55273 5.37305 7.60156 5.43359 7.60156H5.96094C6.02148 7.60156 6.07031 7.55273 6.07031 7.49219V7.22852C6.07031 6.25684 6.93555 5.4668 8 5.4668C9.06445 5.4668 9.92969 6.25684 9.92969 7.22852C9.92969 7.62695 9.78809 8.00195 9.51953 8.31445C9.25391 8.62402 8.87891 8.8457 8.46387 8.93945C8.22656 8.99316 8.0127 9.12695 7.86133 9.31836C7.71049 9.50911 7.62827 9.7451 7.62793 9.98828V10.2949C7.62793 10.3555 7.67676 10.4043 7.7373 10.4043H8.26465C8.3252 10.4043 8.37402 10.3555 8.37402 10.2949V9.98828C8.37402 9.83496 8.48047 9.7002 8.62793 9.66699C9.19824 9.53809 9.71582 9.23047 10.0859 8.80078C10.2725 8.58301 10.418 8.34082 10.5186 8.07812C10.623 7.80566 10.6758 7.51953 10.6758 7.22852C10.6758 6.88672 10.6035 6.55469 10.4609 6.24316ZM8 11.1855C7.69824 11.1855 7.45312 11.4307 7.45312 11.7324C7.45312 12.0342 7.69824 12.2793 8 12.2793C8.30176 12.2793 8.54688 12.0342 8.54688 11.7324C8.54688 11.4307 8.30176 11.1855 8 11.1855Z"
+                      fill="black"
+                    />
+                  </svg>
+                  <b-tooltip
+                    :target="`${node.type}-ivrgather-9-${node.id}`"
+                    triggers="hover"
+                  >
+                    The key the caller presses to stop collecting input.
+                  </b-tooltip>
+                </div>
+              </div>
+              <div class="ivr-input">
+                <div class="input-gradient">
+                  <b-form-input
+                    id="seconds"
+                    type="text"
+                    v-model="gather.finish_on_key"
+                    @keydown="ivrInputValidate($event, 1)"
+                    placeholder="#"
+                  />
+                </div>
+              </div>
+            </div>
+          </b-form-group>
+        </b-col>
+        <b-col
+          md="12"
+          class="mb-2"
+        >
+          <b-form-group>
+            <div class="d-flex alig-items-end justify-content-between">
+              <div class="label-tooltip">
+                <label class="IvrNodeInputLabel">Timeout (sec)</label>
+                <div class="ivr-tooptip-quiz">
+                  <svg
+                    :id="`${node.type}-ivrgather-10-${node.id}`"
+                    width="16"
+                    height="17"
+                    viewBox="0 0 16 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="8"
+                      cy="8.5"
+                      r="8"
+                      fill="white"
+                    />
+                    <path
+                      d="M10.4609 6.24316C10.3242 5.94434 10.1299 5.67578 9.88184 5.44629C9.37793 4.97852 8.70898 4.7207 8 4.7207C7.29102 4.7207 6.62207 4.97852 6.11816 5.44531C5.87012 5.67578 5.67578 5.94336 5.53906 6.24316C5.39648 6.55566 5.32422 6.88672 5.32422 7.22852V7.49219C5.32422 7.55273 5.37305 7.60156 5.43359 7.60156H5.96094C6.02148 7.60156 6.07031 7.55273 6.07031 7.49219V7.22852C6.07031 6.25684 6.93555 5.4668 8 5.4668C9.06445 5.4668 9.92969 6.25684 9.92969 7.22852C9.92969 7.62695 9.78809 8.00195 9.51953 8.31445C9.25391 8.62402 8.87891 8.8457 8.46387 8.93945C8.22656 8.99316 8.0127 9.12695 7.86133 9.31836C7.71049 9.50911 7.62827 9.7451 7.62793 9.98828V10.2949C7.62793 10.3555 7.67676 10.4043 7.7373 10.4043H8.26465C8.3252 10.4043 8.37402 10.3555 8.37402 10.2949V9.98828C8.37402 9.83496 8.48047 9.7002 8.62793 9.66699C9.19824 9.53809 9.71582 9.23047 10.0859 8.80078C10.2725 8.58301 10.418 8.34082 10.5186 8.07812C10.623 7.80566 10.6758 7.51953 10.6758 7.22852C10.6758 6.88672 10.6035 6.55469 10.4609 6.24316ZM8 11.1855C7.69824 11.1855 7.45312 11.4307 7.45312 11.7324C7.45312 12.0342 7.69824 12.2793 8 12.2793C8.30176 12.2793 8.54688 12.0342 8.54688 11.7324C8.54688 11.4307 8.30176 11.1855 8 11.1855Z"
+                      fill="black"
+                    />
+                  </svg>
+                  <b-tooltip
+                    :target="`${node.type}-ivrgather-10-${node.id}`"
+                    triggers="hover"
+                  >
+                    The amount of time the caller has to enter a response.
+                  </b-tooltip>
+                </div>
+              </div>
+              <div class="ivr-input">
+                <div class="input-gradient">
+                  <b-form-input
+                    id="seconds"
+                    type="number"
+                    v-model="gather.timeout"
+                    @keydown="ivrInputValidate($event, 5)"
+                    placeholder="10"
+                  />
+                </div>
+              </div>
+            </div>
+          </b-form-group>
+        </b-col>
+        <b-col
+          md="12"
+          class="mb-2"
+        >
+          <b-form-group>
+            <div class="d-flex alig-items-end justify-content-between">
+              <div class="label-tooltip">
+                <label class="IvrNodeInputLabel"
+                  >Key press time out (sec)</label
+                >
+                <div class="ivr-tooptip-quiz">
+                  <svg
+                    :id="`${node.type}-ivrgather-11-${node.id}`"
+                    width="16"
+                    height="17"
+                    viewBox="0 0 16 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="8"
+                      cy="8.5"
+                      r="8"
+                      fill="white"
+                    />
+                    <path
+                      d="M10.4609 6.24316C10.3242 5.94434 10.1299 5.67578 9.88184 5.44629C9.37793 4.97852 8.70898 4.7207 8 4.7207C7.29102 4.7207 6.62207 4.97852 6.11816 5.44531C5.87012 5.67578 5.67578 5.94336 5.53906 6.24316C5.39648 6.55566 5.32422 6.88672 5.32422 7.22852V7.49219C5.32422 7.55273 5.37305 7.60156 5.43359 7.60156H5.96094C6.02148 7.60156 6.07031 7.55273 6.07031 7.49219V7.22852C6.07031 6.25684 6.93555 5.4668 8 5.4668C9.06445 5.4668 9.92969 6.25684 9.92969 7.22852C9.92969 7.62695 9.78809 8.00195 9.51953 8.31445C9.25391 8.62402 8.87891 8.8457 8.46387 8.93945C8.22656 8.99316 8.0127 9.12695 7.86133 9.31836C7.71049 9.50911 7.62827 9.7451 7.62793 9.98828V10.2949C7.62793 10.3555 7.67676 10.4043 7.7373 10.4043H8.26465C8.3252 10.4043 8.37402 10.3555 8.37402 10.2949V9.98828C8.37402 9.83496 8.48047 9.7002 8.62793 9.66699C9.19824 9.53809 9.71582 9.23047 10.0859 8.80078C10.2725 8.58301 10.418 8.34082 10.5186 8.07812C10.623 7.80566 10.6758 7.51953 10.6758 7.22852C10.6758 6.88672 10.6035 6.55469 10.4609 6.24316ZM8 11.1855C7.69824 11.1855 7.45312 11.4307 7.45312 11.7324C7.45312 12.0342 7.69824 12.2793 8 12.2793C8.30176 12.2793 8.54688 12.0342 8.54688 11.7324C8.54688 11.4307 8.30176 11.1855 8 11.1855Z"
+                      fill="black"
+                    />
+                  </svg>
+                  <b-tooltip
+                    :target="`${node.type}-ivrgather-11-${node.id}`"
+                    triggers="hover"
+                  >
+                    Time in seconds allowed between consecutive digit inputs.
+                  </b-tooltip>
+                </div>
+              </div>
+              <div class="ivr-input">
+                <div class="input-gradient">
+                  <b-form-input
+                    id="seconds"
+                    type="number"
+                    v-model="gather.timeout_key_press"
+                    @keydown="ivrInputValidate($event, 1)"
+                    placeholder="3"
+                  />
+                </div>
+              </div>
+            </div>
+          </b-form-group>
+        </b-col>
+        <b-col
+          md="12"
+          class="mb-2"
+        >
+          <b-form-group>
+            <div class="d-flex alig-items-end justify-content-between">
+              <div class="label-tooltip">
+                <label class="IvrNodeInputLabel">Retries</label>
+                <div class="ivr-tooptip-quiz">
+                  <svg
+                    :id="`${node.type}-ivrgather-12-${node.id}`"
+                    width="16"
+                    height="17"
+                    viewBox="0 0 16 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="8"
+                      cy="8.5"
+                      r="8"
+                      fill="white"
+                    />
+                    <path
+                      d="M10.4609 6.24316C10.3242 5.94434 10.1299 5.67578 9.88184 5.44629C9.37793 4.97852 8.70898 4.7207 8 4.7207C7.29102 4.7207 6.62207 4.97852 6.11816 5.44531C5.87012 5.67578 5.67578 5.94336 5.53906 6.24316C5.39648 6.55566 5.32422 6.88672 5.32422 7.22852V7.49219C5.32422 7.55273 5.37305 7.60156 5.43359 7.60156H5.96094C6.02148 7.60156 6.07031 7.55273 6.07031 7.49219V7.22852C6.07031 6.25684 6.93555 5.4668 8 5.4668C9.06445 5.4668 9.92969 6.25684 9.92969 7.22852C9.92969 7.62695 9.78809 8.00195 9.51953 8.31445C9.25391 8.62402 8.87891 8.8457 8.46387 8.93945C8.22656 8.99316 8.0127 9.12695 7.86133 9.31836C7.71049 9.50911 7.62827 9.7451 7.62793 9.98828V10.2949C7.62793 10.3555 7.67676 10.4043 7.7373 10.4043H8.26465C8.3252 10.4043 8.37402 10.3555 8.37402 10.2949V9.98828C8.37402 9.83496 8.48047 9.7002 8.62793 9.66699C9.19824 9.53809 9.71582 9.23047 10.0859 8.80078C10.2725 8.58301 10.418 8.34082 10.5186 8.07812C10.623 7.80566 10.6758 7.51953 10.6758 7.22852C10.6758 6.88672 10.6035 6.55469 10.4609 6.24316ZM8 11.1855C7.69824 11.1855 7.45312 11.4307 7.45312 11.7324C7.45312 12.0342 7.69824 12.2793 8 12.2793C8.30176 12.2793 8.54688 12.0342 8.54688 11.7324C8.54688 11.4307 8.30176 11.1855 8 11.1855Z"
+                      fill="black"
+                    />
+                  </svg>
+                  <b-tooltip
+                    :target="`${node.type}-ivrgather-12-${node.id}`"
+                    triggers="hover"
+                  >
+                    The number of attempts the user is allowed to enter the
+                    correct input if they select an invalid input.
+                  </b-tooltip>
+                </div>
+              </div>
+              <div class="ivr-input">
+                <div class="input-gradient">
+                  <b-form-input
+                    id="seconds"
+                    type="number"
+                    @keydown="ivrInputValidate($event, 5)"
+                    v-model="gather.retires"
+                    placeholder="2"
+                  />
+                </div>
+              </div>
+            </div>
+          </b-form-group>
+        </b-col>
+      </b-collapse>
+      <div>
+        <div class="failure-node">
           <child-node-menu
             label="On Failure"
             :node="node"
             type="fail"
           />
-        </b-col>
-        <b-col
-          sm="12"
-          class="mt-2 success-node"
-        >
+        </div>
+        <div class="mt-2 success-node">
           <child-node-menu
             label="On Success"
             :node="node"
             type="success"
           />
-        </b-col>
-      </b-row>
+        </div>
+      </div>
     </div>
   </div>
 </template>

@@ -23,7 +23,7 @@
       >
         <div class="route_condition">
           <h4
-            class="mt-2 mb-1 d-flex align-items-center justify-content-between"
+            class="mt-1 mb-1 d-flex align-items-center justify-content-between"
           >
             Filter Conditions
             <feather-icon
@@ -85,18 +85,20 @@
                   ></v-select>
                 </div>
                 <div class="router_states">
-                  <div class="left_state_box">
-                    <b-list-group>
-                      <b-list-group-item
-                        v-for="(state, stateIndex) in condition.states"
-                        :ref="`state-${stateIndex}${key}`"
-                        :key="`state-${stateIndex}${key}`"
-                        @click="
-                          selectOperatorValue(stateIndex, key, state.name)
-                        "
-                        >{{ state.name }}</b-list-group-item
-                      >
-                    </b-list-group>
+                  <div class="input-gradient">
+                    <div class="left_state_box">
+                      <b-list-group>
+                        <b-list-group-item
+                          v-for="(state, stateIndex) in condition.states"
+                          :ref="`state-${stateIndex}${key}`"
+                          :key="`state-${stateIndex}${key}`"
+                          @click="
+                            selectOperatorValue(stateIndex, key, state.name)
+                          "
+                          >{{ state.name }}</b-list-group-item
+                        >
+                      </b-list-group>
+                    </div>
                   </div>
                   <div class="center_state_box">
                     <div class="mb-1">
@@ -123,22 +125,24 @@
                       />
                     </div>
                   </div>
-                  <div class="right_state_box">
-                    <b-list-group>
-                      <b-list-group-item
-                        v-for="(state, valueIndex) in condition.val"
-                        :key="valueIndex"
-                        @click="removeOperatorValue(valueIndex, key, state)"
-                        >{{ state }}</b-list-group-item
-                      >
-                    </b-list-group>
+                  <div class="input-gradient">
+                    <div class="right_state_box">
+                      <b-list-group>
+                        <b-list-group-item
+                          v-for="(state, valueIndex) in condition.val"
+                          :key="valueIndex"
+                          @click="removeOperatorValue(valueIndex, key, state)"
+                          >{{ state }}</b-list-group-item
+                        >
+                      </b-list-group>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="router_rule mt-2">
+          <div class="router_rule mt-2 mb-1">
             <b-button
               variant="primary"
               class="mr-1"
@@ -153,15 +157,15 @@
             >
             <b-button
               variant="primary"
+              class="mr-1"
               @click="onClose"
               >skip</b-button
             >
-          </div>
 
-          <div class="router_rule mt-2">
             <b-button
               variant="primary"
               @click="saveFilterRecord"
+              class="mr-1"
               >Apply Filter</b-button
             >
           </div>
@@ -352,6 +356,11 @@ export default {
           if (filterRecord.length != 0) {
             this.conditions = [];
             filterRecord.forEach((value, index) => {
+              this.$store.commit(
+                "clientCampaign/UPDATE_STATES",
+                value["states"]
+              );
+
               this.conditions.push({
                 operators: value["operators"],
                 val: value["tag_operator_value"],
@@ -368,9 +377,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.route_filter_modal {
-  left: -150px !important;
-}
-</style>

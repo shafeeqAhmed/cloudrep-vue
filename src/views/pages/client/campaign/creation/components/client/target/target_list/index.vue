@@ -74,7 +74,7 @@
                 <feather-icon
                   icon="PlayIcon"
                   size="20"
-                  class="mr-1"
+                  class="mr-1 cursor-pointer"
                   @click="action(data.item.uuid, 'routing_plan')"
                 />
               </div>

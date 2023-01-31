@@ -5,13 +5,13 @@
       ' border-error-ivr': Object.keys(getErrors).length > 0,
     }">
       <div class="col d-flex align-items-center" v-b-toggle="`ivr-collapse-${node.id}`">
-        <feather-icon icon="PhoneCallIcon" class="mr-1" size="21" />
+        <feather-icon icon="PhoneCallIcon" class="mr-1" size="18" />
         <h2 class="text-h6">
           <node-head-title :node="node" />
         </h2>
         <div class="ivr-tooptip-quiz" v-if="Object.keys(getErrors).length > 0">
           <div :id="`${node.type}-evrError-${node.id}`" class="ivr-note-box ivrError">
-            <feather-icon icon="AlertTriangleIcon" class="text-white IVRAlertTriangleIcon" size="27" />
+            <feather-icon icon="AlertTriangleIcon" class="text-white IVRAlertTriangleIcon" size="24" />
             <span class="error-count">{{ Object.keys(getErrors).length }}</span>
           </div>
 
@@ -123,7 +123,7 @@
                   <div class="ivr-input">
                     <div class="input-gradient">
                       <b-form-input id="seconds" v-model="dial.timeout" type="number"
-                        @keydown="ivrInputValidate($event, 5)" placeholder="the target timeout" />
+                        @keydown="ivrInputValidate($event, 5)" placeholder="Target Timeout" />
                       <!-- @input="validateTimeOutPositiveNumber"  -->
                     </div>
                   </div>
@@ -214,7 +214,7 @@
                   <div class="input-gradient">
                     <!-- <b-form-input id="routing_plan" v-model="dial.routing_plan" type="number" placeholder="" /> -->
                     <v-select class="IvrNodeVSelect" v-model="dial.routing_plan" :options="routingPlanList" label="name"
-                      :reduce="(name) => name.uuid" placeholder="Please select an routing plan">
+                      :reduce="(name) => name.uuid" placeholder="Select an routing plan">
                     </v-select>
                   </div>
                   <!-- <small class="text-danger">Must Have Value</small> -->
@@ -376,7 +376,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="d-flex alig-items-end justify-content-between mb-2">
+                  <div class="d-flex align-items-start justify-content-between mb-2">
                     <div class="label-tooltip">
                       <label class="IvrNodeInputLabel">Text</label>
                       <div class="ivr-tooptip-quiz">
@@ -395,8 +395,8 @@
                     </div>
                     <div class="ivr-input">
                       <div class="input-gradient">
-                        <b-form-input id="seconds" v-model="dial.text" @keydown="ivrInputValidateText($event, 100)"
-                          type="text" placeholder="" />
+                        <b-form-textarea id="seconds" v-model="dial.text" @keydown="ivrInputValidateText($event, 100)"
+                          placeholder="" />
                       </div>
                     </div>
                   </div>
@@ -406,11 +406,9 @@
           </div>
         </validation-observer>
       </b-collapse>
-      <b-row class="m-auto">
-        <b-col sm="12" class="mt-2 failure-node">
-          <child-node-menu label="On Failure" :node="node" type="fail" class="w-100" />
-        </b-col>
-      </b-row>
+      <div class="failure-node">
+        <child-node-menu label="On Failure" :node="node" type="fail" class="w-100" />
+      </div>
     </div>
   </div>
 </template>
