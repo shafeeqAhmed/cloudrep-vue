@@ -245,7 +245,7 @@ export default {
         return data.name;
       });
 
-      this.conditions[key].val = { ...list };
+      this.conditions[key].val = [...list];
       this.conditions[key].states = [];
     },
     removeAllOperatorValue(key) {
@@ -331,12 +331,12 @@ export default {
         ) {
           isError = 1;
         } else {
-           payload.filters.push({
-          tag_uuid: element.tag,
-          tag_operator_uuid: element.operator,
-          tag_operator_value: element.val,
-          type: element.operation,
-        });
+          payload.filters.push({
+            tag_uuid: element.tag,
+            tag_operator_uuid: element.operator,
+            tag_operator_value: element.val,
+            type: element.operation,
+          });
         }
       });
 
