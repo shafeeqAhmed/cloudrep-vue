@@ -200,6 +200,7 @@ import {
 import { FilterIcon } from "vue-feather-icons";
 import Ripple from "vue-ripple-directive";
 import vSelect from "vue-select";
+import { toastAlert } from "@core/mixins/ui/toast";
 
 export default {
   props: ["parentId", "popOverId", "type", "ivr_builder_uuid"],
@@ -214,7 +215,7 @@ export default {
     BListGroup,
     BListGroupItem,
   },
-
+  mixins: [toastAlert],
   data() {
     return {
       tags: [],
@@ -365,26 +366,44 @@ export default {
         filters: [],
         ivr_builder_uuid: this.ivr_builder_uuid,
       };
+      let isError = 0;
       this.conditions.forEach((element) => {
-        payload.filters.push({
-          tag_uuid: element.tag,
-          tag_operator_uuid: element.operator,
-          tag_operator_value: element.val,
-          type: element.operation,
-          campaign_uuid: "",
+        if (
+          element.tag === "" ||
+          element.operator === "" ||
+          element.val.length == 0
+        ) {
+          isError = 1;
+        } else {
+          payload.filters.push({
+            tag_uuid: element.tag,
+            tag_operator_uuid: element.operator,
+            tag_operator_value: element.val,
+            type: element.operation,
+            campaign_uuid: "",
+          });
+        }
+      });
+
+      if (isError == 1) {
+        this.conditionalToast(
+          "danger",
+          "Error",
+          "Please select Tag, Operator and State!",
+          "error"
+        );
+      } else {
+        this.$store.dispatch("ivrBuilder/storeIvrFilterRecord", payload);
+        this.conditions.forEach((data) => {
+          data.val = [];
+          data.operator = "";
+          data.tag = "";
+          data.states = [];
+          data.preSelectedStates = [];
         });
-      });
 
-      this.$store.dispatch("ivrBuilder/storeIvrFilterRecord", payload);
-      this.conditions.forEach((data) => {
-        data.val = [];
-        data.operator = "";
-        data.tag = "";
-        data.states = [];
-        data.preSelectedStates = [];
-      });
-
-      this.onClose();
+        this.onClose();
+      }
     },
   },
 };
