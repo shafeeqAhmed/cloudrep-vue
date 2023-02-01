@@ -36,7 +36,7 @@
                         <span v-if="description.length < 1">200</span>
                     </div>
                 </div>
-                
+
                 <validation-provider #default="{ errors }" name="Video Description" vid="videoDescription"
                   rules="required" :state="errors.length > 0 ? false : null">
                   <b-input-group class="input-group-merge">
@@ -185,7 +185,13 @@ export default {
     uploadVideo() {
       this.$refs.uploadVideoForm.validate().then((success) => {
         if (this.video == "") {
-          this.errorToast("Error", "Please upload Course Video!");
+          this.conditionalToast(
+          "danger",
+          "Error",
+          "Please upload Course Video!",
+          "error"
+        );
+
           return false;
         }
 

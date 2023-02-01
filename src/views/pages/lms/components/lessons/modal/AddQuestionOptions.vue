@@ -10,10 +10,20 @@
       modal-class="modal-cr"
       hide-footer
     >
-      <validation-observer ref="createQuestionForm" #default="{ invalid }">
+      <validation-observer
+        ref="createQuestionForm"
+        #default="{ invalid }"
+      >
         <b-row>
-          <b-col md="1" class="">
-            <feather-icon icon="BookOpenIcon" size="22" class=""></feather-icon>
+          <b-col
+            md="1"
+            class=""
+          >
+            <feather-icon
+              icon="BookOpenIcon"
+              size="22"
+              class=""
+            ></feather-icon>
             <!-- <b-img src="@/assets/images/courses/Document.svg" /> -->
           </b-col>
           <b-col md="11">
@@ -24,22 +34,29 @@
               rules="required"
             >
               <b-input-group class="input-group-merge">
-               <div class="input-gradient">
-                <b-form-textarea placeholder="Enter a Question"
-                  rows="4"
-                  v-model="form.question"
-                  no-resize
-                  maxLength="150"
-                ></b-form-textarea>
-               </div>
+                <div class="input-gradient">
+                  <b-form-textarea
+                    placeholder="Enter a Question"
+                    rows="4"
+                    v-model="form.question"
+                    no-resize
+                    maxLength="150"
+                  ></b-form-textarea>
+                </div>
               </b-input-group>
               <small class="text-danger">{{ errors[0] }}</small>
+              &nbsp;
             </validation-provider>
-              <span v-if="form.question.length >= 1"><span >{{form.question.length}}</span> / 150</span>
-              <span v-if="form.question.length < 1">150</span>
+            <span v-if="form.question.length >= 1"
+              ><span>{{ form.question.length }}</span> / 150</span
+            >
+            <span v-if="form.question.length < 1">150</span>
           </b-col>
 
-          <b-col md="12" class="mt-3">
+          <b-col
+            md="12"
+            class="mt-3"
+          >
             <h4>Enter Your Options &amp; Select The Correct One</h4>
             <div class="ques-opts mt-3">
               <div
@@ -60,34 +77,39 @@
                 <div class="ml-2 w-100">
                   <validation-provider
                     #default="{ errors }"
-                    :name='`Option-${key}`'
+                    :name="`Option-${key}`"
                     rules="required"
                   >
                     <b-form-group class="mb-0 form-group-cr">
                       <div class="input-gradient">
                         <b-form-input
-                        id="opt1"
-                        v-model="option.name"
-                        class="form-control-merge form-control-cr"
-                        type="text"
-                        name="opt1"
-                        placeholder="Enter First Option"
-                        value="Option 1"
-                        maxLength="70"
-                      />
+                          id="opt1"
+                          v-model="option.name"
+                          class="form-control-merge form-control-cr"
+                          type="text"
+                          name="opt1"
+                          placeholder="Enter First Option"
+                          value="Option 1"
+                          maxLength="70"
+                        />
                       </div>
                     </b-form-group>
                     <small class="text-danger">{{ errors[0] }}</small>
                   </validation-provider>
                   <div class="lmsInputFieldCounter">
-                    <span v-if="option.length >= 1"><span >{{option.length}}</span> / 70</span>
+                    <span v-if="option.length >= 1"
+                      ><span>{{ option.length }}</span> / 70</span
+                    >
                     <span v-if="option.length < 1">70</span>
                   </div>
                 </div>
               </div>
             </div>
           </b-col>
-          <b-col md="12" class="mt-5">
+          <b-col
+            md="12"
+            class="mt-5"
+          >
             <div class="d-flex justify-content-end">
               <!-- <b-button
             v-if="isQuestionOptionsUpdate === true"
@@ -107,7 +129,11 @@
                 Uploading...
               </b-button>
 
-              <b-button v-else @click="saveQuestionOptions" variant="primary">
+              <b-button
+                v-else
+                @click="saveQuestionOptions"
+                variant="primary"
+              >
                 Save
               </b-button>
             </div>
@@ -260,7 +286,7 @@ export default {
           });
           if (!isSelected) {
             this.errorToast("Error", "Please Select the Correct Option");
-            return false
+            return false;
           }
 
           this.isDisable = true;
@@ -339,8 +365,8 @@ export default {
 <style>
 /* .lmsInputFieldCounter{
     position:absolute;
-    top:0px; 
-    right:5px; 
+    top:0px;
+    right:5px;
     color: lightgray;
   } */
 </style>
