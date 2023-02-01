@@ -318,6 +318,10 @@
         transition: 0.4s all ease-in-out;
         fill: #000;
     }
+    &:hover{
+        background: #1D203E;
+        transition: all 0.4s ease-in-out;
+    }
 }
 .rep_collapse_header.not-collapsed{
     svg{
