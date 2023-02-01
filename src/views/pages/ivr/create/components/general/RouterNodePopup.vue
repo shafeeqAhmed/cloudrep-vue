@@ -261,7 +261,7 @@ export default {
         return data.name;
       });
 
-      this.conditions[key].val = { ...list };
+      this.conditions[key].val = [...list];
       this.conditions[key].states = [];
     },
     removeAllOperatorValue(key) {
