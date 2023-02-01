@@ -12,10 +12,16 @@
       modal-class="modal-cr"
       hide-footer
     >
-      <validation-observer ref="createQuizForm" #default="{ invalid }">
+      <validation-observer
+        ref="createQuizForm"
+        #default="{ invalid }"
+      >
         <b-form class="mt-2">
           <b-row>
-            <b-col md="12" class="mb-2">
+            <b-col
+              md="12"
+              class="mb-2"
+            >
               <h4>Enter Quiz Name</h4>
               <validation-provider
                 #default="{ errors }"
@@ -24,20 +30,30 @@
                 rules="required"
               >
                 <b-input-group class="input-group-merge">
-                 <div class="input-gradient">
-                    <b-form-input v-model="title" id="titlequiz" placeholder="Quiz Name"  maxLength="70"/>
-                 </div>
+                  <div class="input-gradient">
+                    <b-form-input
+                      v-model="title"
+                      id="titlequiz"
+                      placeholder="Quiz Name"
+                      maxLength="70"
+                    />
+                  </div>
                 </b-input-group>
                 <small class="text-danger">{{ errors[0] }}</small>
               </validation-provider>
               <div class="lmsInputFieldCounter">
-              <span v-if="title.length >= 1"><span >{{title.length}}</span> / 70</span>
-              <span v-if="title.length < 1">70</span>
-            </div>
+                <span v-if="title.length >= 1"
+                  ><span>{{ title.length }}</span> / 70</span
+                >
+                <span v-if="title.length < 1">70</span>
+              </div>
             </b-col>
-            <b-col md="12" class="mb-2">
+            <b-col
+              md="12"
+              class="mb-2"
+            >
               <h4>Quiz Duration</h4>
-              
+
               <!-- <p class="text-small">Quiz attempt duration in minutes.</p> -->
               <validation-provider
                 #default="{ errors }"
@@ -47,33 +63,54 @@
               >
                 <b-input-group class="input-group-merge">
                   <div class="input-gradient">
-                    <b-form-input type="number" v-model="duration" id="duration" placeholder="Quiz duration"/>
+                    <b-form-input
+                      type="number"
+                      v-model="duration"
+                      id="duration"
+                      placeholder="Quiz duration"
+                    />
                     <!-- <b-time v-model="duration" locale="en"></b-time> -->
                   </div>
                   <!-- <small class="text-danger" v-if=" duration == 0">Minimum duration should be 1</small> -->
                 </b-input-group>
-                <small class="text-danger">{{ errors[0] }}</small><br />
+                <small class="text-danger">{{ errors[0] }}</small
+                ><br />
               </validation-provider>
-              <span class="text-warning" style="font-size:10px">Note: Quiz attempt duration in minutes.</span>
+              <span
+                class="text-warning"
+                style="font-size: 10px"
+                >Note: Quiz attempt duration in minutes.</span
+              >
             </b-col>
-            <b-col md="12" class="mb-2">
-              <h4>Number of Question</h4>
+            <b-col
+              md="12"
+              class="mb-2"
+            >
+              <h4>Number of Questions</h4>
               <validation-provider
                 #default="{ errors }"
-                name="noOfQuestion"
+                name="No of Questions"
                 vid="noOfQuestion"
                 rules="required"
               >
                 <b-input-group class="input-group-merge">
                   <div class="input-gradient">
-                    <b-form-input type="number" v-model="noOfQuestion" id="duration" placeholder="Number of Question"/>
+                    <b-form-input
+                      type="number"
+                      v-model="noOfQuestion"
+                      id="duration"
+                      placeholder="Number of Question"
+                    />
                     <!-- <b-time v-model="duration" locale="en"></b-time> -->
                   </div>
                 </b-input-group>
                 <small class="text-danger">{{ errors[0] }}</small>
               </validation-provider>
             </b-col>
-            <b-col md="12" class="mb-2">
+            <b-col
+              md="12"
+              class="mb-2"
+            >
               <h4>Set Passing Percentage</h4>
               <validation-provider
                 #default="{ errors }"
@@ -83,16 +120,19 @@
               >
                 <div class="input-gradient">
                   <b-form-select
-                  v-model="percentage"
-                  :options="QuizPercentageoptions"
-                  size="lg"
-                  id="persentage"
-                ></b-form-select>
+                    v-model="percentage"
+                    :options="QuizPercentageoptions"
+                    size="lg"
+                    id="persentage"
+                  ></b-form-select>
                 </div>
                 <small class="text-danger">{{ errors[0] }}</small>
               </validation-provider>
             </b-col>
-            <b-col md="12" class="mt-5">
+            <b-col
+              md="12"
+              class="mt-5"
+            >
               <div class="d-flex justify-content-end">
                 <!-- <b-button variant="primary" @click="createQuiz()"
                   >Save</b-button
@@ -106,8 +146,12 @@
                   <b-spinner small />
                   Uploading...
                 </b-button>
-                 
-                 <b-button v-else  @click="createQuiz" variant="primary">
+
+                <b-button
+                  v-else
+                  @click="createQuiz"
+                  variant="primary"
+                >
                   Save
                 </b-button>
               </div>
@@ -133,7 +177,7 @@ import {
   BFormFile,
   BFormSelect,
   BSpinner,
-  BTime
+  BTime,
 } from "bootstrap-vue";
 
 import { ValidationProvider, ValidationObserver } from "vee-validate";
@@ -157,7 +201,7 @@ export default {
     ValidationProvider,
     ValidationObserver,
     BSpinner,
-    BTime
+    BTime,
   },
   data() {
     return {
@@ -171,25 +215,37 @@ export default {
         { value: "90", text: "90 %" },
       ],
       required,
-      duration: '',
-      noOfQuestion: '',
+      duration: "",
+      noOfQuestion: "",
     };
   },
   methods: {
     createQuiz() {
       // console.log(this.duration)
       // return true
-     
-        this.$refs.createQuizForm.validate().then((success) => {
-          if (this.duration < 1) {
-          this.errorToast('Error', 'The Minimum Duration should be 1')
-          return false
-          } if (this.noOfQuestion < 1) {
-            this.errorToast('Error', 'The Minimum Question should be 1')
-            return false
-          } 
+
+      this.$refs.createQuizForm.validate().then((success) => {
+        if (this.duration < 1) {
+          this.conditionalToast(
+            "danger",
+            "Error",
+            "The Minimum Duration should be 1",
+            "error"
+          );
+          return false;
+        }
+        if (this.noOfQuestion < 1) {
+          this.conditionalToast(
+            "danger",
+            "Error",
+            "The Minimum Question should be 1",
+            "error"
+          );
+
+          return false;
+        }
         if (success) {
-          this.isDisable = true
+          this.isDisable = true;
           const formData = new FormData();
           formData.append("name", this.title);
           formData.append("percentage", this.percentage);
@@ -209,10 +265,9 @@ export default {
               this.$bvModal.hide("create-quiz");
               this.resetInput();
             })
-            .catch((error) => {
-              
-            }).finally(()=>{
-                this.isDisable = false
+            .catch((error) => {})
+            .finally(() => {
+              this.isDisable = false;
             });
         }
       });
@@ -228,10 +283,10 @@ export default {
 };
 </script>
 <style>
- /* .lmsInputFieldCounter{
+/* .lmsInputFieldCounter{
     position:absolute;
-    top:0px; 
-    right:5px; 
+    top:0px;
+    right:5px;
     color: lightgray;
   } */
 </style>
