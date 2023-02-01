@@ -321,11 +321,25 @@ export default {
         target_uuid: this.target_uuid,
       };
 
-      if (
-        this.conditions[0].tag === "" ||
-        this.conditions[0].operator === "" ||
-        this.conditions[0].val.length == 0
-      ) {
+      var isError = 0;
+      for (const [index, element] of this.conditions.entries()) {
+        if (
+          element.tag === "" ||
+          element.operator === "" ||
+          element.val.length == 0
+        ) {
+          isError = 1;
+        } else {
+          payload.filters.push({
+            tag_uuid: element.tag,
+            tag_operator_uuid: element.operator,
+            tag_operator_value: element.val,
+            type: element.operation,
+          });
+        }
+      }
+
+      if (isError == 1) {
         this.conditionalToast(
           "danger",
           "Error",
@@ -333,15 +347,6 @@ export default {
           "error"
         );
       } else {
-        this.conditions.forEach((element) => {
-          payload.filters.push({
-            tag_uuid: element.tag,
-            tag_operator_uuid: element.operator,
-            tag_operator_value: element.val,
-            type: element.operation,
-          });
-        });
-
         this.$store
           .dispatch("clientCampaign/storeCampaignFilterRecord", payload)
           .then(() => {
@@ -350,6 +355,7 @@ export default {
 
         this.onClose();
       }
+
       // this.conditions.forEach((data) => {
       //   data.val = [];
       //   data.operator = "";
