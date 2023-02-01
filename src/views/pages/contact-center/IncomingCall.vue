@@ -22,7 +22,7 @@
             </div>
             <div class="attend-call">
                 <!-- <div class="text-white disconnect mr-3"><feather-icon size="18" icon="PhoneIcon" /></div>
-                <div class="text-white attend"><feather-icon size="18" icon="PhoneIcon" /></div> -->
+              <div class="text-white attend"><feather-icon size="18" icon="PhoneIcon" /></div> -->
 
 
 
@@ -39,7 +39,7 @@
         </div>
     </div>
 </template>
-  
+
 <script>
 import {
     BCard,
@@ -220,7 +220,6 @@ export default {
 
             }
         },
-
         async outBoundCall(phone_number) {
             console.log("this is the outgoing call=================");
 
@@ -321,8 +320,7 @@ export default {
     },
 };
 </script>
-  
+
 <style scoped lang="scss">
 
 </style>
-  
