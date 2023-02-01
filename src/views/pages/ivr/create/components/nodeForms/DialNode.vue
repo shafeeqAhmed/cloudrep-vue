@@ -393,7 +393,7 @@
                         </b-tooltip>
                       </div>
                     </div>
-                    <div class="ivr-input">
+                    <div class="ivr-input text_area">
                       <div class="input-gradient">
                         <b-form-textarea id="seconds" v-model="dial.text" @keydown="ivrInputValidateText($event, 200)"
                           placeholder="" />

@@ -282,7 +282,7 @@
                         </b-tooltip>
                       </div>
                     </div>
-                    <div class="ivr-input menu_node">
+                    <div class="ivr-input menu_node text_area">
                       <div class="input-gradient">
                         <b-form-textarea id="seconds"  v-model="menu.text"
                           @keydown="ivrInputValidateText($event, 200)" placeholder="text" />
