@@ -2,61 +2,34 @@
   <div>
     <div class="card pb-2 px-2">
       <b-row class="">
-        <b-col
-          lg="12"
-          class="py-2"
-        >
+        <b-col lg="12" class="py-2">
           <div class="d-flex align-items-center">
-            <b-form-checkbox
-              @change="updateRoutingTypeOfCampaign"
-              name="check-button"
-              switch
-              v-model="isIvrListing"
-            ></b-form-checkbox>
+            <b-form-checkbox @change="updateRoutingTypeOfCampaign" name="check-button" switch
+              v-model="isIvrListing"></b-form-checkbox>
             <h3 class="mr-2 m-0">IVR Routing</h3>
           </div>
         </b-col>
       </b-row>
-      <div
-        class="py-2"
-        v-if="!isIvrListing"
-      >
+      <div class="py-2" v-if="!isIvrListing">
         <!-- <hr class="mb-3" /> -->
         <target-listing />
         <hr class="mb-3" />
         <RoutingPlans />
         <hr class="" />
       </div>
-      <div
-        class="py-2"
-        v-if="isIvrListing"
-      >
+      <div class="py-2" v-if="isIvrListing">
         <b-row>
           <b-col lg="6">
             <div class="input-gradient">
-              <v-select
-                placeholder="Select an route"
-                v-model="ivrRoute"
-                :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-                :options="ivrRouteList"
-                label="name"
-                :reduce="(name) => name.uuid"
-                class="v-sel-sty"
-              />
+              <v-select placeholder="Select an route" v-model="ivrRoute"
+                :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'" :options="ivrRouteList" label="name"
+                :reduce="(name) => name.uuid" class="v-sel-sty" />
             </div>
           </b-col>
         </b-row>
       </div>
-      <div
-        class="campaign-pagination text-right mt-3"
-        v-if="isIvrListing"
-      >
-        <b-button
-          variant="primary"
-          class="next-btn"
-          @click="store"
-          >Save</b-button
-        >
+      <div class="campaign-pagination text-right mt-3" v-if="isIvrListing">
+        <b-button variant="primary" class="next-btn" @click="store">Save</b-button>
       </div>
     </div>
   </div>
