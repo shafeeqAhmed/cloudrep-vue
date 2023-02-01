@@ -1,29 +1,17 @@
 <template>
   <div class="contract">
-    <div class="create-contract mt-3 pb-3">
+    <div class="create-contract pb-2">
       <b-row>
-        <b-col
-          cols="6"
-          class=""
-        >
+        <b-col cols="6" class="">
           <!-- <h2>Target Listing</h2> -->
         </b-col>
-        <b-col
-          cols="6"
-          class=""
-        >
+        <b-col cols="6" class="">
           <!-- <b-button class="primary-btn float-right"  v-b-modal.create-num>+ Create Number</b-button> -->
         </b-col>
 
-        <b-col
-          cols="12"
-          class="num-tab"
-        >
-          <b-tabs content-class="mt-3 ">
-            <b-tab
-              title="Target"
-              active
-            >
+        <b-col cols="12" class="num-tab">
+          <b-tabs content-class="mt-2">
+            <b-tab title="Target" active>
               <Target />
             </b-tab>
             <b-tab title="Groups">

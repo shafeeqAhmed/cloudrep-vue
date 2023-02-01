@@ -13,7 +13,7 @@
         <h2>Routing Plans</h2>
       </b-col>
     </b-row> -->
-    <b-row class="manag-ivr-tab mt-3">
+    <b-row class="manag-ivr-tab mt-2">
       <b-col cols="12">
         <b-table ref="refListTable" responsive :per-page="perPage" :current-page="currentPage"
           :items="fetchRoutingPlans" :fields="tableColumns" :sort-by.sync="sortBy" :sort-desc.sync="isSortDirDesc"
