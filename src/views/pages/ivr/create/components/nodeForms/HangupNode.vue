@@ -177,7 +177,7 @@
                       id="seconds"
                       type="number"
                       v-model="hangup.no_of_reproduce"
-                      @keydown="ivrInputValidate($event, 5)"
+                      @keydown="ivrInputValidate($event, 10)"
                       placeholder="1"
                     />
                   </div>
@@ -447,7 +447,7 @@
                       <b-form-textarea
                         id="seconds"
                         v-model="hangup.text"
-                        @keydown="ivrInputValidateText($event, 100)"
+                        @keydown="ivrInputValidateText($event, 200)"
                         placeholder=""
                       />
                     </div>

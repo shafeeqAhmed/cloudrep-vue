@@ -133,7 +133,7 @@
                     type="number"
                     id="gatherPlays"
                     v-model="gather.plays"
-                    @keydown="ivrInputValidate($event, 5)"
+                    @keydown="ivrInputValidate($event, 10)"
                     placeholder="1"
                   />
                 </div>
@@ -373,7 +373,7 @@
                     <b-form-textarea
                       id="seconds"
                       v-model="gather.text"
-                      @keydown="ivrInputValidateText($event, 100)"
+                      @keydown="ivrInputValidateText($event, 200)"
                       placeholder=""
                     />
                   </div>
@@ -429,7 +429,7 @@
                     id="gatherTagName"
                     type="text"
                     v-model="gather.tag_name"
-                    @keydown="ivrInputValidateText($event, 20)"
+                    @keydown="ivrInputValidateText($event, 50)"
                     placeholder=""
                   />
                 </div>
@@ -480,7 +480,7 @@
                     id="seconds"
                     type="number"
                     v-model="gather.inbound_number_max"
-                    @keydown="ivrInputValidate($event, 5)"
+                    @keydown="ivrInputValidate($event, 10)"
                     placeholder="30"
                   />
                 </div>
@@ -531,7 +531,7 @@
                     id="seconds"
                     type="number"
                     v-model="gather.inbound_number_min"
-                    @keydown="ivrInputValidate($event, 5)"
+                    @keydown="ivrInputValidate($event, 10)"
                     placeholder=""
                   />
                 </div>
@@ -581,7 +581,7 @@
                     id="seconds"
                     type="text"
                     v-model="gather.valid_digits"
-                    @keydown="ivrInputValidateText($event, 1)"
+                    @keydown="ivrInputValidateText($event, 10)"
                     placeholder="123456789*#"
                   />
                 </div>
@@ -631,7 +631,7 @@
                     id="seconds"
                     type="text"
                     v-model="gather.finish_on_key"
-                    @keydown="ivrInputValidate($event, 1)"
+                    @keydown="ivrInputValidate($event, 10)"
                     placeholder="#"
                   />
                 </div>
@@ -681,7 +681,7 @@
                     id="seconds"
                     type="number"
                     v-model="gather.timeout"
-                    @keydown="ivrInputValidate($event, 5)"
+                    @keydown="ivrInputValidate($event, 10)"
                     placeholder="10"
                   />
                 </div>
@@ -733,7 +733,7 @@
                     id="seconds"
                     type="number"
                     v-model="gather.timeout_key_press"
-                    @keydown="ivrInputValidate($event, 1)"
+                    @keydown="ivrInputValidate($event, 10)"
                     placeholder="3"
                   />
                 </div>
@@ -783,7 +783,7 @@
                   <b-form-input
                     id="seconds"
                     type="number"
-                    @keydown="ivrInputValidate($event, 5)"
+                    @keydown="ivrInputValidate($event, 10)"
                     v-model="gather.retires"
                     placeholder="2"
                   />

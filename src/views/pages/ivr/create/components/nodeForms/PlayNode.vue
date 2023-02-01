@@ -65,7 +65,7 @@
               </div>
               <div class="ivr-input">
                 <div class="input-gradient">
-                  <b-form-input id="seconds" type="number" v-model="play.plays" @keydown="ivrInputValidate($event, 5)" placeholder="1" />
+                  <b-form-input id="seconds" type="number" v-model="play.plays" @keydown="ivrInputValidate($event, 10)" placeholder="1" />
                 </div>
               </div>
             </div>
@@ -198,7 +198,7 @@
                 </div>
                 <div class="ivr-input">
                   <div class="input-gradient">
-                    <b-form-textarea id="seconds" v-model="play.text" @keydown="ivrInputValidateText($event, 100)" placeholder="" />
+                    <b-form-textarea id="seconds" v-model="play.text" @keydown="ivrInputValidateText($event, 200)" placeholder="" />
                   </div>
                 </div>
               </div>

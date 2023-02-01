@@ -65,7 +65,7 @@
               <div class="ivr-input">
                 <div class="input-gradient">
                   <b-form-input id="seconds" type="number" v-model="voicemail.timeout"
-                    @keydown="ivrInputValidate($event, 5)" placeholder="15" />
+                    @keydown="ivrInputValidate($event, 10)" placeholder="15" />
                 </div>
               </div>
             </div>
@@ -92,7 +92,7 @@
               <div class="ivr-input">
                 <div class="input-gradient">
                   <b-form-input id="seconds" type="number" v-model="voicemail.length"
-                    @keydown="ivrInputValidate($event, 5)" placeholder="240" />
+                    @keydown="ivrInputValidate($event, 10)" placeholder="240" />
                 </div>
               </div>
             </div>
@@ -119,7 +119,7 @@
               <div class="ivr-input">
                 <div class="input-gradient">
                   <b-form-input id="seconds" type="text" v-model="voicemail.finish_on_key"
-                    @keydown="ivrInputValidate($event, 1)" placeholder="#" />
+                    @keydown="ivrInputValidate($event, 10)" placeholder="#" />
                 </div>
               </div>
             </div>
@@ -210,7 +210,7 @@
                 <div class="ivr-input">
                   <div class="input-gradient">
                     <b-form-input id="seconds" type="number" v-model="voicemail.plays"
-                      @keydown="ivrInputValidate($event, 5)" placeholder="1" />
+                      @keydown="ivrInputValidate($event, 10)" placeholder="1" />
                   </div>
                 </div>
               </div>
@@ -344,7 +344,7 @@
                   <div class="ivr-input">
                     <div class="input-gradient">
                       <b-form-textarea id="seconds" v-model="voicemail.text"
-                        @keydown="ivrInputValidateText($event, 100)" placeholder="" />
+                        @keydown="ivrInputValidateText($event, 200)" placeholder="" />
                     </div>
                   </div>
                 </div>
