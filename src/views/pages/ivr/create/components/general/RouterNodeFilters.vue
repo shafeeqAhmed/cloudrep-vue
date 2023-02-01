@@ -2,38 +2,34 @@
   <div>
     <Container @drop="onDrop">
       <Draggable class="router_tab mb-1" v-for="(filter, key) in node.filters" :key="key">
-        <div class="router_key">
+        <div class="d-flex align-items-center">
           <span>{{ indexIncreament(key) }} </span>
-        </div>
-        <!-- <div class="d-flex align-items-center"> -->
-          <!-- <span class="mr-1 ml-1">|</span> -->
+          <span class="mr-1 ml-1">|</span>
           <div class="route_name">
             <div class="route_icon">
               <feather-icon icon="Volume2Icon" class="mr-1" size="21" />
             </div>
-            <div>Route {{ indexIncreament(key) }}</div>
+            <div>Route {{ indexIncreament(key) }} :</div>
             &nbsp;
-            
+
+            <div>{{ filter.child_node_type }}</div>
           </div>
-        <!-- </div> -->
+        </div>
 
         <div class="route_filters">
-          <div class="route_nam">{{ filter.child_node_type }}</div>
-          <div class="d-flex align-items-center">
-            <div id="route_filter">
+          <div id="route_filter">
             <router-node-popup :parentId="node.id" :ivr_builder_uuid="`${filter.id}`"
               :popOverId="`${filter.id}-router-condition-${node.id}`" />
-            </div>
-            <div>
-              <feather-icon icon="XIcon" class="cursor-pointer" size="21"
-                @click="remove({ ...filter, node_type: 'filter' })" />
-            </div>
-            <div class="drag_icon_node ml-1">
-              <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
-                <path fill="currentColor"
-                  d="M7,19V17H9V19H7M11,19V17H13V19H11M15,19V17H17V19H15M7,15V13H9V15H7M11,15V13H13V15H11M15,15V13H17V15H15M7,11V9H9V11H7M11,11V9H13V11H11M15,11V9H17V11H15M7,7V5H9V7H7M11,7V5H13V7H11M15,7V5H17V7H15Z" />
-              </svg>
-            </div>
+          </div>
+          <div>
+            <feather-icon icon="XIcon" class="cursor-pointer" size="21"
+              @click="remove({ ...filter, node_type: 'filter' })" />
+          </div>
+          <div class="drag_icon_node ml-1">
+            <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M7,19V17H9V19H7M11,19V17H13V19H11M15,19V17H17V19H15M7,15V13H9V15H7M11,15V13H13V15H11M15,15V13H17V15H15M7,11V9H9V11H7M11,11V9H13V11H11M15,11V9H17V11H15M7,7V5H9V7H7M11,7V5H13V7H11M15,7V5H17V7H15Z" />
+            </svg>
           </div>
         </div>
       </Draggable>
