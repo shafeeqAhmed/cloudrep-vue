@@ -336,6 +336,12 @@
     font-size: 14px;
   }
 }
+.ivr-input.text_area{
+  .input-gradient{
+    padding: 2px !important;
+    border-radius: 4px !important;
+  }
+}
 
 .ivr-nodes {
   background: #fff;
