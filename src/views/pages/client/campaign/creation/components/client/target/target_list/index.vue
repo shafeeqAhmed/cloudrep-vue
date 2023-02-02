@@ -86,6 +86,7 @@
                   @click="deleteTarget(data.item.uuid)"
                 />
               </div>
+              <ClientRates :parent_uuid="data.item.uuid" />
             </div>
           </template>
         </b-table>
@@ -160,6 +161,7 @@ import AddTargetModel from "./components/AddTargetModel.vue";
 import UpdateTargetModel from "./components/UpdateTargetModel.vue";
 import AddTargetRoutingPlanModel from "./components/AddTargetRoutingPlanModel.vue";
 import TagsAndFilters from "./components/TagsAndFilters.vue";
+import ClientRates from "./components/ClientRates.vue";
 
 export default {
   components: {
@@ -185,6 +187,7 @@ export default {
     UpdateTargetModel,
     AddTargetRoutingPlanModel,
     TagsAndFilters,
+    ClientRates,
   },
   mixins: [globalHelper],
 

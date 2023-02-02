@@ -986,6 +986,35 @@ export default {
           });
       });
     },
+    storeClientRatesAgainstTarget(ctx, params) {
+      return new Promise((resolve, reject) => {
+        // console.log(params);
+        toastAlert.methods.showLoader();
+        axios
+          .post("store-custom-campaign-target-rates", params)
+          .then((response) => {
+            resolve(response);
+          })
+          .catch((error) => reject(error))
+          .finally(() => {
+            toastAlert.methods.hideLoader();
+          });
+      });
+    },
+    getClientRatesAgainstTarget(ctx, params) {
+      return new Promise((resolve, reject) => {
+        toastAlert.methods.showLoader();
+        axios
+          .get("get-custom-campaign-target-rates", { params })
+          .then((response) => {
+            resolve(response);
+          })
+          .catch((error) => reject(error))
+          .finally(() => {
+            toastAlert.methods.hideLoader();
+          });
+      });
+    },
     getFilterRecord({ commit, state }, params) {
       return new Promise((resolve, reject) => {
         axios
