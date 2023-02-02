@@ -247,9 +247,9 @@ export const globalHelper = {
         event.preventDefault();
       }
       //Prevent enter rather then english
-      if (!/^[A-Za-z0-9\s]+$/.test(event.key)) {
-        event.preventDefault();
-      }
+      // if (!/^[A-Za-z0-9\s]+$/.test(event.key)) {
+      //   event.preventDefault();
+      // }
       //prevent enter on limit exceed
       if (event.target.value.length === limit) {
         if (event.keyCode != 8) {
