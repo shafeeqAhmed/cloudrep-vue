@@ -78,6 +78,7 @@ import vSelect from "vue-select";
 import UpdateRoutingPlan from "./components/UpdateRoutingPlanModel.vue";
 import TagsAndFilters from "./components/TagsAndFilters.vue";
 
+
 export default {
   components: {
     BTable,

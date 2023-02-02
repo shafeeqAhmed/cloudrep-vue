@@ -50,8 +50,10 @@
             </template>
 
             <template #cell(actions)="data">
-
               <div class="d-flex align-items-center justify-content-center">
+                <div class="mr-1">
+                  <PublisherPayoutRates :publisher_uuid="data.item.publisher_uuid" :number="data.item.number" />
+                </div>
                 <div class="action-btn">
                   <feather-icon size="18" icon="EditIcon" class="mr-50 cursor-pointer" />
                 </div>
@@ -109,7 +111,7 @@ import { globalHelper } from "@core/mixins/ui/global";
 import CountryFlag from "vue-country-flag";
 import vSelect from "vue-select";
 import AssignPublisherToCampaignModal from "./components/AssignPublisherToCampaignModal.vue";
-
+import PublisherPayoutRates from "./components/PublisherPayoutRates.vue";
 export default {
   components: {
     BTable,
@@ -133,6 +135,7 @@ export default {
     BCardText,
     vSelect,
     AssignPublisherToCampaignModal,
+    PublisherPayoutRates,
   },
   mixins: [globalHelper],
 

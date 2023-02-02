@@ -1015,6 +1015,35 @@ export default {
           });
       });
     },
+    storePayoutRatesAgainstPublisher(ctx, params) {
+      return new Promise((resolve, reject) => {
+        // console.log(params);
+        toastAlert.methods.showLoader();
+        axios
+          .post("store-custom-campaign-publisher-payout-rates", params)
+          .then((response) => {
+            resolve(response);
+          })
+          .catch((error) => reject(error))
+          .finally(() => {
+            toastAlert.methods.hideLoader();
+          });
+      });
+    },
+    getPayoutRatesAgainstPublisher(ctx, params) {
+      return new Promise((resolve, reject) => {
+        toastAlert.methods.showLoader();
+        axios
+          .get("get-custom-campaign-publisher-payout-rates", { params })
+          .then((response) => {
+            resolve(response);
+          })
+          .catch((error) => reject(error))
+          .finally(() => {
+            toastAlert.methods.hideLoader();
+          });
+      });
+    },
     getFilterRecord({ commit, state }, params) {
       return new Promise((resolve, reject) => {
         axios
