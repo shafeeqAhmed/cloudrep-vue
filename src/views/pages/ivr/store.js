@@ -602,8 +602,9 @@ export default {
     getIvr({ commit }, params) {
       return new Promise((resolve, reject) => {
         // toastAlert.methods.showLoader();
+        let RouterNode = params.router_node ? 1 : 0;
         axios
-          .get(`get-ivr?uuid=${params.uuid}`)
+          .get(`get-ivr?uuid=${params.uuid}&router_node=${RouterNode}`)
           .then((response) => {
             const {
               data: {
