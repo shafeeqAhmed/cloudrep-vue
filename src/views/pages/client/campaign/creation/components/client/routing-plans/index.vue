@@ -1,30 +1,15 @@
 <template>
   <div>
-    <b-row class="manag-ivr-tab mt-3">
+    <b-row class="manag-ivr-tab mt-2">
       <b-col cols="12">
-        <b-table
-          ref="refListTable"
-          responsive
-          :per-page="perPage"
-          :current-page="currentPage"
-          :items="fetchRoutingPlans"
-          :fields="tableColumns"
-          :sort-by.sync="sortBy"
-          :sort-desc.sync="isSortDirDesc"
-          :sort-direction="sortDirection"
-          :filter="searchQuery"
-          :filter-included-fields="filterOn"
-          class="table-cr"
-        >
+        <b-table ref="refListTable" responsive :per-page="perPage" :current-page="currentPage"
+          :items="fetchRoutingPlans" :fields="tableColumns" :sort-by.sync="sortBy" :sort-desc.sync="isSortDirDesc"
+          :sort-direction="sortDirection" :filter="searchQuery" :filter-included-fields="filterOn" class="table-cr">
           <template #cell(status)="data">
-            <div
-              class="active-num d-flex align-items-center justify-content-left"
-            >
-              <div
-                :class="`d-flex align-items-left text-${resolveUserStatusVariant(
-                  data.item.status
-                )}`"
-              >
+            <div class="active-num d-flex align-items-center justify-content-left">
+              <div :class="`d-flex align-items-left text-${resolveUserStatusVariant(
+                data.item.status
+              )}`">
                 {{ resolveUserStatusVariantText(data.item.status) }}
               </div>
             </div>
@@ -34,53 +19,26 @@
             <div class="d-flex align-items-center justify-content-center">
               <!-- <TagsAndFilters :target_uuid="data.item.target.uuid" /> -->
               <div class="action-btn">
-                <feather-icon
-                  size="18"
-                  icon="EditIcon"
-                  class="mr-50 cursor-pointer"
-                  @click="edit(data.item.uuid)"
-                />
-                <feather-icon
-                  icon="TrashIcon"
-                  size="20"
-                  class="mr-1 cursor-pointer"
-                  @click="deletePlan(data.item.uuid)"
-                />
+                <feather-icon size="18" icon="EditIcon" class="mr-50 cursor-pointer" @click="edit(data.item.uuid)" />
+                <feather-icon icon="TrashIcon" size="20" class="mr-1 cursor-pointer"
+                  @click="deletePlan(data.item.uuid)" />
               </div>
             </div>
           </template>
         </b-table>
       </b-col>
     </b-row>
-    <b-row class="mt-4 pb-1">
-      <b-col
-        md="6"
-        sm="6"
-      >
+    <b-row class="mt-2 pb-1">
+      <b-col md="6" sm="6">
         <b-form-group class="mb-0">
           <label class="d-inline-block text-sm-left mr-50">Show</label>
-          <b-form-select
-            id="perPageSelect"
-            v-model="perPage"
-            :options="perPageOptions"
-            class="page-count-cr"
-          />
+          <b-form-select id="perPageSelect" v-model="perPage" :options="perPageOptions" class="page-count-cr" />
           <label class="d-inline-block text-sm-left">entries</label>
         </b-form-group>
       </b-col>
-      <b-col
-        md="6"
-        sm="6"
-      >
-        <b-pagination
-          v-model="currentPage"
-          :total-rows="totalTargets"
-          :per-page="perPage"
-          align="right"
-          size="sm"
-          class="my-0"
-          hide-goto-end-buttons
-        />
+      <b-col md="6" sm="6">
+        <b-pagination v-model="currentPage" :total-rows="totalTargets" :per-page="perPage" align="right" size="sm"
+          class="my-0" hide-goto-end-buttons />
       </b-col>
     </b-row>
 

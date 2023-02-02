@@ -310,6 +310,7 @@
     padding: 15px;
     padding-bottom: 8px;
     border-bottom: 1px solid #404656;
+    min-height: 45px;
     h2{
         margin: 0px;
         font-size: 24px;
@@ -317,6 +318,10 @@
     svg{
         transition: 0.4s all ease-in-out;
         fill: #000;
+    }
+    &:hover{
+        background: #ccc;
+        transition: all 0.4s ease-in-out;
     }
 }
 .rep_collapse_header.not-collapsed{
@@ -533,6 +538,11 @@
     }
 }
 .dark-layout{
+    .rep_collapse_header{
+        &:hover{
+            background: #1D203E;
+        }
+    }
     .add_filter_box{
         input{
             border: 1px solid #404656 !important;

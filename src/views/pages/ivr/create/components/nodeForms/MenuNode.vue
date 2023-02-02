@@ -66,7 +66,7 @@
                     </div>
                     <div class="ivr-input">
                       <div class="input-gradient">
-                        <b-form-input type="number" v-model="menu.timeout" @keydown="ivrInputValidate($event, 5)"
+                        <b-form-input type="number" v-model="menu.timeout" @keydown="ivrInputValidate($event, 10)"
                           placeholder="10" />
                       </div>
                     </div>
@@ -96,7 +96,7 @@
                   </div>
                   <div class="ivr-input">
                     <div class="input-gradient">
-                      <b-form-input type="number" v-model="menu.retries" @keydown="ivrInputValidate($event, 1)"
+                      <b-form-input type="number" v-model="menu.retries" @keydown="ivrInputValidate($event, 10)"
                         placeholder="2" />
                     </div>
                   </div>
@@ -129,7 +129,7 @@
                   <div class="ivr-input">
                     <div class="input-gradient">
                       <b-form-input type="number" id="reproduce" v-model="menu.reproduce"
-                        @keydown="ivrInputValidate($event, 5)" placeholder="1" />
+                        @keydown="ivrInputValidate($event, 10)" placeholder="1" />
                     </div>
                   </div>
                 </div>
@@ -285,7 +285,7 @@
                     <div class="ivr-input menu_node">
                       <div class="input-gradient">
                         <b-form-textarea id="seconds"  v-model="menu.text"
-                          @keydown="ivrInputValidateText($event, 100)" placeholder="text" />
+                          @keydown="ivrInputValidateText($event, 200)" placeholder="text" />
                       </div>
                     </div>
                   </div>
@@ -317,7 +317,7 @@
                     <div class="ivr-input">
                       <div class="input-gradient">
                         <b-form-input id="tagName" type="text" v-model="menu.tagName" placeholder="Tag Name"
-                          @keydown="ivrInputValidateText($event, 20)" />
+                          @keydown="ivrInputValidateText($event, 50)" />
                       </div>
 
                       <!-- <small class="text-danger mt-2">{{ errors[0] }}</small> -->

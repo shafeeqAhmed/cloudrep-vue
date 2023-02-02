@@ -1,61 +1,31 @@
 <template>
   <div>
     <b-row class="mb-2">
-      <b-col
-        cols="6"
-        class="mb-3"
-      >
+      <b-col cols="6" class="mb-1">
         <h2>Manage Targets</h2>
       </b-col>
-      <b-col
-        cols="6"
-        class="mb-3"
-      >
-        <b-button
-          class="primary-btn float-right"
-          variant="primary"
-          v-b-modal.add-target
-          >+ Add Target</b-button
-        >
+      <b-col cols="6" class="mb-1">
+        <b-button class="primary-btn float-right" variant="primary" v-b-modal.add-target>+ Add Target</b-button>
       </b-col>
     </b-row>
     <b-row class="manag-ivr-tab">
       <b-col cols="12">
-        <b-table
-          ref="refListTable"
-          responsive
-          :per-page="perPage"
-          :current-page="currentPage"
-          :items="fetchTargets"
-          :fields="tableColumns"
-          :sort-by.sync="sortBy"
-          :sort-desc.sync="isSortDirDesc"
-          :sort-direction="sortDirection"
-          :filter="searchQuery"
-          :filter-included-fields="filterOn"
-          class="table-cr"
-        >
+        <b-table ref="refListTable" responsive :per-page="perPage" :current-page="currentPage" :items="fetchTargets"
+          :fields="tableColumns" :sort-by.sync="sortBy" :sort-desc.sync="isSortDirDesc" :sort-direction="sortDirection"
+          :filter="searchQuery" :filter-included-fields="filterOn" class="table-cr">
           <template #cell(is_primary)="data">
-            <div
-              class="active-num d-flex align-items-center justify-content-left"
-            >
-              <div
-                :class="`d-flex align-items-left text-${isPrimaryVariant(
-                  data.item.is_primary
-                )}`"
-              >
+            <div class="active-num d-flex align-items-center justify-content-left">
+              <div :class="`d-flex align-items-left text-${isPrimaryVariant(
+                data.item.is_primary
+              )}`">
                 {{ isPrimaryVariantText(data.item.is_primary) }}
               </div>
-            </div> </template
-          ><template #cell(status)="data">
-            <div
-              class="active-num d-flex align-items-center justify-content-left"
-            >
-              <div
-                :class="`d-flex align-items-left text-${resolveUserStatusVariant(
-                  data.item.status
-                )}`"
-              >
+            </div>
+          </template><template #cell(status)="data">
+            <div class="active-num d-flex align-items-center justify-content-left">
+              <div :class="`d-flex align-items-left text-${resolveUserStatusVariant(
+                data.item.status
+              )}`">
                 {{ resolveUserStatusVariantText(data.item.status) }}
               </div>
             </div>
@@ -65,54 +35,28 @@
             <div class="d-flex align-items-center justify-content-left">
               <TagsAndFilters :target_uuid="data.item.uuid" />
               <div class="action-btn">
-                <feather-icon
-                  size="18"
-                  icon="EditIcon"
-                  class="mr-50 cursor-pointer"
-                  @click="action(data.item.uuid, 'edit')"
-                />
+                <feather-icon size="18" icon="EditIcon" class="mr-50 cursor-pointer"
+                  @click="action(data.item.uuid, 'edit')" />
 
-                <feather-icon
-                  icon="PlayIcon"
-                  size="20"
-                  class="mr-1 cursor-pointer"
-                  @click="action(data.item.uuid, 'routing_plan')"
-                />
+                <feather-icon icon="PlayIcon" size="20" class="mr-1 cursor-pointer"
+                  @click="action(data.item.uuid, 'routing_plan')" />
               </div>
             </div>
           </template>
         </b-table>
       </b-col>
     </b-row>
-    <b-row class="mt-4 pb-1">
-      <b-col
-        md="6"
-        sm="6"
-      >
+    <b-row class="mt-2 pb-1">
+      <b-col md="6" sm="6">
         <b-form-group class="mb-0">
           <label class="d-inline-block text-sm-left mr-50">Show</label>
-          <b-form-select
-            id="perPageSelect"
-            v-model="perPage"
-            :options="perPageOptions"
-            class="page-count-cr"
-          />
+          <b-form-select id="perPageSelect" v-model="perPage" :options="perPageOptions" class="page-count-cr" />
           <label class="d-inline-block text-sm-left">entries</label>
         </b-form-group>
       </b-col>
-      <b-col
-        md="6"
-        sm="6"
-      >
-        <b-pagination
-          v-model="currentPage"
-          :total-rows="totalTargets"
-          :per-page="perPage"
-          align="right"
-          size="sm"
-          class="my-0"
-          hide-goto-end-buttons
-        />
+      <b-col md="6" sm="6">
+        <b-pagination v-model="currentPage" :total-rows="totalTargets" :per-page="perPage" align="right" size="sm"
+          class="my-0" hide-goto-end-buttons />
       </b-col>
     </b-row>
 

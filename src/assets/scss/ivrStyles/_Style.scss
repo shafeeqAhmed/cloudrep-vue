@@ -144,6 +144,7 @@
   .right_state_box{
     .list-group-item{
       color: #fff !important;
+      background: linear-gradient(138.29deg, #01B7C5 -6.3%, #782C96 103.83%) !important;
     }
   }
   .center_state_box {
@@ -163,11 +164,11 @@
   overflow: scroll !important;
   height: 80vh;
   padding: 15px;
-  // padding-bottom: 10rem;
   scroll-behavior: smooth;
   &::-webkit-scrollbar {
     width: 10px;
     height: 10px;
+    
   }
   &::-webkit-scrollbar-corner {
     opacity: 0;
@@ -183,6 +184,7 @@
     -webkit-border-radius: 10px;
     border-radius: 10px;
     background: linear-gradient(138.29deg, #01b7c5 -6.3%, #782c96 103.83%);
+    cursor: pointer;
   }
 }
 .drag_icon_node {
@@ -368,18 +370,85 @@
   }
 }
 .router_tab {
-  background: #eee;
-  padding:5px 15px;
+  // background: linear-gradient(138.29deg, #01b7c5 -6.3%, #782c96 103.83%);
+  // padding:2px 15px;
+  background: #252D42;
+  background: linear-gradient(138.29deg, #01b7c5 -6.3%, #782c96 103.83%);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  height: 44px;
+  .router_key{
+    width: 18%;
+    display: flex;
+    align-items: center;
+    padding: 0px 15px;
+    color: #fff;
+    span{
+      color: #fff;
+    }
+    &::after{
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 42px;
+      background: #252D42;
+      top: -11px;
+      left: 11%;
+      transform: rotate(135deg);
+    }
+    &::before{
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 42px;
+      background: #252D42;
+      bottom: -11px;
+      left: 11%;
+      transform: rotate(45deg);
+    }
+  }
+  .route_name{
+    width: 33%;
+    &::after{
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 42px;
+      background: #252D42;
+      top: -13px;
+      left: 45%;
+      transform: rotate(135deg);
+    }
+    &::before{
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 45px;
+      background: #252D42;
+      bottom: -13px;
+      left: 45%;
+      transform: rotate(45deg);
+    }
+  }
+  .route_filters{
+    width: 48%;
+    justify-content: space-between;
+  }
   span {
-    color: #333;
+    color: #fff;
     font-size: 18px;
+  }
+  .route_nam{
+    font-size: 16px;
+    color: #fff;
+    margin-left: 3px;
+    text-transform: capitalize;
   }
   .route_name {
     font-size: 16px;
-    color: #333;
+    color: #fff;
     display: flex;
     align-items: center;
   }
@@ -387,6 +456,7 @@
     display: flex;
     align-items: center;
     svg {
+      stroke: #fff;
       &:hover {
         stroke: #0099ff;
       }
@@ -411,7 +481,7 @@
 }
 .route_condition {
   overflow-y: scroll;
-  height: 500px;
+  height: 570px;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -427,7 +497,6 @@
 
 .dark-layout{
   .router_tab {
-    background: #1f263d;
     span {
       color: #ccc;
     }
@@ -560,7 +629,7 @@
     height: 42px;
     background: #f4f7fe;
     transform: rotate(45deg);
-    top: 15px;
+    top: 13px;
     left: 46%;
   }
   &::before {
@@ -570,7 +639,7 @@
     height: 42px;
     background: #f4f7fe;
     transform: rotate(135deg);
-    top: -10px;
+    top: -13px;
     left: 46%;
   }
 }
@@ -1075,7 +1144,7 @@
       height: 42px;
       background: #161d31;
       transform: rotate(45deg);
-      top: 15px;
+      top: 13px;
       left: 46%;
     }
     &::before {
@@ -1085,7 +1154,7 @@
       height: 42px;
       background: #161d31;
       transform: rotate(135deg);
-      top: -10px;
+      top: -13px;
       left: 46%;
     }
   }

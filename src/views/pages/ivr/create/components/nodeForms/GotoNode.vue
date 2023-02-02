@@ -65,7 +65,7 @@
                 </div>
                 <div class="ivr-input">
                   <div class="input-gradient">
-                    <b-form-input id="seconds" type="number" v-model="goto.count" @keydown="ivrInputValidate($event, 5)" @input="validateDebounceNode"
+                    <b-form-input id="seconds" type="number" v-model="goto.count" @keydown="ivrInputValidate($event, 10)" @input="validateDebounceNode"
                       placeholder="15" />
                   </div>
                 </div>

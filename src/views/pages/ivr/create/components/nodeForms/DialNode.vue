@@ -93,7 +93,7 @@
                 <div class="ivr-input">
                   <div class="input-gradient">
                     <b-form-input id="seconds" type="number" v-model="dial.attempts"
-                      @keydown="ivrInputValidate($event, 1)" placeholder="3" />
+                      @keydown="ivrInputValidate($event, 10)" placeholder="3" />
                   </div>
                 </div>
               </div>
@@ -123,7 +123,7 @@
                   <div class="ivr-input">
                     <div class="input-gradient">
                       <b-form-input id="seconds" v-model="dial.timeout" type="number"
-                        @keydown="ivrInputValidate($event, 5)" placeholder="Target Timeout" />
+                        @keydown="ivrInputValidate($event, 10)" placeholder="Target Timeout" />
                       <!-- @input="validateTimeOutPositiveNumber"  -->
                     </div>
                   </div>
@@ -154,7 +154,7 @@
                 </div>
                 <div class="ivr-input">
                   <div class="input-gradient">
-                    <b-form-input id="seconds" v-model="dial.length" @keydown="ivrInputValidate($event, 5)"
+                    <b-form-input id="seconds" v-model="dial.length" @keydown="ivrInputValidate($event, 10)"
                       type="number" placeholder="21600" />
                   </div>
                 </div>
@@ -182,7 +182,7 @@
                 </div>
                 <div class="ivr-input">
                   <div class="input-gradient">
-                    <b-form-input id="seconds" v-model="dial.time" @keydown="ivrInputValidate($event, 5)" type="number"
+                    <b-form-input id="seconds" v-model="dial.time" @keydown="ivrInputValidate($event, 10)" type="number"
                       placeholder="14400" />
                   </div>
                 </div>
@@ -266,7 +266,7 @@
                   </div>
                   <div class="ivr-input">
                     <div class="input-gradient">
-                      <b-form-input id="seconds" v-model="dial.plays" @keydown="ivrInputValidate($event, 5)"
+                      <b-form-input id="seconds" v-model="dial.plays" @keydown="ivrInputValidate($event, 10)"
                         type="number" placeholder="1" />
                     </div>
                   </div>
@@ -395,7 +395,7 @@
                     </div>
                     <div class="ivr-input">
                       <div class="input-gradient">
-                        <b-form-textarea id="seconds" v-model="dial.text" @keydown="ivrInputValidateText($event, 100)"
+                        <b-form-textarea id="seconds" v-model="dial.text" @keydown="ivrInputValidateText($event, 200)"
                           placeholder="" />
                       </div>
                     </div>
