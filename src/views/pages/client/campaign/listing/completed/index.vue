@@ -73,12 +73,14 @@
                   <span class="paused-camp d-none">Paused</span> -->
               </div>
             </template>
-             <template #cell(country)="data">
-                <div  class="d-flex align-items-center justify-content-center camp-recording">
-                  {{ data.item.country }}
-                </div>
+            <template #cell(country)="data">
+              <div
+                class="d-flex align-items-center justify-content-center camp-recording"
+              >
+                {{ data.item.country }}
+              </div>
             </template>
-           <!--  <template #cell(recording)="data">
+            <!--  <template #cell(recording)="data">
               <div
                 class="d-flex align-items-center justify-content-center camp-recording"
               >
@@ -88,7 +90,7 @@
 
             <template #cell(status)="data">
               <div
-              class="d-flex align-items-center justify-content-center camp-recording"
+                class="d-flex align-items-center justify-content-center camp-recording"
               >
                 <span v-if="data.item.status === 'complete'">Complete</span>
 
@@ -244,6 +246,7 @@ import {
   BCardTitle,
   BCard,
   BForm,
+  VBToggle,
 } from "bootstrap-vue";
 
 import useCampaign from "./useCampaign.js";
@@ -285,6 +288,10 @@ export default {
     BForm,
     required,
     vSelect,
+    VBToggle,
+  },
+  directives: {
+    "b-toggle": VBToggle,
   },
   mixins: [globalHelper, toastAlert],
 
