@@ -839,6 +839,20 @@ export default {
           });
       });
     },
+    deleteTarget(ctx, params) {
+      return new Promise((resolve, reject) => {
+        toastAlert.methods.showLoader();
+        axios
+          .delete(`delete-target?uuid=${params.uuid}`)
+          .then((response) => {
+            resolve(response);
+          })
+          .catch((error) => reject(error))
+          .finally(() => {
+            toastAlert.methods.hideLoader();
+          });
+      });
+    },
     assignIvrCampaign(ctx, params) {
       return new Promise((resolve, reject) => {
         toastAlert.methods.showLoader();
