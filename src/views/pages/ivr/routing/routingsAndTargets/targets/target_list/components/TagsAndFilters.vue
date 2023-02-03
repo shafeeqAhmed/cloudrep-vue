@@ -2,7 +2,7 @@
   <div>
     <div class="">
       <div class="">
-        <b-button
+        <div
           :id="target_uuid"
           class="popover-btn"
           @click="openPopup"
@@ -12,7 +12,7 @@
             class="cursor-pointer"
             size="18"
           />
-        </b-button>
+        </div>
       </div>
 
       <b-popover

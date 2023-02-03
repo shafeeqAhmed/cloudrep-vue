@@ -63,7 +63,13 @@
 
           <template #cell(actions)="data">
             <div class="d-flex align-items-center justify-content-center">
-              <TagsAndFilters :target_uuid="data.item.uuid" />
+              <div class="mr-1">
+                <TagsAndFilters :target_uuid="data.item.uuid" />
+              </div>
+              <!-- <div class="mr-1">
+                <ClientRates :parent_uuid="data.item.uuid" />
+              </div> -->
+
               <div class="action-btn">
                 <feather-icon
                   size="18"
@@ -152,6 +158,7 @@ import AddTargetModel from "./components/AddTargetModel.vue";
 import UpdateTargetModel from "./components/UpdateTargetModel.vue";
 import AddTargetRoutingPlanModel from "./components/AddTargetRoutingPlanModel.vue";
 import TagsAndFilters from "./components/TagsAndFilters.vue";
+import ClientRates from "./components/ClientRates.vue";
 
 export default {
   components: {
@@ -177,6 +184,7 @@ export default {
     UpdateTargetModel,
     AddTargetRoutingPlanModel,
     TagsAndFilters,
+    ClientRates,
   },
   mixins: [globalHelper],
 
