@@ -11,18 +11,18 @@ export default {
   namespaced: true,
   state: {
     timeline: [],
-    users:[],
-    timeLineFilter:{
-      timeLineFilterUuid:'',
-      timeLineFilterTimeZone:'',
-      timeLineFilterDateRange:{ startDate: startOfDay, endDate: endofDay },
-      customFilters:[],
+    users: [],
+    timeLineFilter: {
+      timeLineFilterUuid: "",
+      timeLineFilterTimeZone: "",
+      timeLineFilterDateRange: { startDate: startOfDay, endDate: endofDay },
+      customFilters: [],
     },
-    performanceSummary:[],
+    performanceSummary: [],
     callCountOfCountries: [],
-    campaignReportingRecord:[],
-    summaryData:[],
-    campaignFilterReport:[]
+    campaignReportingRecord: [],
+    summaryData: [],
+    campaignFilterReport: [],
   },
   getters: {
     getTimeLine: (state) => {
@@ -32,13 +32,13 @@ export default {
       return state.performanceSummary;
     },
     getCampaignReportingRecord: (state) => {
-    return  state.campaignReportingRecord;
+      return state.campaignReportingRecord;
     },
     getUsers: (state) => {
-      return  state.users;
+      return state.users;
     },
     getSummaryData: (state) => {
-      return  state.summaryData;
+      return state.summaryData;
     },
   },
   mutations: {
@@ -51,31 +51,31 @@ export default {
     UPDATE_CAMPAIGN_FILTER_REPORT(state, val) {
       state.campaignFilterReport = val;
     },
-    UPDATE_PERFORMANCE_SUMMARY(state,val){
-    state.performanceSummary=val;
+    UPDATE_PERFORMANCE_SUMMARY(state, val) {
+      state.performanceSummary = val;
     },
     UPDATE_CALL_COUNT_OF_COUNTRIES(state, val) {
       state.callCountOfCountries = val;
     },
-    UPDATE_TIMELINE_FILTER_UUID(state,val){
-      state.timeLineFilter.timeLineFilterUuid=val.uuid;
-      state.timeLineFilter.timeLineFilterTimeZone=val.timeZone;
-      state.timeLineFilter.timeLineFilterDateRange=val.dateRange;
+    UPDATE_TIMELINE_FILTER_UUID(state, val) {
+      state.timeLineFilter.timeLineFilterUuid = val.uuid;
+      state.timeLineFilter.timeLineFilterTimeZone = val.timeZone;
+      state.timeLineFilter.timeLineFilterDateRange = val.dateRange;
     },
 
-    UPDATE_TIMELINE_CUSTOM_FILTER(state,val){
-      state.timeLineFilter.customFilters=val;
+    UPDATE_TIMELINE_CUSTOM_FILTER(state, val) {
+      state.timeLineFilter.customFilters = val;
     },
-    UPDATE_TIMELINE_FILTER(state,val){
-      state.timeLineFilter.timeLineFilterUuid=val.uuid;
-      state.timeLineFilter.timeLineFilterTimeZone=val.timeZone;
-      state.timeLineFilter.timeLineFilterDateRange=val.dateRange;
-      state.timeLineFilter.customFilters=val.customFilters;
+    UPDATE_TIMELINE_FILTER(state, val) {
+      state.timeLineFilter.timeLineFilterUuid = val.uuid;
+      state.timeLineFilter.timeLineFilterTimeZone = val.timeZone;
+      state.timeLineFilter.timeLineFilterDateRange = val.dateRange;
+      state.timeLineFilter.customFilters = val.customFilters;
     },
-    UPDATE_CAMPAIGN_USERS(state,val){
-     state.campaignReportingRecord=val;
+    UPDATE_CAMPAIGN_USERS(state, val) {
+      state.campaignReportingRecord = val;
     },
-    UPDATE_SUMMARY_DATA(state,val){
+    UPDATE_SUMMARY_DATA(state, val) {
       state.summaryData = val;
     },
   },
@@ -102,12 +102,11 @@ export default {
     },
     deleteFilterReport(ctx, params) {
       return new Promise((resolve, reject) => {
-       toastAlert.methods.showLoader();
+        toastAlert.methods.showLoader();
         axios
           .delete(`delete-filter-report?uuid=${params.uuid}`)
           .then((response) => {
             resolve(response);
-
           })
           .catch((error) => reject(error))
           .finally(() => {
@@ -177,11 +176,10 @@ export default {
     },
     getTimeLineSummaryRecord(ctx, queryParams) {
       return new Promise((resolve, reject) => {
-
         axios
           .get(`/get-timeline-summary`, { params: queryParams })
           .then((response) => resolve(response))
-          .catch((error) => reject(error))
+          .catch((error) => reject(error));
       });
     },
 
@@ -205,7 +203,7 @@ export default {
           .then((response) => resolve(response))
           .catch((error) => reject(error))
           .finally(() => {
-         //   toastAlert.methods.hideLoader();
+            //   toastAlert.methods.hideLoader();
           });
       });
     },
@@ -214,40 +212,38 @@ export default {
       return new Promise((resolve, reject) => {
         axios
           .get(`/get-users`)
-          .then((response) =>{
-             const{
-              data:{
-                data:{users},
+          .then((response) => {
+            const {
+              data: {
+                data: { users },
               },
-             }=response;
-             ctx.commit('UPDATE_USERS',users.data);
+            } = response;
+            ctx.commit("UPDATE_USERS", users.data);
             resolve(response);
           })
 
           .catch((error) => reject(error))
-          .finally(() => {
-          });
+          .finally(() => {});
       });
     },
 
-    getCampaignUsers(ctx,params) {
+    getCampaignUsers(ctx, params) {
       return new Promise((resolve, reject) => {
         axios
-          .get(`/get-campaign-users`,{params})
-          .then((response) =>{
-             const{
-              data:{
-                data:{users},
+          .get(`/get-campaign-users`, { params })
+          .then((response) => {
+            const {
+              data: {
+                data: { users },
               },
-             }=response;
+            } = response;
 
-             ctx.commit('UPDATE_CAMPAIGN_USERS',users);
+            ctx.commit("UPDATE_CAMPAIGN_USERS", users);
             resolve(response);
           })
 
           .catch((error) => reject(error))
-          .finally(() => {
-          });
+          .finally(() => {});
       });
     },
     getTopPerformers(ctx, queryParams) {
@@ -256,12 +252,11 @@ export default {
           .get(`/get-top-performers`, { params: queryParams })
           .then((response) => resolve(response))
           .catch((error) => reject(error))
-          .finally(() => {
-          });
+          .finally(() => {});
       });
     },
     getCallCountOfCountries(ctx, params) {
-       return new Promise((resolve, reject) => {
+      return new Promise((resolve, reject) => {
         axios
           .get(`/get-call-count-of-coutries`, { params })
           .then((response) => {

@@ -1,10 +1,20 @@
 <template>
   <div>
     <b-row>
-      <b-col cols="6" class="mb-3">
+      <b-col
+        cols="6"
+        class="mb-3"
+      >
       </b-col>
-      <b-col cols="6" class="mb-3">
-        <b-button class="float-right" variant="primary" @click="refresh">
+      <b-col
+        cols="6"
+        class="mb-3"
+      >
+        <b-button
+          class="float-right"
+          variant="primary"
+          @click="refresh"
+        >
           Refresh
         </b-button>
       </b-col>
@@ -12,9 +22,16 @@
       <b-col cols="12">
         <b-card no-body>
           <b-card-body>
-            <MapChart :countryData="countryData" :currencyAdd="false" highColor="#4af6e9" lowColor="#7a60e0"
-              countryStrokeColor="#909090" defaultCountryFillColor="#ccc" legendFontColorHeader="#000"
-              legendFontColorContent="#000" />
+            <MapChart
+              :countryData="countryData"
+              :currencyAdd="false"
+              highColor="#4af6e9"
+              lowColor="#7a60e0"
+              countryStrokeColor="#909090"
+              defaultCountryFillColor="#ccc"
+              legendFontColorHeader="#000"
+              legendFontColorContent="#000"
+            />
           </b-card-body>
         </b-card>
       </b-col>
@@ -82,13 +99,7 @@ export default {
   computed: {
     countryData() {
       const countries = this.$store.state.manageReporting.callCountOfCountries;
-      console.log('countries-----------------------============')
-      console.log(countries)
-      console.log(typeof countries)
-      // if (countries) {
-      //   return countries
-      // }
-      return {}
+      return countries;
     },
   },
   created() {

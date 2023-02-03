@@ -196,9 +196,7 @@ export default {
     onGridReady(params) {
       this.gridApi = params.api;
       this.gridColumnApi = params.columnApi;
-
       const updateData = (data) => params.api.setRowData(data);
-
       updateData(this.summaryData);
     },
     customizeTableColumn(col) {
