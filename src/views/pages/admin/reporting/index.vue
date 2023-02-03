@@ -760,13 +760,13 @@
         class="p-1"
         visible
       >
-        <div class="d-flex align-items-center justify-content-end mb-1">
+        <!--   <div class="d-flex align-items-center justify-content-end mb-1">
           <b-button
             variant="primary"
             @click="exportData"
             >Download CSV</b-button
           >
-        </div>
+        </div> -->
         <Summary />
       </b-collapse>
       <div
@@ -815,35 +815,12 @@
         class="p-1"
         visible
       >
-        <div
-          class="customize_column_head d-flex align-items-center justify-content-end mb-1"
-        >
-          <b-button-group>
-            <b-button
-              variant="primary"
-              v-b-toggle.customize_column
-              >Customize Column</b-button
-            >
-            <b-button variant="primary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="10"
-                role="presentation"
-                class=""
-              >
-                <path
-                  d="M9.211364 7.59931l4.48338-4.867229c.407008-.441854.407008-1.158247 0-1.60046l-.73712-.80023c-.407008-.441854-1.066904-.441854-1.474243 0L7 5.198617 2.51662.33139c-.407008-.441853-1.066904-.441853-1.474243 0l-.737121.80023c-.407008.441854-.407008 1.158248 0 1.600461l4.48338 4.867228L7 10l2.211364-2.40069z"
-                ></path>
-              </svg>
-            </b-button>
-            <b-button
-              variant="primary"
-              @click="exportData"
-              class="ml-1"
-              >Download CSV</b-button
-            >
-          </b-button-group>
+        <div class="d-flex align-items-center justify-content-end mb-1">
+          <b-button
+            variant="primary"
+            @click="exportData"
+            >Download CSV</b-button
+          >
         </div>
         <calling-detail />
       </b-collapse>
@@ -1263,7 +1240,7 @@ export default {
     },
     exportData() {
       this.passData = Math.floor(Math.random() * 2000) + 20;
-      // this.exportDataFromJSON(this.summaryData, null, null);
+      this.exportDataFromJSON(this.summaryData, null, null);
     },
     exportDataFromJSON(data, newFileName, fileExportType) {
       const fileName = newFileName || "exported-data";
