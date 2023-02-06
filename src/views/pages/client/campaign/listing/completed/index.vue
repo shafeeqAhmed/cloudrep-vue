@@ -7,11 +7,7 @@
             <h2>Completed Campaigns</h2>
           </div>
           <div class="w-50">
-            <b-button
-              variant="primary"
-              @click.prevent="showModal"
-              class="float-right"
-            >
+            <b-button variant="primary" @click.prevent="showModal" class="float-right">
               + Add
             </b-button>
           </div>
@@ -19,64 +15,30 @@
       </div>
       <b-row class="mt-2 mb-2">
         <!-- filter -->
-        <b-col
-          lg="4"
-          md="6"
-          class="justify-content-end"
-        >
+        <b-col lg="4" md="6" class="justify-content-end">
           <b-form-group class="mb-0">
             <b-input-group>
               <div class="input-gradient">
-                <b-form-input
-                  id="filterInput"
-                  @input="searchAfterDelay($event)"
-                  v-on:keyup.enter="searchQueryFetch"
-                  v-model="searchQuery"
-                  type="search"
-                  placeholder="Search..."
-                />
+                <b-form-input id="filterInput" @input="searchAfterDelay($event)" v-on:keyup.enter="searchQueryFetch"
+                  v-model="searchQuery" type="search" placeholder="Search..." />
               </div>
             </b-input-group>
           </b-form-group>
         </b-col>
-        <b-col
-          cols="12"
-          class="mt-2 campaign-listing-page"
-        >
-          <b-table
-            responsive
-            ref="refUserListTable"
-            :items="fetchCampaigns"
-            :fields="tableColumns"
-            primary-key="id"
-            :sort-by.sync="sortBy"
-            show-empty
-            empty-text="No records found"
-            :sort-desc.sync="isSortDirDesc"
-            class="table-cr"
-          >
+        <b-col cols="12" class="mt-2 campaign-listing-page">
+          <b-table responsive ref="refUserListTable" :items="fetchCampaigns" :fields="tableColumns" primary-key="id"
+            :sort-by.sync="sortBy" show-empty empty-text="No records found" :sort-desc.sync="isSortDirDesc"
+            class="table-cr">
             <template #cell(state)="data">
-              <div
-                class="d-flex align-items-center justify-content-start camp-status"
-              >
-                <span
-                  v-if="data.item.is_published != null"
-                  class="live-camp"
-                  >Live</span
-                >
-                <span
-                  v-if="data.item.is_published == null"
-                  class="paused-camp d-none"
-                  >Paused</span
-                >
+              <div class="d-flex align-items-center justify-content-start camp-status">
+                <span v-if="data.item.is_published != null" class="live-camp">Live</span>
+                <span v-if="data.item.is_published == null" class="paused-camp d-none">Paused</span>
                 <!-- <span class="live-camp">Live</span>
                   <span class="paused-camp d-none">Paused</span> -->
               </div>
             </template>
             <template #cell(country)="data">
-              <div
-                class="d-flex align-items-center justify-content-center camp-recording"
-              >
+              <div class="d-flex align-items-center justify-content-center camp-recording">
                 {{ data.item.country }}
               </div>
             </template>
@@ -89,9 +51,7 @@
             </template> -->
 
             <template #cell(status)="data">
-              <div
-                class="d-flex align-items-center justify-content-center camp-recording"
-              >
+              <div class="d-flex align-items-center justify-content-center camp-recording">
                 <span v-if="data.item.status === 'complete'">Complete</span>
 
                 <span v-else>Incomplete</span>
@@ -100,41 +60,15 @@
 
             <template #cell(actions)="data">
               <div>
-                <div
-                  class="d-flex align-items-center justify-content-center camp-actions"
-                >
-                  <feather-icon
-                    size="18"
-                    icon="EditIcon"
-                    class="mr-50 cursor-pointer"
-                    @click="toEdit(data.item.uuid)"
-                  />
-                  <feather-icon
-                    size="18"
-                    icon="CopyIcon"
-                    class="mr-50 cursor-pointer"
-                  />
-                  <feather-icon
-                    size="18"
-                    icon="PieChartIcon"
-                    class="mr-50 cursor-pointer"
-                  />
-                  <feather-icon
-                    size="18"
-                    icon="PauseIcon"
-                    class="mr-50 cursor-pointer"
-                  />
-                  <feather-icon
-                    size="18"
-                    icon="PlayIcon"
-                    class="mr-50 cursor-pointer d-none"
-                  />
-                  <feather-icon
-                    size="18"
-                    icon="TrashIcon"
-                    class="mr-50 cursor-pointer"
-                    @click="showDeleteModal(data.item.uuid)"
-                  />
+                <div class="d-flex align-items-center justify-content-center camp-actions">
+                  <feather-icon size="18" icon="EditIcon" class="mr-50 cursor-pointer"
+                    @click="toEdit(data.item.uuid)" />
+                  <feather-icon size="18" icon="CopyIcon" class="mr-50 cursor-pointer" />
+                  <feather-icon size="18" icon="PieChartIcon" class="mr-50 cursor-pointer" />
+                  <feather-icon size="18" icon="PauseIcon" class="mr-50 cursor-pointer" />
+                  <feather-icon size="18" icon="PlayIcon" class="mr-50 cursor-pointer d-none" />
+                  <feather-icon size="18" icon="TrashIcon" class="mr-50 cursor-pointer"
+                    @click="showDeleteModal(data.item.uuid)" />
                 </div>
               </div>
               <!-- <b-dropdown variant="link" toggle-class="text-decoration-none" no-caret class="drop-with-trash">
@@ -159,63 +93,30 @@
         </b-col>
       </b-row>
       <b-row class="mt-2">
-        <b-col
-          md="6"
-          sm="4"
-          class=""
-        >
+        <b-col md="6" sm="4" class="">
           <div class="show-listing">
             <b-form-group class="mb-0">
               <label class="d-inline-block text-sm-left mr-50">Show</label>
               <div class="input-gradient">
-                <b-form-select
-                  id="perPageSelect"
-                  v-model="perPage"
-                  :options="perPageOptions"
-                  class="page-count-cr"
-                />
+                <b-form-select id="perPageSelect" v-model="perPage" :options="perPageOptions" class="page-count-cr" />
               </div>
               <label class="d-inline-block text-sm-left ml-1">entries</label>
             </b-form-group>
           </div>
         </b-col>
         <b-col md="6">
-          <b-pagination
-            v-model="currentPage"
-            :total-rows="totalUsers"
-            :per-page="perPage"
-            align="right"
-            size="sm"
-            class="my-0"
-            hide-goto-end-buttons
-          />
+          <b-pagination v-model="currentPage" :total-rows="totalUsers" :per-page="perPage" align="right" size="sm"
+            class="my-0" hide-goto-end-buttons />
         </b-col>
       </b-row>
     </div>
     <!--/////////////Delete Modal///////////////-->
-    <b-modal
-      id="delte-camp"
-      centered
-      modal-class="modal-number"
-      hide-header
-      hide-footer
-    >
+    <b-modal id="delte-camp" centered modal-class="modal-number" hide-header hide-footer>
       <h2>Are you sure?</h2>
       <b-row class="mt-3">
-        <b-col
-          cols="12"
-          class="text-center"
-        >
-          <b-button
-            class="mr-1"
-            @click="hideDeleteModal"
-            >No</b-button
-          >
-          <b-button
-            variant="primary"
-            @click="toDelete(deleteCampUuid)"
-            >Yes</b-button
-          >
+        <b-col cols="12" class="text-center">
+          <b-button class="mr-1" @click="hideDeleteModal">No</b-button>
+          <b-button variant="primary" @click="toDelete(deleteCampUuid)">Yes</b-button>
         </b-col>
       </b-row>
     </b-modal>
@@ -398,6 +299,7 @@ export default {
       justify-content: center;
     }
   }
+
   table thead th {
     &:first-child {
       div {
@@ -405,6 +307,7 @@ export default {
       }
     }
   }
+
   table thead th {
     &:nth-child(2) {
       div {
@@ -421,39 +324,47 @@ export default {
 .privateBtn {
   padding: 5px 10px 5px 10px;
 }
+
 .campaign-heading {
   h2 {
     font-size: 24px;
     line-height: 22px;
   }
+
   p {
     font-size: 15px;
     line-height: 18px;
   }
 }
+
 .camp-actions {
   svg {
     color: #393939;
     stroke: #393939;
+
     &:hover {
       color: #7a60e0 !important;
       stroke: #7a60e0;
     }
   }
 }
+
 .camp-status {
   span {
     padding: 4px 10px;
     color: #fff;
     border-radius: 4px;
   }
+
   span.live-camp {
     background: #5cb85c;
   }
+
   span.paused-camp {
     background: #f0ad4e;
   }
 }
+
 .campaign-listing-page {
   .table thead th {
     &:nth-child(4) {
@@ -469,6 +380,7 @@ export default {
     svg {
       color: #fff;
       stroke: #fff;
+
       &:hover {
         color: #7a60e0 !important;
         stroke: #7a60e0;

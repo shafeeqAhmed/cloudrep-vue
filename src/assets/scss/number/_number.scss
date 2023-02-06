@@ -33,10 +33,10 @@
 }
 .modal-number{
     .modal-dialog{
-        max-width: 800px;
+        max-width: 500px;
     }
     .modal-content{
-        padding: 30px;
+        padding: 15px;
         background: #ccc !important;
     }
     .modal-body{
@@ -45,10 +45,11 @@
     h2{
         font-style: normal;
         font-weight: 700;
-        font-size: 23px;
+        font-size: 24px;
         line-height: 28px;
         text-align: center;
         letter-spacing: -0.02em;
+        margin: 0px;
     }
     p{
         font-style: normal;
@@ -99,10 +100,10 @@
 .dark-layout{
     .modal-number{
         .modal-content{
-            background: #1F1B1F !important;
+            background: #283046 !important;
         }
         .modal-body{
-            background: #1F1B1F !important;
+            background: #283046 !important;
         }
         h2{
             color: #FAFBFB;
